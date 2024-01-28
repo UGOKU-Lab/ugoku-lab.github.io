@@ -10,32 +10,45 @@
             margin: 0;
             font-family: 'Quicksand', sans-serif;
             background-color: #ffffff;
+            max-width: 1200px; /* 幅を制限 */
+            margin: 0 auto; /* 水平方向に中央揃え */
         }
         .header {
             background-color: #f0641e;
             padding: 20px;
             color: white;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
         .header h1 {
             margin: 0;
             font-weight: 700;
+            flex-grow: 1;
+        }
+        .header a {
+            color: white;
+            padding: 10px 15px;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 5px;
         }
         .project {
-            border-bottom: 2px solid #f0641e;
             padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: table; /* Use display:table for structure */
+            width: 100%;
         }
         .project img {
-            max-width: 30%;
+            display: table-cell;
+            vertical-align: middle;
+            width: 400px; /* Fixed width, adjust as needed */
             height: auto;
-            margin-right: 20px;
         }
         .project-content {
-            width: 70%;
-            text-align: left;
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
         }
         .project-content h2 {
             color: #333333;
@@ -79,11 +92,12 @@
         <img src="images/UGOKU-One.JPG" alt="UGOKU One">
         <div class="project-content">
             <h2>UGOKU One</h2>
-            <p>UGOKU Oneはモータやセンサを使ったロボットなどのアプリケーションを開発しております。</p>
+            <p>UGOKU One はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発しているオープンソースの汎用基板です。
+                広く普及しているマイコンボードや無線モジュールに加え、高出力なDCモータドライバを2個搭載しています。さらに、汎用IOポートを設け幅広いアプリケーションに対応します。 AndroidアプリFlexConsoleと組み合わせることでスマートフォンから手軽に遠隔操作や監視が行えます。</p>
             <!-- リポジトリへのリンクボタン -->
             <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank">Hardware Repository</a>
-            <a href="URL-to-software-repo" target="_blank">Software Repository</a>
-            <a href="URL-to-firmware-repo" target="_blank">Firmware Repository</a>
+            <a href="URL-to-software-repo" target="_blank">Software Repository（準備中）</a>
+            <a href="URL-to-firmware-repo" target="_blank">Firmware Repository（準備中）</a>
         </div>
     </div>
 
