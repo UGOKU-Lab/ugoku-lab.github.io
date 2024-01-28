@@ -4,97 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UGOKU Lab</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Quicksand', sans-serif;
-            background-color: #ffffff;
-            max-width: 1200px; /* 幅を制限 */
-            margin: 0 auto; /* 水平方向に中央揃え */
-        }
-        .header {
-            background-color: #f0641e;
-            padding: 20px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        .header h1 {
-            margin: 0;
-            font-weight: 700;
-            flex-grow: 1;
-        }
-        .header a {
-            color: white;
-            padding: 10px 15px;
-            background-color: #f0641e;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .header .social-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .social-icons a {
-            color: white;
-            padding: 0 10px;
-            font-size: 24px; /* アイコンのサイズを調整 */
-        }
-
-        .header .social-icons a:hover {
-            color: #000000;
-        }
-        .project {
-            padding: 20px;
-            display: table; /* Use display:table for structure */
-            width: 100%;
-        }
-        .project img {
-            display: table-cell;
-            vertical-align: middle;
-            width: 400px; /* Fixed width, adjust as needed */
-            height: auto;
-        }
-        .project-content {
-            display: table-cell;
-            vertical-align: middle;
-            padding-left: 20px;
-        }
-        .project-content h2 {
-            color: #333333;
-            margin: 0 0 10px 0;
-        }
-        .project-content p {
-            color: #666666;
-        }
-        .project-content a {
-            display: inline-block;
-            padding: 10px 15px;
-            margin-right: 10px;
-            background-color: #f0641e;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .project-content a:hover {
-            background-color: #e2561a;
-        }
-        footer {
-            background-color: #ffffff;
-            color: #000000;
-            text-align: center;
-            padding: 10px 0;
-            border-top: 2px solid #f0641e;
-        }
-        footer p {
-            margin: 0;
-        }
+        
     </style>
 </head>
 <body>
@@ -110,7 +24,11 @@
     <div class="project">
         <img src="images/UGOKU-One.JPG" alt="UGOKU One">
         <div class="project-content">
-            <h2><a href="your-ugoku-one-page-url" target="_blank">UGOKU One</a></h2>
+            <div class="project-title">
+                <h2>UGOKU One</h2>
+                <!-- 新しい行にDocumentationボタンを追加 -->
+                <a href="ugokuone.html" target="_blank" class="doc-button">Documentation</a>
+            </div>
             <p>UGOKU One はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発しているオープンソースハードウェアの汎用基板です。
                 広く普及しているマイコンボード(Nucleo-F303K8)や無線モジュール(ESP32-WROOM-32E)に加え、高出力なDCモータドライバ(TB67H303HG)を2個搭載しています。さらに、汎用IOポートを設け幅広いアプリケーションに対応します。 AndroidアプリFlexConsoleと組み合わせることでスマートフォンから手軽に遠隔操作や監視が行えます。</p>
             <!-- リポジトリへのリンクボタン -->

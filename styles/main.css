@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #ffffff;
+    max-width: 1200px; /* 幅を制限 */
+    margin: 0 auto; /* 水平方向に中央揃え */
+}
+.header {
+    background-color: #f0641e;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.header h1 {
+    margin: 0;
+    font-weight: 700;
+    flex-grow: 1;
+}
+.header a {
+    color: white;
+    padding: 10px 15px;
+    background-color: #f0641e;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.header .social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header .social-icons a {
+    color: white;
+    padding: 0 10px;
+    font-size: 24px; /* アイコンのサイズを調整 */
+}
+
+.header .social-icons a:hover {
+    color: #000000;
+}
+.project {
+    padding: 20px;
+    display: table; /* Use display:table for structure */
+    width: 100%;
+}
+.project img {
+    display: table-cell;
+    vertical-align: middle;
+    width: 400px; /* Fixed width, adjust as needed */
+    height: auto;
+}
+.project-content {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+
+.project-content h2 {
+    color: #333333;
+    margin: 0 0 0px 0;
+}
+
+.project-content p {
+    color: #666666;
+}
+.project-content a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #f0641e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project-content a:hover {
+    background-color: #e2561a;
+}
+
+.project-content .project-title {
+    display: flex; /* フレックスボックスを使ってアイテムを横に並べる */
+    align-items: center; /* アイテムを中央揃え */
+    flex-wrap: wrap; /* 必要に応じてアイテムを折り返す */
+}
+
+.project-content .doc-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-left: 20px; /* 左に余白を追加 */
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.project-content .doc-button:hover {
+    background-color: black;
+    color: white;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 2px solid #f0641e;
+}
+footer p {
+    margin: 0;
+}
