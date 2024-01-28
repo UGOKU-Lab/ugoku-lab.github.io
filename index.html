@@ -1,90 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>UGOKU Labのサイト</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGOKU Lab</title>
     <style>
-        /* ここにCSSスタイルを記述 */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* 背景を白に設定 */
+        }
+        .header {
+            background-color: #f0641e; /* オレンジ色の帯 */
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .project-tile {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #ffffff; /* 背景を白に設定 */
+            border-bottom: 2px solid #f0641e; /* オレンジ色のボーダー */
+        }
+        .project-tile h2 {
+            margin: 0;
+            color: #333333; /* タイトルの色 */
+        }
+        .project-tile p {
+            color: #666666; /* テキストの色 */
         }
         .container {
-            width: 80%;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
-        }
-        header {
-            background: #50b3a2;
-            color: white;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;
-        }
-        header a {
-            color: #ffffff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            overflow: hidden;
-        }
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-        header .highlight, header .current a {
-            color: #e8491d;
-            font-weight: bold;
-        }
-        header a:hover {
-            color: #ffffff;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div id="branding">
-                <h1><span class="highlight">マイ</span> ウェブサイト</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li class="current"><a href="index.html">ホーム</a></li>
-                    <li><a href="about.html">私について</a></li>
-                    <li><a href="contact.html">コンタクト</a></li>
-                </ul>
-            </nav>
-        </div>
+
+    <header class="header">
+        <h1>UGOKU Lab</h1>
     </header>
 
     <div class="container">
-        <section id="showcase">
-            <h1>ウェルカム トゥ マイ ウェブサイト</h1>
-            <p>ここにウェブサイトの紹介や自己紹介などの情報を記載します。これは単なる例ですので、必要に応じて内容を変更してください。</p>
-        </section>
+        <!-- UGOKU One プロジェクト -->
+        <div class="project-tile">
+            <h2>UGOKU One</h2>
+            <p>「UGOKU One」は、革新的な動きを実現するプロジェクトです。</p>
+        </div>
+
+        <!-- FlexConsole プロジェクト -->
+        <div class="project-tile">
+            <h2>FlexConsole</h2>
+            <p>「FlexConsole」は、柔軟性と操作性を兼ね備えたコンソールプラットフォームです。</p>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 マイウェブサイト.
-
+</body>
+</html>
