@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UGOKU Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -30,9 +31,23 @@
         .header a {
             color: white;
             padding: 10px 15px;
-            background-color: #333;
+            background-color: #f0641e;
             text-decoration: none;
             border-radius: 5px;
+        }
+        .header .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .social-icons a {
+            color: white;
+            padding: 0 10px;
+            font-size: 24px; /* アイコンのサイズを調整 */
+        }
+
+        .header .social-icons a:hover {
+            color: #000000;
         }
         .project {
             padding: 20px;
@@ -86,6 +101,10 @@
 
     <header class="header">
         <h1>UGOKU Lab</h1>
+        <div class="social-icons">
+            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i>
+            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
     </header>
 
     <div class="project">
