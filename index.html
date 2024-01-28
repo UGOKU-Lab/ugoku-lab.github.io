@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UGOKU Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Quicksand', sans-serif;
             background-color: #ffffff; /* 背景を白に設定 */
         }
         .header {
             background-color: #f0641e; /* オレンジ色の帯 */
-            padding: 10px 0;
-            text-align: center;
+            padding: 10px 20px;
+            text-align: left;
             color: white;
         }
         .header h1 {
             margin: 0;
+            font-weight: 700;
         }
         .project-tile {
             width: 100%;
@@ -27,8 +29,13 @@
             background-color: #ffffff; /* 背景を白に設定 */
             border-bottom: 2px solid #f0641e; /* オレンジ色のボーダー */
         }
+        .project-tile img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #f0641e; /* 画像のボーダー */
+        }
         .project-tile h2 {
-            margin: 0;
+            margin: 20px 0 10px;
             color: #333333; /* タイトルの色 */
         }
         .project-tile p {
@@ -38,6 +45,15 @@
             max-width: 1200px;
             margin: auto;
             overflow: hidden;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -50,16 +66,24 @@
     <div class="container">
         <!-- UGOKU One プロジェクト -->
         <div class="project-tile">
+            <img src="path-to-ugoku-one-image.jpg" alt="UGOKU One">
             <h2>UGOKU One</h2>
             <p>「UGOKU One」は、革新的な動きを実現するプロジェクトです。</p>
+            <a href="ugoku-one.html">詳細を見る</a>
         </div>
 
         <!-- FlexConsole プロジェクト -->
         <div class="project-tile">
+            <img src="path-to-flexconsole-image.jpg" alt="FlexConsole">
             <h2>FlexConsole</h2>
             <p>「FlexConsole」は、柔軟性と操作性を兼ね備えたコンソールプラットフォームです。</p>
+            <a href="flexconsole.html">詳細を見る</a>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 UGOKU Lab. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
