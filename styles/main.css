@@ -14,16 +14,18 @@ body {
     align-items: center;
     width: 100%;
 }
+
 .header h1 {
+    display: inline;
+    padding: 0;
     margin: 0;
-    font-weight: 700;
-    flex-grow: 1;
 }
+
 .header a {
     text-decoration: none; /* 下線を消す */
     color: white; /* テキストの色を白に設定 */
     display: inline; /* aタグをインライン要素に設定 */
-    padding: 20px; /* 既存のヘッダーのパディングに合わせる */
+    /*padding: 20px; /* 既存のヘッダーのパディングに合わせる */
 }
 
 /* ソーシャルアイコンのスタイル */
