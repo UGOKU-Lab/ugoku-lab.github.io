@@ -8,7 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
     <style>
-        
+        h2 {
+            border-bottom: 1px solid #2b2b2b; /* 下線の色と太さを設定 */
+            padding-bottom: 3px; /* 下線とテキストとの間隔を設定 */
+            margin-bottom: 10px; /* 下線の下の余白を設定 */
+        }
     </style>
 </head>
 
@@ -32,32 +36,38 @@
         <video controls src="https://tomohiroaoki.com/wp-content/uploads/2023/09/NT-Tokyo用.mp4"></video>
     </figure>
 
-    <!-- UGOKU Oneの説明 -->
+    <h2>概要</h2>
     <p>UGOKU One はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発しているオープンソースハードウェアの汎用基板です。 広く普及しているマイコンボード(Nucleo-F303K8)や無線モジュール(ESP32-WROOM-32E)に加え、高出力なDCモータドライバ(TB67H303HG)を2個搭載しています。さらに、汎用IOポートを設け幅広いアプリケーションに対応します。 AndroidアプリFlexConsoleと組み合わせることでスマートフォンから手軽に遠隔操作やモニタリングが行えます。</p>
     
-    <!-- 仕様表や特徴など -->
-    <div class="project-details">
-        <h3>主要構成部品</h3>
-        <table class="components-table">
-            <tr>
-                <th>マイコンボード</th>
-                <td>Nucleo-F303K8</td>
-            </tr>
-            <tr>
-                <th>無線モジュール</th>
-                <td>ESP32-WROOM-32E</td>
-            </tr>
-            <tr>
-                <th>DCEモータドライバ</th>
-                <td>2x TB67H303HG</td>
-            </tr>
-            <tr>
-                <th>CANトランシーバ</th>
-                <td>MCP2562-E/SN</td>
-            </tr>
-        </table>
+    <h2>ハードウェア</h2>
+    <a href="URL-to-hardware-repo" target="_blank" class="button">Hardware Repository</a>
+    <div class="container">
+        <div class="specs">
+            <h3>主要構成部品</h3>
+            <table class="components-table">
+                <tr>
+                    <th>マイコンボード</th>
+                    <td>Nucleo-F303K8</td>
+                </tr>
+                <tr>
+                    <th>無線モジュール</th>
+                    <td>ESP32-WROOM-32E</td>
+                </tr>
+                <tr>
+                    <th>DCEモータドライバ</th>
+                    <td>2x TB67H303HG</td>
+                </tr>
+                <tr>
+                    <th>CANトランシーバ</th>
+                    <td>MCP2562-E/SN</td>
+                </tr>
+            </table>
+        </div>
+        <div class="images-container">
+            <img src="images/UGOKU-One.JPG" alt="UGOKU One">
+            <img src="images/UGOKU-One.JPG" alt="UGOKU One">
+        </div>
     </div>
-    
 
     <!-- ダウンロードリンク、リポジトリへのリンク -->
     <div class="download-links">
@@ -68,11 +78,11 @@
     
     <!-- ライセンス情報 -->
     <div class="license-section">
-        <h3>LICENSE</h3>
+        <h2>ライセンス</h3>
         <div class="license-content">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license-image">
                 <img alt="クリエイティブ・コモンズ・ライセンス" class="license-badge" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
-            </a>                    
+            </a>         
             <p>
                 この デバイス は 
                 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.ja" class="link">

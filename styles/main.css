@@ -197,6 +197,29 @@ a.link:hover {
     height: auto; /* 高さを自動調整してアスペクト比を維持 */
 }
 
+.container {
+    display: flex; /* Flexboxを有効にする */
+    align-items: flex-start; /* 要素を上端で揃える */
+    justify-content: space-between; /* 要素間に均等なスペースを設定 */
+}
+
+.table-container {
+    flex: 2; /* 表が他の要素よりも幅を取るようにする */
+    margin-right: 20px; /* 表と画像の間にスペースを設定 */
+}
+
+.images-container {
+    flex: 3; /* 画像が表よりも広いスペースを取るようにする */
+    display: flex; /* Flexboxを有効にして画像を横に並べる */
+    justify-content: space-between; /* 画像間に均等なスペースを設定 */
+}
+
+.images-container img {
+    max-width: calc(50% - 10px); /* 画像がコンテナの半分の幅になるように計算し、間のスペースを考慮する */
+    height: auto; /* 画像の高さを自動調整し、アスペクト比を保持する */
+    margin: 0 10px; /* 画像の周囲にマージンを設定 */
+}
+
 footer {
     background-color: #ffffff;
     color: #000000;
