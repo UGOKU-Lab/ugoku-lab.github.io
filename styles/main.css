@@ -7,10 +7,6 @@ body {
     margin: 0 auto; /* 左右のマージンを自動で調整し、コンテンツを中央に配置 */
 }
 
-<<<<<<< HEAD
-/* ヘッダーセクションのスタイル */
-=======
->>>>>>> 03b122ff2d5bbdaf2e46e00e69851306fc6f12b1
 .header {
     background-color: #f0641e; /* 背景色をオレンジに設定 */
     padding: 20px; /* 内側の余白を全ての方向に20px設定 */
@@ -21,25 +17,6 @@ body {
     width: 100%; /* 幅を親要素の100%に設定 */
 }
 
-<<<<<<< HEAD
-/* ヘッダー内のh1タグのスタイル（通常はタイトルやロゴに使用） */
-.header h1 {
-    margin: 0; /* すべてのマージンを取り除く */
-    font-weight: 700; /* フォントの太さを太くする */
-    flex-grow: 1; /* 余ったスペースを吸収して拡大 */
-}
-
-/* ヘッダー内のリンクスタイル */
-.header a {
-    color: white; /* リンクのテキスト色を白に設定 */
-    padding: 10px 15px; /* リンクの内側の余白を設定 */
-    background-color: #333333; /* リンクの背景色をダークグレーに設定 */
-    text-decoration: none; /* 下線を消す */
-    border-radius: 5px; /* 角を丸くする */
-}
-
-/* ソーシャルアイコンのスタイル */
-=======
 .header a {
     text-decoration: none; /* 下線を消す */
     color: white; /* テキストの色を白に設定 */
@@ -54,7 +31,6 @@ body {
     /* 他のh1に関するスタイル */
 }
 
->>>>>>> 03b122ff2d5bbdaf2e46e00e69851306fc6f12b1
 .header .social-icons {
     display: flex; /* フレックスボックスモデルを適用 */
     align-items: center; /* 子要素を垂直方向の中央に揃える */
