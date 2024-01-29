@@ -5,6 +5,7 @@ body {
     max-width: 1200px; /* 幅を制限 */
     margin: 0 auto; /* 水平方向に中央揃え */
 }
+
 .header {
     background-color: #f0641e;
     padding: 20px;
@@ -14,18 +15,21 @@ body {
     align-items: center;
     width: 100%;
 }
-.header h1 {
-    margin: 0;
-    font-weight: 700;
-    flex-grow: 1;
-}
+
 .header a {
-    color: white;
-    padding: 10px 15px;
-    background-color: #f0641e;
-    text-decoration: none;
-    border-radius: 5px;
+    text-decoration: none; /* 下線を消す */
+    color: white; /* テキストの色を白に設定 */
+    display: inline; /* aタグをインライン要素に設定 */
+    padding: 20px; /* 既存のヘッダーのパディングに合わせる */
 }
+
+.header h1 {
+    display: inline; /* h1をインライン要素に設定 */
+    margin: 0; /* 余分なマージンを取り除く */
+    padding: 0; /* 余分なパディングを取り除く */
+    /* 他のh1に関するスタイル */
+}
+
 .header .social-icons {
     display: flex;
     align-items: center;
