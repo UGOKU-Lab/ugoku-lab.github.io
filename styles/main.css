@@ -54,11 +54,13 @@ body {
     width: 400px; /* Fixed width, adjust as needed */
     height: auto;
 }
+
 .project-content {
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 20px;
+    display: flex; /* Flexboxを有効にして横並びにする */
+    gap: 10px; /* 各要素間のスペースを設定 */
+    align-items: center; /* 垂直方向の中央揃え */
 }
+
 
 .project-content h2 {
     color: #333333;
@@ -218,6 +220,24 @@ a.link:hover {
     max-width: calc(50% - 10px); /* 画像がコンテナの半分の幅になるように計算し、間のスペースを考慮する */
     height: auto; /* 画像の高さを自動調整し、アスペクト比を保持する */
     margin: 0 10px; /* 画像の周囲にマージンを設定 */
+}
+
+.button:hover {
+    background-color: #e2561a; /* ホバー時の背景色を少し暗くする */
+}
+
+.project-content a.play-badge {
+    background-color: transparent !important; /* 背景色を完全に透明にする */
+    padding: 0; /* パディングをリセット */
+    margin: 0; /* マージンをリセット */
+    border: none; /* 枠線を削除 */
+    display: inline-block; /* 他のボタンと同様のスタイル */
+}
+
+.project-content a.play-badge img {
+    max-width: 150px; /* バッジの幅を適切に調整 */
+    height: auto; /* アスペクト比を維持 */
+    display: block; /* 画像のみが表示されるように設定 */
 }
 
 footer {
