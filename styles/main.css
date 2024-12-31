@@ -55,11 +55,7 @@ body {
     height: auto;
 }
 
-.project-content {
-    display: flex; /* Flexboxを有効にして横並びにする */
-    gap: 10px; /* 各要素間のスペースを設定 */
-    align-items: center; /* 垂直方向の中央揃え */
-}
+
 
 
 .project-content h2 {
@@ -222,8 +218,24 @@ a.link:hover {
     margin: 0 10px; /* 画像の周囲にマージンを設定 */
 }
 
+
 .button:hover {
     background-color: #e2561a; /* ホバー時の背景色を少し暗くする */
+}
+
+.project-content {
+    display: table-cell;
+    vertical-align: middle; 
+    padding-left: 20px;
+    gap: 10px; /* 各要素間のスペースを設定 */
+    align-items: center; /* 垂直方向の中央揃え */
+    /*  display: flex; /* Flexboxを有効にして横並びにする */
+}
+
+.project-content .buttons-container {
+    display: flex; /* ボタンとバッジを横並びにする */
+    gap: 10px; /* ボタンとバッジ間のスペース */
+    align-items: center; /* 縦方向で中央揃え */
 }
 
 .project-content a.play-badge {
@@ -239,6 +251,7 @@ a.link:hover {
     height: auto; /* アスペクト比を維持 */
     display: block; /* 画像のみが表示されるように設定 */
 }
+
 
 footer {
     background-color: #ffffff;
