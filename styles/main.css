@@ -256,6 +256,32 @@ a.link:hover {
     display: block; /* 画像のみが表示されるように設定 */
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px; /* フォントサイズを調整 */
+    background-color: #f9f9f9; /* 背景色を設定 */
+}
+th, td {
+    border: 1px solid #ddd; /* 枠線を薄く設定 */
+    padding: 12px; /* セル内のパディングを増やす */
+    text-align: left; /* テキストを左揃えに */
+}
+th {
+    background-color: #f2f2f2; /* ヘッダーセルの背景色を明るく */
+    font-weight: bold; /* 太字にする */
+    color: #333; /* テキストの色を調整 */
+}
+tr:nth-child(even) {
+    background-color: #ffffff; /* 偶数行の背景色 */
+}
+tr:nth-child(odd) {
+    background-color: #f9f9f9; /* 奇数行の背景色 */
+}
+tr:hover {
+    background-color: #f1f1f1; /* ホバー時の行の背景色 */
+}
 
 footer {
     background-color: #ffffff;
