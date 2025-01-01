@@ -55,8 +55,12 @@ body {
     height: auto;
 }
 
-
-
+.full-width {
+    max-width: calc(100% - 40px); /* 親要素の幅から左右の余白分を引く */
+    height: auto; /* アスペクト比を保持 */
+    display: block; /* 不要な余白を防ぐ */
+    padding: 0 20px; /* 左右に20pxの余白を設定 */
+}
 
 .project-content h2 {
     color: #333333;
