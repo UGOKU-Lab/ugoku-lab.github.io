@@ -28,81 +28,82 @@
         </div>
     </header>
 
+    <div class="content-container">
     
-    
-    <h1>  UGOKU Pro</h1>
-    
-    <figure class="video">
-        <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/01/UGOKU-One_toriaezunoyatu.mpeg4_.aac.mp4-Twitter.mp4"></video>
-    </figure>
-    
-    <div class="project">
-        <div class="project-content">
-            <!-- リポジトリへのリンクボタン -->
-            <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank">Hardware Repository</a>
-            <a href="https://github.com/UGOKU-Lab/UGOKU-One_Mbed" target="_blank">Software(Mbed) Repository</a>
-            <a href="https://github.com/UGOKU-Lab/UGOKU-One_ESP32_BluetoothSerialBridge" target="_blank">Firmware(ESP32) Repository</a>
+        <h1>  UGOKU Pro</h1>
+        
+        <figure class="video">
+            <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/01/UGOKU-One_toriaezunoyatu.mpeg4_.aac.mp4-Twitter.mp4"></video>
+        </figure>
+        
+        <div class="project">
+            <div class="project-content">
+                <!-- リポジトリへのリンクボタン -->
+                <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank">Hardware Repository</a>
+                <a href="https://github.com/UGOKU-Lab/UGOKU-One_Mbed" target="_blank">Software(Mbed) Repository</a>
+                <a href="https://github.com/UGOKU-Lab/UGOKU-One_ESP32_BluetoothSerialBridge" target="_blank">Firmware(ESP32) Repository</a>
+            </div>
         </div>
+
+        <h2>概要</h2>
+        <p>
+        UGOKU Pro はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発している<b>オープンソースハードウェア</b>の汎用基板です。 
+        広く普及しているマイコンボード(Nucleo-F303K8)や無線モジュール(ESP32-WROOM-32E)に加え、高出力なDCモータドライバ(TB67H303HG)を2個搭載しています。
+        さらに、汎用IOポートを設け幅広いアプリケーションに対応します。Androidアプリ <a href="https://github.com/UGOKU-Lab/FlexConsole_for_Bluetooth_Serial/tree/main" target="_blank" class="link">FlexConsole</a>と組み合わせることでスマートフォンから手軽に遠隔操作やモニタリングが行えます。
+        </p>
+        
+        <h2>ハードウェア</h2>
+        <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank" class="button">GitHub Hardware Repository</a>
+        <div class="container">
+            <div class="specs">
+                <h3>主要構成部品</h3>
+                <table class="components-table">
+                    <tr>
+                        <th>マイコンボード</th>
+                        <td>Nucleo-F303K8</td>
+                    </tr>
+                    <tr>
+                        <th>無線モジュール</th>
+                        <td>ESP32-WROOM-32E</td>
+                    </tr>
+                    <tr>
+                        <th>DCモータドライバ</th>
+                        <td>2x TB67H303HG</td>
+                    </tr>
+                    <tr>
+                        <th>CANトランシーバ</th>
+                        <td>MCP2562-E/SN</td>
+                    </tr>
+                </table>
+                <h3>回路ブロック図</h3>
+                準備中
+            </div>
+            <div class="images-container">
+                <img src="images/Ugoku-one_case.jpg" alt="UGOKU Pro">
+                <img src="images/Ugoku-one_ura.JPG" alt="UGOKU Pro">
+            </div>
+        </div>
+
+        
+        <!-- ライセンス情報 -->
+        <div class="license-section">
+            <h2>ライセンス</h2>
+            <div class="license-content">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license-image">
+                    <img alt="クリエイティブ・コモンズ・ライセンス" class="license-badge" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                </a>         
+                <p>
+                    この デバイス は 
+                    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.ja" class="link">
+                        クリエイティブ・コモンズ 表示 4.0 国際 ライセンス
+                    </a>
+                    の下に提供されています。
+                </p>
+            </div>
+        </div>        
+
+        <br>
     </div>
-
-    <h2>概要</h2>
-    <p>
-    UGOKU Pro はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発している<b>オープンソースハードウェア</b>の汎用基板です。 
-    広く普及しているマイコンボード(Nucleo-F303K8)や無線モジュール(ESP32-WROOM-32E)に加え、高出力なDCモータドライバ(TB67H303HG)を2個搭載しています。
-    さらに、汎用IOポートを設け幅広いアプリケーションに対応します。Androidアプリ <a href="https://github.com/UGOKU-Lab/FlexConsole_for_Bluetooth_Serial/tree/main" target="_blank" class="link">FlexConsole</a>と組み合わせることでスマートフォンから手軽に遠隔操作やモニタリングが行えます。
-    </p>
-    
-    <h2>ハードウェア</h2>
-    <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank" class="button">GitHub Hardware Repository</a>
-    <div class="container">
-        <div class="specs">
-            <h3>主要構成部品</h3>
-            <table class="components-table">
-                <tr>
-                    <th>マイコンボード</th>
-                    <td>Nucleo-F303K8</td>
-                </tr>
-                <tr>
-                    <th>無線モジュール</th>
-                    <td>ESP32-WROOM-32E</td>
-                </tr>
-                <tr>
-                    <th>DCモータドライバ</th>
-                    <td>2x TB67H303HG</td>
-                </tr>
-                <tr>
-                    <th>CANトランシーバ</th>
-                    <td>MCP2562-E/SN</td>
-                </tr>
-            </table>
-            <h3>回路ブロック図</h3>
-            準備中
-        </div>
-        <div class="images-container">
-            <img src="images/Ugoku-one_case.jpg" alt="UGOKU Pro">
-            <img src="images/Ugoku-one_ura.JPG" alt="UGOKU Pro">
-        </div>
-    </div>
-
-    
-    <!-- ライセンス情報 -->
-    <div class="license-section">
-        <h2>ライセンス</h2>
-        <div class="license-content">
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="license-image">
-                <img alt="クリエイティブ・コモンズ・ライセンス" class="license-badge" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
-            </a>         
-            <p>
-                この デバイス は 
-                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.ja" class="link">
-                    クリエイティブ・コモンズ 表示 4.0 国際 ライセンス
-                </a>
-                の下に提供されています。
-            </p>
-        </div>
-    </div>        
-
-    <br>
     
     <footer>
         <p>&copy; 2024 UGOKU Lab</p>

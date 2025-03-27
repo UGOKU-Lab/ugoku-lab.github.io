@@ -2,9 +2,35 @@ body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     background-color: #ffffff;
-    max-width: 1200px; /* 幅を制限 */
+    /* max-width: 1200px; /* 幅を制限 */
     margin: 0 auto; /* 水平方向に中央揃え */
 }
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #f0641e;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box; /* パディングを幅計算に含める */
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 2px solid #f0641e;
+    width: 100%; /* フッターも全幅に広げる */
+}
+
 .header {
     background-color: #f0641e;
     padding: 20px;

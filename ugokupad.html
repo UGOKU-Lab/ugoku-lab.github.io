@@ -28,101 +28,103 @@
         </div>
     </header>
 
+    <div class="content-container">
     
-    
-    <h1>UGOKU Pad</h1>
-    
-    <figure class="video">
-        <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/12/UGOKU-Pad-demo-small_c.mp4"></video>
-    </figure>
-    
-    <div class="project">
-        <div class="project-content">
-            <div class="buttons-container">
-                <!-- リポジトリへのリンクボタン -->
-                <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja" target="_blank" class="play-badge">
-                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-                        alt="Get it on Google Play">
-                </a>
-                <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="button">Repository</a>
-                <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad" target="_blank" class="button">ESP32 Arduino sample Repository</a>
+        <h1>UGOKU Pad</h1>
+        
+        <figure class="video">
+            <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/12/UGOKU-Pad-demo-small_c.mp4"></video>
+        </figure>
+        
+        <div class="project">
+            <div class="project-content">
+                <div class="buttons-container">
+                    <!-- リポジトリへのリンクボタン -->
+                    <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja" target="_blank" class="play-badge">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+                            alt="Get it on Google Play">
+                    </a>
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="button">Repository</a>
+                    <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad" target="_blank" class="button">ESP32 Arduino sample Repository</a>
+                </div>
             </div>
         </div>
+
+        <h2>概要</h2>
+        <p>
+        UGOKU Padは、ESP32などのマイコンをBluetoothでスマートフォンと接続し、簡単に操作できるアプリです。ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。モーターの操作やセンサーデータをモニタリングなど、様々な用途で活用いただけます。
+        ESP32用のArduinoサンプルコードも用意しているので、気軽にお試しいただけます。
+        </p>
+        
+        <h2>使い方</h2>
+
+            <h3>使用例：ESP32を使ってLEDやサーボモータの操作、アナログ出力距離センサの読み取りをする（サンプルプログラム使用）</h3>
+
+            <h4>ESP32の準備</h4>
+            <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad">こちら</a>を参照
+
+            <h4>アプリの操作</h4>
+
+            <ol>
+                <li>左上のメニューボタンをタップ</li>
+                <li>Console をタップ</li>
+                <li>Sample: ESP32 Arduino Sampleを選択</li>
+                <li>Selectをタップした後Scan Deviceをタップ</li>
+                <li>My ESP32を選択する</li>
+                <li>接続のアイコンが表示されるのを確認する</li>
+                <li>戻るボタンから操作画面に戻る</li>
+            </ol>
+
+            <img src="images/sample-useage.png" alt="sample-useage" class="full-width">
+
+        <section>
+            <h2> データ交換仕様</h2>
+            <p>このアプリは、3バイトのデータを単位として送受信します。</p>
+
+            <h3>1番目のバイトデータ: チャンネル</h3>
+            <p><strong>チャンネル</strong>は、ペイロードの宛先を示します。システムにより予約されたチャンネルはありません。任意のチャンネルと要求を紐づけてください。</p>
+
+            <h3>2番目のバイトデータ: バリュー</h3>
+            <p><strong>バリュー</strong>はシングルバイトデータであり、0-255の範囲のデータが格納されます。小数や符号付の値を使用したい場合、デバイス側でデータを変換してください。</p>
+
+            <h3>3番目のバイトデータ: チェックサム</h3>
+            <p><strong>チェックサム</strong>は、<strong>チャンネル</strong>と<strong>バリュー</strong>の排他的論理和です。</p>
+
+            <h3>データ構造</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Data</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>チャンネル</td>
+                        <td>ペイロードの宛先 (0-255)。</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>バリュー</td>
+                        <td>ペイロード (0-255)。</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>チェックサム</td>
+                        <td>チャンネルとバリューの排他的論理和。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        </div>
+
+        <br>
+        <br>
+
     </div>
-
-    <h2>概要</h2>
-    <p>
-    UGOKU Padは、ESP32などのマイコンをBluetoothでスマートフォンと接続し、簡単に操作できるアプリです。ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。モーターの操作やセンサーデータをモニタリングなど、様々な用途で活用いただけます。
-    ESP32用のArduinoサンプルコードも用意しているので、気軽にお試しいただけます。
-    </p>
-    
-    <h2>使い方</h2>
-
-        <h3>使用例：ESP32を使ってLEDやサーボモータの操作、アナログ出力距離センサの読み取りをする（サンプルプログラム使用）</h3>
-
-        <h4>ESP32の準備</h4>
-        <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad">こちら</a>を参照
-
-        <h4>アプリの操作</h4>
-
-        <ol>
-            <li>左上のメニューボタンをタップ</li>
-            <li>Console をタップ</li>
-            <li>Sample: ESP32 Arduino Sampleを選択</li>
-            <li>Selectをタップした後Scan Deviceをタップ</li>
-            <li>My ESP32を選択する</li>
-            <li>接続のアイコンが表示されるのを確認する</li>
-            <li>戻るボタンから操作画面に戻る</li>
-        </ol>
-
-        <img src="images/sample-useage.png" alt="sample-useage" class="full-width">
-
-    <section>
-        <h2> データ交換仕様</h2>
-        <p>このアプリは、3バイトのデータを単位として送受信します。</p>
-
-        <h3>1番目のバイトデータ: チャンネル</h3>
-        <p><strong>チャンネル</strong>は、ペイロードの宛先を示します。システムにより予約されたチャンネルはありません。任意のチャンネルと要求を紐づけてください。</p>
-
-        <h3>2番目のバイトデータ: バリュー</h3>
-        <p><strong>バリュー</strong>はシングルバイトデータであり、0-255の範囲のデータが格納されます。小数や符号付の値を使用したい場合、デバイス側でデータを変換してください。</p>
-
-        <h3>3番目のバイトデータ: チェックサム</h3>
-        <p><strong>チェックサム</strong>は、<strong>チャンネル</strong>と<strong>バリュー</strong>の排他的論理和です。</p>
-
-        <h3>データ構造</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Index</th>
-                    <th>Data</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>チャンネル</td>
-                    <td>ペイロードの宛先 (0-255)。</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>バリュー</td>
-                    <td>ペイロード (0-255)。</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>チェックサム</td>
-                    <td>チャンネルとバリューの排他的論理和。</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    </div>
-
-    <br>
-    <br>
     
     <footer>
         <p>&copy; 2024 UGOKU Lab</p>
