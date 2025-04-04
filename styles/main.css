@@ -225,6 +225,13 @@ a.link:hover {
     height: auto; /* 高さを自動調整してアスペクト比を維持 */
 }
 
+.project video {
+    display: table-cell;
+    vertical-align: middle;
+    width: 400px;   /* 画像と同じ幅 */
+    height: auto;
+}
+
 .container {
     display: flex; /* Flexboxを有効にする */
     align-items: flex-start; /* 要素を上端で揃える */
