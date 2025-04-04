@@ -77,7 +77,7 @@ footer {
 .project img {
     display: table-cell;
     vertical-align: middle;
-    width: 400px; /* Fixed width, adjust as needed */
+    width: 500px; /* Fixed width, adjust as needed */
     height: auto;
 }
 
@@ -228,7 +228,7 @@ a.link:hover {
 .project video {
     display: table-cell;
     vertical-align: middle;
-    width: 400px;   /* 画像と同じ幅 */
+    width: 500px;   /* 画像と同じ幅 */
     height: auto;
 }
 
