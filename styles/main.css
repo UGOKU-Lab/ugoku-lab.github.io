@@ -77,7 +77,7 @@ footer {
 .project img {
     display: table-cell;
     vertical-align: middle;
-    width: 500px; /* Fixed width, adjust as needed */
+    width: 600px; /* Fixed width, adjust as needed */
     height: auto;
 }
 
