@@ -228,7 +228,7 @@ a.link:hover {
 .project video {
     display: table-cell;
     vertical-align: middle;
-    width: 500px;   /* 画像と同じ幅 */
+    width: 600px;   /* 画像と同じ幅 */
     height: auto;
 }
 
