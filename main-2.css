@@ -241,48 +241,52 @@ a.link:hover {
     align-items: center; /* 垂直方向の中央揃え */
 }
 
-/* ボタン行のコンテナのスタイル - 階層セレクタで詳細度を高くして確実に適用されるようにする */
-.project .project-content .buttons-row {
-    display: flex !important;              /* ボタンを横並びにする */
-    flex-wrap: wrap !important;            /* 画面幅が狭いときに折り返す */
-    align-items: center !important;        /* ボタンを縦方向中央揃えにする */
-    gap: 20px !important;                  /* ボタン間の間隔を設定 */
-    margin: 15px 0 !important;             /* 上下の余白を設定 */
+/* 新しいボタンスタイル - 以前のスタイルを置き換え */
+/* 完全に新しいボタン行のスタイル */
+.buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
 }
 
-/* ストアボタンの画像スタイル - .project img (width: 600px)より詳細度を高くして上書き */
-.project .buttons-row img.store-badge {
-    display: inline-block !important;      /* table-cellではなくinline-blockに変更 */
-    height: 50px !important;               /* 高さを40pxに固定 */
-    max-height: 50px !important;           /* 最大高さも40pxに制限 */
-    width: auto !important;                /* 幅は自動計算（アスペクト比を維持） */
-    vertical-align: middle !important;     /* テキストの中央に合わせる */
+/* ストアバッジ画像 */
+.store-badge {
+    height: 50px;
+    width: auto;
 }
 
-/* すべてのボタンリンクの基本スタイル - .project-content a のスタイルを上書き */
-.project .buttons-row a {
-    display: inline-flex !important;       /* flexboxで内部要素を配置 */
-    align-items: center !important;        /* 内部要素を縦方向中央揃え */
-    height: 50px !important;               /* 高さを40pxに統一 */
-    text-decoration: none !important;      /* 下線を削除 */
-    background-color: transparent !important; /* 背景を透明に（ストアボタン用） */
+/* オレンジ色のボタン */
+.orange-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 0 15px;
+    background-color: #f0641e;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
 
-/* オレンジボタンのスタイル - 上のaタグのスタイルを拡張 */
-.project .buttons-row a.orange-button {
-    justify-content: center !important;    /* 内部テキストを中央揃え */
-    padding: 0 20px !important;            /* 左右の内部余白 */
-    background-color: #f0641e !important;  /* オレンジ色の背景 */
-    color: white !important;               /* 文字色を白に */
-    border-radius: 8px !important;        /* 角を丸くする */
-    font-size: 18px !important;            /* フォントサイズ */
-    transition: background-color 0.3s !important; /* ホバー時のアニメーション */
+.orange-button:hover {
+    background-color: #e2561a;
 }
 
-/* オレンジボタンのホバー時のスタイル */
-.project .buttons-row a.orange-button:hover {
-    background-color: #e2561a !important;  /* ホバー時に少し暗い色に */
-}
+/* ボタン関連の以前のスタイルは削除またはコメントアウト */
+/* 
+.buttons-container { ... } 
+.button-container { ... }
+.store-container { ... }
+.button { ... }
+.text-button { ... }
+.store-button { ... }
+.store-button img { ... }
+.button.text-button { ... }
+*/
 
 table {
     width: 100%;
