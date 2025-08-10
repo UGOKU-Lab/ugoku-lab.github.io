@@ -176,7 +176,7 @@ a.link:hover {
 .components-table {
     width: 100%; /* 表の幅を100%に設定 */
     border-collapse: collapse; /* セルのボーダーを重ねる */
-    margin-top: 20px; /* 表の上の余白 */
+    margin-top: 0; /* 上余白をなくす */
 }
 
 .components-table th,
@@ -287,7 +287,7 @@ a.link:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 0; /* すべてのテーブルの上余白をなくす */
     font-size: 16px; /* フォントサイズを調整 */
     background-color: #f9f9f9; /* 背景色を設定 */
 }
@@ -375,6 +375,8 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     border-collapse: collapse;
     font-size: 15px;
     background: #fff;
+    /* Remove unexpected top gap caused by global `table { margin-top: 20px; }` */
+    margin-top: 0;
 }
 .excel-table thead th {
     background: linear-gradient(#f8f8f8, #f0f0f0);
