@@ -358,7 +358,12 @@
             // Filter out columns that couldn't be resolved except total which is computed
             const activeHeaders = headers.filter(h => h.key || h.key === '__total__');
 
-            const thead = '<thead><tr>' + activeHeaders.map(h => `<th>${h.label}</th>`).join('') + '</tr></thead>';
+            function colClass(h) {
+                if (h.key === '__total__') return 'col-total';
+                const basis = h.key || h.label || '';
+                return 'col-' + normalizeHeader(basis);
+            }
+            const thead = '<thead><tr>' + activeHeaders.map(h => `<th class="${colClass(h)}">${h.label}</th>`).join('') + '</tr></thead>';
             const tbody = '<tbody>' + rows.map(r => {
                 const keyUnitPrice = resolver.resolve('unitPrice');
                 const keyQty = resolver.resolve('qty');
@@ -368,16 +373,17 @@
                 const total = (!isNaN(unitPrice) && !isNaN(qty)) ? (unitPrice * qty) : '';
                 const yen = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY', maximumFractionDigits: 0 });
                 return '<tr>' + activeHeaders.map(h => {
+                    const cls = colClass(h);
                     if (h.key === '__total__') {
-                        return `<td>${total === '' ? '' : yen.format(total)}</td>`;
+                        return `<td class="${cls}">${total === '' ? '' : yen.format(total)}</td>`;
                     }
                     // Currency format for Unit Price or Price columns
                     if (h.key && isCurrencyColName(h.key)) {
                         const raw = (r[h.key] ?? '').toString();
-                        const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
-                        return `<td>${isNaN(num) ? normalize(raw) : yen.format(num)}</td>`;
+                        const num = parseFloat(raw.replace(/[^0-9.\\-]/g,''));
+                        return `<td class="${cls}">${isNaN(num) ? normalize(raw) : yen.format(num)}</td>`;
                     }
-                    return `<td>${normalize(r[h.key])}</td>`;
+                    return `<td class="${cls}">${normalize(r[h.key])}</td>`;
                 }).join('') + '</tr>';
             }).join('') + '</tbody>';
             container.innerHTML = `<table class="excel-table">${thead}${tbody}</table>`;

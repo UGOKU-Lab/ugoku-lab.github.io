@@ -9,8 +9,8 @@ body {
 /* ---- Global table cell spacing controls ----
    ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
 :root {
-    --table-cell-padding-y: 0px; /* 上下 */
-    --table-cell-padding-x: 0px; /* 左右 */
+    --table-cell-padding-y: 2px; /* 上下 */
+    --table-cell-padding-x: 2px; /* 左右 */
 }
 
 .content-container {
@@ -405,6 +405,26 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
 .excel-table td { border: 1px solid #e5e5e5; padding: var(--table-cell-padding-y) var(--table-cell-padding-x); }
 .excel-table tbody tr:nth-child(odd) { background: #fafafa; }
 .excel-table tbody tr:hover { background: #fff8f3; }
+
+/* --- BOM column alignment --- */
+/* Center: Balloon, QTY, Lead Time */
+.js-bom .excel-table th.col-balloon,
+.js-bom .excel-table td.col-balloon,
+.js-bom .excel-table th.col-qty,
+.js-bom .excel-table td.col-qty,
+.js-bom .excel-table th.col-leadtime,
+.js-bom .excel-table td.col-leadtime {
+    text-align: center;
+}
+/* Left: Unit Price, Price (or computed total) */
+.js-bom .excel-table th.col-unitprice,
+.js-bom .excel-table td.col-unitprice,
+.js-bom .excel-table th.col-price,
+.js-bom .excel-table td.col-price,
+.js-bom .excel-table th.col-total,
+.js-bom .excel-table td.col-total {
+    text-align: left;
+}
 
 /* scroll wrapper for wide/long tables */
 .table-scroll {
