@@ -121,7 +121,7 @@
         <section id="system">
             <h2>システム構成</h2>
             <div class="embed-center">
-                <img src="images/Gen2_system_diagram.png" alt="システム構成図" style="max-width:100%; height:auto;" />
+                <img src="images/GYRO/Gen2_system_diagram.png" alt="システム構成図" style="max-width:100%; height:auto;" />
             </div>
         </section>
 
@@ -130,9 +130,9 @@
             <h2>回転部</h2>
             <p>インホイール・ダイレクトドライブ構造</p>
             <div class="embed-center">
-                <img src="images/GYRO/fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:100%; height:auto;" />
+                <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:100%; height:auto;" />
             </div>
-            <h3>部品票（フライホイール回転部 全体）</h3>
+            <h3>部品表（フライホイール回転部 全体）</h3>
             <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit"></div>
         </section>
 
@@ -140,8 +140,8 @@
         <section id="housing" class="structure-item">
             <h2>筐体</h2>
                 <p>ポリカーボネート製筐体</p>
-                <h3>部品票（筐体）</h3>
-                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-category="筐体"></div>
+                <h3>部品表（筐体）</h3>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure"></div>
     </section>
 
         <section id="first-gen">
@@ -248,15 +248,51 @@
                 container.innerHTML = '<div style="padding:8px;color:#666;">該当する部品はありません。</div>';
                 return false;
             }
-            // Preferred column order; fall back to any present columns
-            const preferred = ['部品名','仕様','型番','材質','表面処理','数量','備考'];
-            const columns = preferred.filter(c => rows.some(r => c in r));
-            const rest = Object.keys(rows[0] || {}).filter(k => !columns.includes(k));
-            const headers = [...columns, ...rest];
+            // Canonical header mapping (variants -> canonical)
+            const headerMap = {
+                baloon: ['Baloon','Balloon','バルーン','図番','番号'],
+                partName: ['Part Name','部品名','品名','品目'],
+                unitPrice: ['Unit Price','単価','価格','Price'],
+                qty: ['QTY','数量','Qty','数'],
+                material: ['Material','材質'],
+                plating: ['Plating','表面処理','メッキ']
+            };
 
-            const thead = '<thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead>';
+            // Build a key resolver based on the first row's keys
+            const keys = Object.keys(rows[0] || {});
+            function resolveKey(cands) {
+                return keys.find(k => cands.includes(k)) || null;
+            }
+            const keyBaloon = resolveKey(headerMap.baloon);
+            const keyPartName = resolveKey(headerMap.partName);
+            const keyUnitPrice = resolveKey(headerMap.unitPrice);
+            const keyQty = resolveKey(headerMap.qty);
+            const keyMaterial = resolveKey(headerMap.material);
+            const keyPlating = resolveKey(headerMap.plating);
+
+            // Column order as requested
+            const headers = [
+                { label: 'Baloon', key: keyBaloon },
+                { label: 'Part Name', key: keyPartName },
+                { label: 'Unit Price', key: keyUnitPrice },
+                { label: 'QTY', key: keyQty },
+                { label: '全額', key: '__total__' },
+                { label: 'Material', key: keyMaterial },
+                { label: 'Plating', key: keyPlating }
+            ];
+
+            // Filter out columns that couldn't be resolved except total which is computed
+            const activeHeaders = headers.filter(h => h.key || h.key === '__total__');
+
+            const thead = '<thead><tr>' + activeHeaders.map(h => `<th>${h.label}</th>`).join('') + '</tr></thead>';
             const tbody = '<tbody>' + rows.map(r => {
-                return '<tr>' + headers.map(h => `<td>${normalize(r[h])}</td>`).join('') + '</tr>';
+                const unitPrice = keyUnitPrice ? parseFloat((r[keyUnitPrice] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
+                const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
+                const total = (!isNaN(unitPrice) && !isNaN(qty)) ? (unitPrice * qty) : '';
+                return '<tr>' + activeHeaders.map(h => {
+                    if (h.key === '__total__') return `<td>${total}</td>`;
+                    return `<td>${normalize(r[h.key])}</td>`;
+                }).join('') + '</tr>';
             }).join('') + '</tbody>';
             container.innerHTML = `<table class="excel-table">${thead}${tbody}</table>`;
             return true;
