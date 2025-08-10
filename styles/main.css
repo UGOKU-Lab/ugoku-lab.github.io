@@ -6,6 +6,13 @@ body {
     margin: 0 auto; /* 水平方向に中央揃え */
 }
 
+/* ---- Global table cell spacing controls ----
+   ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
+:root {
+    --table-cell-padding-y: 5px; /* 上下 */
+    --table-cell-padding-x: 5px; /* 左右 */
+}
+
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -182,7 +189,7 @@ a.link:hover {
 .components-table th,
 .components-table td {
     border: 1px solid #cccccc; /* セルのボーダー */
-    padding: 8px; /* セル内のパディング */
+    padding: var(--table-cell-padding-y) var(--table-cell-padding-x); /* セル内のパディング（共通変数） */
     text-align: left; /* テキストを左揃え */
 }
 
@@ -294,7 +301,7 @@ table {
 
 th, td {
     border: 1px solid #ddd; /* 枠線を薄く設定 */
-    padding: 1px; /* セル内のパディングを増やす */
+    padding: var(--table-cell-padding-y) var(--table-cell-padding-x); /* セル内のパディング（共通変数） */
     text-align: left; /* テキストを左揃えに */
 }
 
@@ -390,12 +397,12 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     color: #333;
     font-weight: 700;
     text-align: left;
-    padding: 10px 12px;
+    padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
     position: sticky;
     top: 0;
     z-index: 1;
 }
-.excel-table td { border: 1px solid #e5e5e5; padding: 10px 12px; }
+.excel-table td { border: 1px solid #e5e5e5; padding: var(--table-cell-padding-y) var(--table-cell-padding-x); }
 .excel-table tbody tr:nth-child(odd) { background: #fafafa; }
 .excel-table tbody tr:hover { background: #fff8f3; }
 
