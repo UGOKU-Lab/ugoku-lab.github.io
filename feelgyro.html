@@ -36,6 +36,7 @@
             <ul>
                 <li><a href="#overview">概要</a></li>
                 <li><a href="#cad-gen2">CAD</a></li>
+                <li><a href="#specs">諸元</a></li>
                 <li><a href="#system">システム構成</a></li>
                 <li><a href="#rotor">回転部</a></li>
                 <li><a href="#housing">筐体</a></li>
@@ -73,6 +74,49 @@
             </div>
         </section>
 
+        <!-- 諸元（静的表） -->
+        <section id="specs">
+            <h2>諸元</h2>
+            <div class="table-scroll">
+                <table class="excel-table">
+                    <tbody>
+                        <tr>
+                            <th>サイズ</th>
+                            <td>105 × 105 × 105 mm</td>
+                        </tr>
+                        <tr>
+                            <th>重量</th>
+                            <td>2 kg</td>
+                        </tr>
+                        <tr>
+                            <th>フライホイール重量</th>
+                            <td>1 kg</td>
+                        </tr>
+                        <tr>
+                            <th>フライホイール慣性モーメント</th>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>モーター型式・出力</th>
+                            <td>maxon EC frameless 45 flat 50W</td>
+                        </tr>
+                        <tr>
+                            <th>消費電力</th>
+                            <td>定常 8W / 加速時 40W</td>
+                        </tr>
+                        <tr>
+                            <th>バッテリ容量</th>
+                            <td>1200mAh</td>
+                        </tr>
+                        <tr>
+                            <th>稼働時間</th>
+                            <td>4h</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <!-- システム構成（常時表示） -->
         <section id="system">
             <h2>システム構成</h2>
@@ -84,73 +128,20 @@
         <!-- 回転部（常時表示・部品表） -->
         <section id="rotor" class="structure-item">
             <h2>回転部</h2>
+            <p>インホイール・ダイレクトドライブ構造</p>
             <div class="embed-center">
-                <img src="images/fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:100%; height:auto;" />
-            </div>
-            <p>回転体（フライホイール）、モーター、ベアリング、セットカラーなどで構成されます。偏心やガタの管理が重要です。</p>
-            <div class="embed-center">
-                <img src="images/GYRO/Gen2_rotor_balloon.png" alt="回転部 断面図（図中番号付き）" style="max-width:100%; height:auto;" />
+                <img src="images/GYRO/fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:100%; height:auto;" />
             </div>
             <h3>部品票（フライホイール回転部 全体）</h3>
             <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit"></div>
-            <div class="table-scroll js-fallback" data-category="回転部">
-                <table class="excel-table">
-                    <thead>
-                        <tr>
-                            <th>部品名</th>
-                            <th>仕様</th>
-                            <th>型番</th>
-                            <th>材質</th>
-                            <th>表面処理</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>モーター</td>
-                            <td>maxon EC frameless 45 flat 50W</td>
-                            <td>574402</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>モータードライバ</td>
-                            <td>maxon DECModule 50/5</td>
-                            <td>380200</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>ベアリング</td>
-                            <td>北日本精機</td>
-                            <td>F6700ZZ</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
 
         <!-- 筐体（概要常時表示＋詳細折りたたみ） -->
         <section id="housing" class="structure-item">
             <h2>筐体</h2>
-                <p>インサートナットや軸ホルダなど、回転部を支持し安全性を確保する外装・支持構造です。</p>
+                <p>ポリカーボネート製筐体</p>
                 <h3>部品票（筐体）</h3>
                 <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-category="筐体"></div>
-                <div class="table-scroll js-fallback" data-category="筐体">
-                    <table class="excel-table">
-                        <tbody>
-                            <tr>
-                                <th>ベアリング</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>ゴムブッシュ</th>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
     </section>
 
         <section id="first-gen">
@@ -271,12 +262,7 @@
             return true;
         }
 
-        function showFallback(el) {
-            el.style.display = 'none';
-            const parent = el.parentElement;
-            const fallback = parent && parent.querySelector('.js-fallback');
-            if (fallback) fallback.style.display = '';
-        }
+    // No fallback UI: on failure, leave the container empty
 
         function rowsFromTarget(wb, el) {
             const tableName = el.getAttribute('data-table');
@@ -323,7 +309,7 @@
                         wb = await fetchWorkbook(url);
                     } catch (e) { wb = null; }
                     for (const el of els) {
-                        if (!wb) { showFallback(el); continue; }
+                        if (!wb) { continue; }
                         let rows = rowsFromTarget(wb, el);
                         const catsAttr = el.getAttribute('data-category');
                         if (catsAttr) {
@@ -331,13 +317,7 @@
                             const catKey = detectCategoryKey(rows);
                             rows = rows.filter(r => cats.includes(normalize(r[catKey])));
                         }
-                        const ok = renderTable(el, rows);
-                        if (ok) {
-                            // hide fallback in the same container if present
-                            const parent = el.parentElement;
-                            const fallback = parent && parent.querySelector('.js-fallback');
-                            if (fallback) fallback.style.display = 'none';
-                        }
+                        renderTable(el, rows);
                     }
                 }
             } catch (err) {
