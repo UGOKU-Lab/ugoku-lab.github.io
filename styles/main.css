@@ -490,29 +490,23 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Rotor media two-column layout --- */
 .rotor-media {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 16px;
     align-items: start;
     margin-top: 12px;
 }
-.rotor-media .media-col {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.rotor-media .rotor-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
 }
-.rotor-media .media-col img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-.rotor-media .text-col {
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-.rotor-media .text-col h3 { margin-top: 0; }
+.rotor-media .rotor-row + .rotor-row { margin-top: 16px; }
+.rotor-media img { display: block; height: auto; }
+.rotor-media .desc { font-size: 0.95rem; line-height: 1.7; }
+.rotor-media .desc h3 { margin: 0 0 6px; }
 
 @media (max-width: 768px) {
-    .rotor-media { grid-template-columns: 1fr; }
+    .rotor-media .rotor-row { grid-template-columns: 1fr; }
 }
 
 /* モバイル用 */
