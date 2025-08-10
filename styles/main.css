@@ -445,13 +445,17 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
 
 /* --- Specs table (諸元) compact layout --- */
 #specs .table-scroll {
-    display: flex;
-    justify-content: center;
-    overflow: visible;   /* 諸元は小さいのでスクロール不要 */
-    max-height: none;    /* 高さ制限解除 */
+    display: inline-block;    /* コンテンツ幅に縮める */
+    margin: 8px auto 0;       /* 中央寄せ */
+    overflow: visible;        /* 諸元は小さいのでスクロール不要 */
+    max-height: none;         /* 高さ制限解除 */
+    border: 0;                /* 枠線を消す */
+    border-radius: 0;         /* 角丸も不要 */
+    background: transparent;  /* 背景を消す */
+    padding: 0;               
 }
 #specs .excel-table {
-    width: auto;         /* 内容に合わせたコンパクト幅 */
+    width: auto;              /* 内容に合わせたコンパクト幅 */
 }
 
 /* scroll wrapper for wide/long tables */
