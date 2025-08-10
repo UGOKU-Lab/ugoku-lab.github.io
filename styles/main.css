@@ -328,6 +328,82 @@ footer p {
     margin: 0;
 }
 
+/* --- TOC (目次) --- */
+.toc {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #f0641e;
+    padding: 12px 16px;
+    margin: 16px 0 24px;
+    border-radius: 6px;
+}
+.toc ul {
+    margin: 8px 0;
+    padding-left: 18px;
+}
+.toc a { color: #333; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc-actions { margin-top: 8px; display: flex; gap: 8px; }
+.toc-btn {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.toc-btn:hover { background: #f2f2f2; }
+
+/* --- Accordion sections --- */
+details.accordion { border: 1px solid #eee; border-radius: 8px; margin: 16px 0; }
+details.accordion > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+details.accordion > summary::-webkit-details-marker { display: none; }
+details.accordion > summary h2 { margin: 0; }
+details.accordion > summary .summary-text { margin: 0; color: #666; font-size: 0.95em; }
+details.accordion[open] > summary { border-bottom: 1px solid #eee; }
+.accordion-content { padding: 12px; }
+
+/* --- Excel-like table --- */
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: #fff;
+}
+.excel-table thead th {
+    background: linear-gradient(#f8f8f8, #f0f0f0);
+    border: 1px solid #d9d9d9;
+    color: #333;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.excel-table td { border: 1px solid #e5e5e5; padding: 10px 12px; }
+.excel-table tbody tr:nth-child(odd) { background: #fafafa; }
+.excel-table tbody tr:hover { background: #fff8f3; }
+
+/* scroll wrapper for wide/long tables */
+.table-scroll { overflow: auto; max-height: 480px; border: 1px solid #eee; border-radius: 6px; }
+
+/* center iframes neatly */
+.embed-center { display: flex; justify-content: center; margin: 20px 0; overflow: auto; }
+
+/* --- Major section headings underline --- */
+.content-container h2 {
+    border-bottom: 2px solid #f0641e;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
 /* モバイル用 */
 @media (max-width: 768px) {
     .project {
@@ -367,4 +443,9 @@ footer p {
         max-width: 100%;
         margin: 10px 0;
     }
+
+    .toc { padding: 10px 12px; }
+    details.accordion > summary h2 { font-size: 1.1rem; }
+    .excel-table { font-size: 14px; }
+    .table-scroll { max-height: 360px; }
 }
