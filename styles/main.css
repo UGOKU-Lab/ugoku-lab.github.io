@@ -379,6 +379,12 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     margin-top: 0;
 }
 .excel-table thead th {
+    /* Default: no sticky for generic tables */
+    position: static;
+}
+
+/* Sticky headers only for BOM tables rendered inside .js-bom containers */
+.js-bom .excel-table thead th {
     background: linear-gradient(#f8f8f8, #f0f0f0);
     border: 1px solid #d9d9d9;
     color: #333;
@@ -394,7 +400,14 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
 .excel-table tbody tr:hover { background: #fff8f3; }
 
 /* scroll wrapper for wide/long tables */
-.table-scroll { overflow: auto; max-height: 480px; border: 1px solid #eee; border-radius: 6px; }
+.table-scroll {
+    overflow: auto;
+    max-height: 480px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 0;            /* 内側余白なし */
+    font-size: 0;          /* 改行/空白テキストの行ボックスを消して謎の余白を防止 */
+}
 
 /* center iframes neatly */
 .embed-center { display: flex; justify-content: center; margin: 20px 0; overflow: auto; }
@@ -404,6 +417,20 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     border-bottom: 2px solid #f0641e;
     padding-bottom: 6px;
     margin-bottom: 12px;
+}
+
+/* Remove visual gap above tables when they immediately follow a heading */
+.content-container h2 + .table-scroll,
+.content-container h2 + table {
+    /* compensate h2's 12px bottom margin */
+    margin-top: -12px;
+}
+
+/* Normalize h3 spacing and remove gap before tables */
+.content-container h3 { margin: 12px 0; }
+.content-container h3 + .table-scroll,
+.content-container h3 + table {
+    margin-top: -12px;
 }
 
 /* モバイル用 */
