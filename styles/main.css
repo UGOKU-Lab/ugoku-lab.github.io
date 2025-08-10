@@ -9,8 +9,8 @@ body {
 /* ---- Global table cell spacing controls ----
    ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
 :root {
-    --table-cell-padding-y: 2px; /* 上下 */
-    --table-cell-padding-x: 2px; /* 左右 */
+    --table-cell-padding-y: 5px; /* 上下 */
+    --table-cell-padding-x: 5px; /* 左右 */
 }
 
 .content-container {
@@ -414,7 +414,7 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
 .js-bom .excel-table td.col-qty,
 .js-bom .excel-table th.col-leadtime,
 .js-bom .excel-table td.col-leadtime {
-    text-align: center;
+    text-align: center !important;
 }
 /* Left: Unit Price, Price (or computed total) */
 .js-bom .excel-table th.col-unitprice,
@@ -423,7 +423,24 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
 .js-bom .excel-table td.col-price,
 .js-bom .excel-table th.col-total,
 .js-bom .excel-table td.col-total {
-    text-align: left;
+    text-align: left !important;
+}
+
+/* Fallback by column index based on fixed data-columns order
+   1: バルーン, 7: 単価, 8: 個数, 9: 全額, 10: 納期 */
+.js-bom .excel-table thead th:nth-child(1),
+.js-bom .excel-table tbody td:nth-child(1),
+.js-bom .excel-table thead th:nth-child(8),
+.js-bom .excel-table tbody td:nth-child(8),
+.js-bom .excel-table thead th:nth-child(10),
+.js-bom .excel-table tbody td:nth-child(10) {
+    text-align: center !important;
+}
+.js-bom .excel-table thead th:nth-child(7),
+.js-bom .excel-table tbody td:nth-child(7),
+.js-bom .excel-table thead th:nth-child(9),
+.js-bom .excel-table tbody td:nth-child(9) {
+    text-align: left !important;
 }
 
 /* scroll wrapper for wide/long tables */
