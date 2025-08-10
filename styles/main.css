@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', system-ui, -apple-system, 'Segoe UI', sans-serif;
     background-color: #ffffff;
     /* max-width: 1200px; /* 幅を制限 */
     margin: 0 auto; /* 水平方向に中央揃え */
@@ -9,8 +9,8 @@ body {
 /* ---- Global table cell spacing controls ----
    ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
 :root {
-    --table-cell-padding-y: 5px; /* 上下 */
-    --table-cell-padding-x: 5px; /* 左右 */
+    --table-cell-padding-y: 0px; /* 上下 */
+    --table-cell-padding-x: 0px; /* 左右 */
 }
 
 .content-container {
