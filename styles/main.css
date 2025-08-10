@@ -395,7 +395,7 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     top: 0;
     z-index: 1;
 }
-.excel-table td { border: 1px solid #e5e5e5; padding: 10px 12px; }
+.excel-table td { border: 1px solid #e5e5e5; padding: 8px 10px; }
 .excel-table tbody tr:nth-child(odd) { background: #fafafa; }
 .excel-table tbody tr:hover { background: #fff8f3; }
 
