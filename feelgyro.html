@@ -90,11 +90,11 @@
                         </tr>
                         <tr>
                             <th>フライホイール重量</th>
-                            <td>1.05 kg</td>
+                            <td>1. 05 kg</td>
                         </tr>
                         <tr>
                             <th>フライホイール慣性モーメント</th>
-                            <td>1.3×10<sup>-3</sup> kg・m<sup>2</sup></td>
+                            <td>1. 3×10<sup>-3</sup> kg・m<sup>2</sup></td>
                         </tr>
                         <tr>
                             <th>モータ型式</th>
@@ -133,7 +133,7 @@
                 <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:70%; height:auto;" />
             </div>
             <h3>部品表（フライホイール回転部 全体）</h3>
-            <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit"></div>
+            <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit" data-columns="バルーンNo.:baloon|部品名:partName|型番:partNumber|材質:material|表面処理:plating|単価:unitPrice|個数:qty|全額:total|備考:note"></div>
         </section>
 
         <!-- 筐体（概要常時表示＋詳細折りたたみ） -->
@@ -141,7 +141,7 @@
             <h2>筐体</h2>
                 <p>ポリカーボネート製筐体</p>
                 <h3>部品表（筐体）</h3>
-                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure"></div>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーンNo.:baloon|部品名:partName|型番:partNumber|材質:material|表面処理:plating|単価:unitPrice|個数:qty|全額:total|備考:note"></div>
     </section>
 
         <section id="first-gen">
@@ -257,7 +257,9 @@
             unitPrice: ['unitprice','price','単価','価格','値段','prc'],
             qty: ['qty','quantity','数量','数','個数','個'],
             material: ['material','材質','材料'],
-            plating: ['plating','表面処理','メッキ','めっき','表面']
+            plating: ['plating','表面処理','メッキ','めっき','表面'],
+            partNumber: ['partnumber','型番','形番','型式','品番','pn','p/n','part no','partno','型號','partcode','model','modelno','model number'],
+            note: ['note','備考','メモ','注釈','remarks','comment','コメント']
         };
 
         const DEFAULT_HEADERS = [
@@ -356,11 +358,18 @@
             const tbody = '<tbody>' + rows.map(r => {
                 const keyUnitPrice = resolver.resolve('unitPrice');
                 const keyQty = resolver.resolve('qty');
-                const unitPrice = keyUnitPrice ? parseFloat((r[keyUnitPrice] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
+                const rawUnitPrice = keyUnitPrice ? (r[keyUnitPrice] ?? '').toString() : '';
+                const unitPrice = keyUnitPrice ? parseFloat(rawUnitPrice.replace(/[^0-9.\-]/g,'')) : NaN;
                 const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
                 const total = (!isNaN(unitPrice) && !isNaN(qty)) ? (unitPrice * qty) : '';
+                const yen = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY', maximumFractionDigits: 0 });
                 return '<tr>' + activeHeaders.map(h => {
-                    if (h.key === '__total__') return `<td>${total}</td>`;
+                    if (h.key === '__total__') {
+                        return `<td>${total === '' ? '' : yen.format(total)}</td>`;
+                    }
+                    if (keyUnitPrice && h.key === keyUnitPrice) {
+                        return `<td>${isNaN(unitPrice) ? normalize(rawUnitPrice) : yen.format(unitPrice)}</td>`;
+                    }
                     return `<td>${normalize(r[h.key])}</td>`;
                 }).join('') + '</tr>';
             }).join('') + '</tbody>';
