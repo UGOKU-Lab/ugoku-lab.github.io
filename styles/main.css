@@ -407,6 +407,7 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     border-radius: 6px;
     padding: 0;            /* 内側余白なし */
     font-size: 0;          /* 改行/空白テキストの行ボックスを消して謎の余白を防止 */
+    margin-top: 8px;       /* 表の上に少し余白を戻す */
 }
 
 /* center iframes neatly */
@@ -419,19 +420,8 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     margin-bottom: 12px;
 }
 
-/* Remove visual gap above tables when they immediately follow a heading */
-.content-container h2 + .table-scroll,
-.content-container h2 + table {
-    /* compensate h2's 12px bottom margin */
-    margin-top: -12px;
-}
-
-/* Normalize h3 spacing and remove gap before tables */
+/* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */
 .content-container h3 { margin: 12px 0; }
-.content-container h3 + .table-scroll,
-.content-container h3 + table {
-    margin-top: -12px;
-}
 
 /* モバイル用 */
 @media (max-width: 768px) {
