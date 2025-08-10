@@ -487,6 +487,34 @@ h1, h2, h3, h4, h5, h6 {
 /* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */
 .content-container h3 { margin: 12px 0; }
 
+/* --- Rotor media two-column layout --- */
+.rotor-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-top: 12px;
+}
+.rotor-media .media-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.rotor-media .media-col img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.rotor-media .text-col {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.rotor-media .text-col h3 { margin-top: 0; }
+
+@media (max-width: 768px) {
+    .rotor-media { grid-template-columns: 1fr; }
+}
+
 /* モバイル用 */
 @media (max-width: 768px) {
     .project {
