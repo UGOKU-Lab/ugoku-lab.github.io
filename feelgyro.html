@@ -123,6 +123,12 @@
             <div class="embed-center">
                 <img src="images/GYRO/Gen2_system_diagram.png" alt="システム構成図" style="max-width:100%; height:auto;" />
             </div>
+          <h3>部品表（システム）</h3>
+          <div class="table-scroll js-bom"
+              data-excel="images/GYRO/Gen2_BOM.xlsx"
+              data-table="system|sysytem"
+              data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価:Unit Price|個数:QTY|全額:Price|納期:Lead Time|備考:Note">
+          </div>
         </section>
 
         <!-- 回転部（常時表示・部品表） -->
@@ -396,19 +402,24 @@
             const tableName = el.getAttribute('data-table');
             try {
                 if (tableName && wb) {
-                    // Try defined names first (named range)
+                    const candidates = tableName.split('|').map(s => s.trim()).filter(Boolean);
+                    // Try defined names first (named range) for each candidate
                     const names = (wb.Workbook && wb.Workbook.Names) || [];
-                    const hit = names.find(n => (n.Name || '').toString().trim() === tableName);
-                    if (hit && hit.Ref) {
-                        const ref = hit.Ref.replace(/\$/g, ''); // remove $ anchors
-                        const [sheetName, a1] = ref.split('!');
-                        const sheet = wb.Sheets[sheetName.replace(/^'/, '').replace(/'$/, '')] || wb.Sheets[wb.SheetNames[0]];
-                        const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', range: a1 });
-                        return rows;
+                    for (const cand of candidates) {
+                        const hit = names.find(n => (n.Name || '').toString().trim() === cand);
+                        if (hit && hit.Ref) {
+                            const ref = hit.Ref.replace(/\$/g, ''); // remove $ anchors
+                            const [sheetName, a1] = ref.split('!');
+                            const sheet = wb.Sheets[sheetName.replace(/^'/, '').replace(/'$/, '')] || wb.Sheets[wb.SheetNames[0]];
+                            const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', range: a1 });
+                            return rows;
+                        }
                     }
-                    // Fallback: if a sheet exists with this name, use it
-                    if (wb.Sheets[tableName]) {
-                        return XLSX.utils.sheet_to_json(wb.Sheets[tableName], { defval: '' });
+                    // Fallback: if a sheet exists with candidate name, use it
+                    for (const cand of candidates) {
+                        if (wb.Sheets[cand]) {
+                            return XLSX.utils.sheet_to_json(wb.Sheets[cand], { defval: '' });
+                        }
                     }
                 }
                 // Default: first sheet
