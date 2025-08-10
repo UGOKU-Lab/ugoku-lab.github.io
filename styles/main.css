@@ -427,6 +427,11 @@ details.accordion[open] > summary { border-bottom: 1px solid #eee; }
     margin-bottom: 12px;
 }
 
+/* Headings use Quicksand; body stays on JP/system fonts */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
 /* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */
 .content-container h3 { margin: 12px 0; }
 
