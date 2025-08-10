@@ -9,7 +9,7 @@ body {
 /* ---- Global table cell spacing controls ----
    ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
 :root {
-    --table-cell-padding-y: 5px; /* 上下 */
+    --table-cell-padding-y: 4px; /* 上下 */
     --table-cell-padding-x: 5px; /* 左右 */
 }
 
