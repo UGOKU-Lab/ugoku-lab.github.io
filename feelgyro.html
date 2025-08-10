@@ -77,236 +77,80 @@
         <section id="system">
             <h2>システム構成</h2>
             <div class="embed-center">
-                <img src="images/Gen2_system_diagram.png" alt="ジャイロ効果を感じるやつ Gen2 システム構成図" style="max-width:100%; height:auto;" />
+                <img src="images/Gen2_system_diagram.png" alt="システム構成図" style="max-width:100%; height:auto;" />
             </div>
-            <div class="table-scroll">
+        </section>
+
+        <!-- 回転部（常時表示・部品表） -->
+        <section id="rotor" class="structure-item">
+            <h2>回転部</h2>
+            <div class="embed-center">
+                <img src="images/fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:100%; height:auto;" />
+            </div>
+            <p>回転体（フライホイール）、モーター、ベアリング、セットカラーなどで構成されます。偏心やガタの管理が重要です。</p>
+            <div class="embed-center">
+                <img src="images/GYRO/Gen2_rotor_balloon.png" alt="回転部 断面図（図中番号付き）" style="max-width:100%; height:auto;" />
+            </div>
+            <h3>部品票（フライホイール回転部 全体）</h3>
+            <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit"></div>
+            <div class="table-scroll js-fallback" data-category="回転部">
                 <table class="excel-table">
                     <thead>
                         <tr>
-                            <th>要素</th>
-                            <th>役割</th>
-                            <th>代表部品</th>
-                            <th>備考</th>
+                            <th>部品名</th>
+                            <th>仕様</th>
+                            <th>型番</th>
+                            <th>材質</th>
+                            <th>表面処理</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>回転部</td>
-                            <td>ジャイロ効果を生むフライホイールの回転</td>
-                            <td>maxon EC frameless 45 flat 等</td>
-                            <td>ベアリング、セットカラーで支持</td>
+                            <td>モーター</td>
+                            <td>maxon EC frameless 45 flat 50W</td>
+                            <td>574402</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <td>駆動/制御</td>
-                            <td>モータ駆動と速度制御</td>
-                            <td>maxon DECModule 50/5、STM32</td>
-                            <td>制御線/I2C接続</td>
+                            <td>モータードライバ</td>
+                            <td>maxon DECModule 50/5</td>
+                            <td>380200</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <td>電源</td>
-                            <td>システムへの電力供給</td>
-                            <td>Effest INR 18350 1200mAh</td>
-                            <td>極性・容量に注意</td>
-                        </tr>
-                        <tr>
-                            <td>筐体</td>
-                            <td>機構の保持と安全性確保</td>
-                            <td>インサートナット、軸ホルダ 等</td>
-                            <td>トルク管理/緩み止め</td>
+                            <td>ベアリング</td>
+                            <td>北日本精機</td>
+                            <td>F6700ZZ</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 回転部（概要常時表示＋詳細折りたたみ） -->
-        <section id="rotor" class="structure-item">
-            <h2>回転部</h2>
-                <p>回転体（フライホイール）、モーター、ベアリング、セットカラーなどで構成されます。偏心やガタの管理が重要です。</p>
-                <!-- 画像があればここに追加してください -->
-                <!-- <figure class="image"><img src="images/your-image.png" alt="フライホイール回転部"></figure> -->
-                <details class="accordion">
-                    <summary>
-                        <h4>詳細手順・部品票</h4>
-                        <p class="summary-text">仮組みから固定、回転体の調整まで。使用部品の一覧も含みます。</p>
-                    </summary>
-                    <div class="accordion-content">
-                        <div class="table-scroll">
-                            <table class="excel-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:72px;">Step</th>
-                                        <th>作業内容</th>
-                                        <th>参照/備考</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>ベアリングとセットカラーを所定位置に仮組みする。</td>
-                                        <td>圧入/位置決めに注意</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>モーター（ステータ）を固定し、回り止め用ねじを軽く締める。</td>
-                                        <td>トルク管理</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>低速回転で偏心を確認し、シムリング等で調整する。</td>
-                                        <td>異音/振動チェック</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <h5>部品票（フライホイール回転部）</h5>
-                        <!-- 動的BOM（Excelから抽出） -->
-                        <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-category="回転部|フライホイール回転部"></div>
-                        <!-- フォールバック（読み込み失敗時に表示） -->
-                        <div class="table-scroll js-fallback" data-category="回転部">
-                            <table class="excel-table">
-                                <thead>
-                                    <tr>
-                                        <th>部品名</th>
-                                        <th>仕様</th>
-                                        <th>型番</th>
-                                        <th>材質</th>
-                                        <th>表面処理</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>モーター</td>
-                                        <td>maxon EC frameless 45 flat 50W</td>
-                                        <td>574402</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>モータードライバ</td>
-                                        <td>maxon DECModule 50/5</td>
-                                        <td>380200</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ベアリング</td>
-                                        <td>北日本精機</td>
-                                        <td>F6700ZZ</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>回り止め用ねじ</td>
-                                        <td>止めねじ</td>
-                                        <td>SSHH-ST-M2.5-10</td>
-                                        <td>SCM</td>
-                                        <td>黒色酸化被膜</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ステータ固定ねじ</td>
-                                        <td>-</td>
-                                        <td>SFBJ3-6</td>
-                                        <td>SUS304相当</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>軸回り止め用 セットカラー</td>
-                                        <td>-</td>
-                                        <td>PSCSWJ6-6</td>
-                                        <td>S45C</td>
-                                        <td>無電解ニッケルメッキ</td>
-                                    </tr>
-                                    <tr>
-                                        <td>軸固定ブッシュ</td>
-                                        <td>-</td>
-                                        <td>RBKC-D15-V10-T3-L10-C5</td>
-                                        <td>クロロプレンゴム(CR)</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>軸ブッシュ固定セットカラー</td>
-                                        <td>-</td>
-                                        <td>SC0606A</td>
-                                        <td>A2017</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ベアリング固定用シムリング</td>
-                                        <td>-</td>
-                                        <td>CIMRS10-12-0.5</td>
-                                        <td>SUS304H</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ベアリング固定用セットカラー</td>
-                                        <td>-</td>
-                                        <td>PSCSJ10-6</td>
-                                        <td>S45C相当</td>
-                                        <td>無電解ニッケルメッキ</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </details>
-        </section>
-
         <!-- 筐体（概要常時表示＋詳細折りたたみ） -->
         <section id="housing" class="structure-item">
             <h2>筐体</h2>
                 <p>インサートナットや軸ホルダなど、回転部を支持し安全性を確保する外装・支持構造です。</p>
-                <!-- 画像があればここに追加してください -->
-                <!-- <figure class="image"><img src="images/your-image.png" alt="筐体"></figure> -->
-                <details class="accordion">
-                    <summary>
-                        <h4>詳細手順・部品票</h4>
-                        <p class="summary-text">インサート圧入から固定まで。使用部品一覧も含みます。</p>
-                    </summary>
-                    <div class="accordion-content">
-                        <div class="table-scroll">
-                            <table class="excel-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:72px;">Step</th>
-                                        <th>作業内容</th>
-                                        <th>参照/備考</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>筐体にインサートナットを圧入する。</td>
-                                        <td>熱圧入器/半田ごて</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>軸ホルダを取り付け、ねじを所定トルクで締結する。</td>
-                                        <td>緩み止め推奨</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <h5>部品票（筐体）</h5>
-                        <!-- 動的BOM（Excelから抽出） -->
-                        <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-category="筐体"></div>
-                        <!-- フォールバック（読み込み失敗時に表示） -->
-                        <div class="table-scroll js-fallback" data-category="筐体">
-                            <table class="excel-table">
-                                <tbody>
-                                    <tr>
-                                        <th>ベアリング</th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th>ゴムブッシュ</th>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </details>
+                <h3>部品票（筐体）</h3>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-category="筐体"></div>
+                <div class="table-scroll js-fallback" data-category="筐体">
+                    <table class="excel-table">
+                        <tbody>
+                            <tr>
+                                <th>ベアリング</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>ゴムブッシュ</th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
     </section>
 
         <section id="first-gen">
@@ -374,11 +218,10 @@
     </script>
 
     <script>
-    // Excel BOM loader: fetch and render categorized tables using SheetJS
+    // Excel BOM loader: fetch and render BOM tables (supports category or named table/sheet)
     (function() {
-    const targets = Array.from(document.querySelectorAll('.js-bom[data-excel][data-category]'));
+        const targets = Array.from(document.querySelectorAll('.js-bom[data-excel]'));
         if (!targets.length) return;
-    const debugMode = new URLSearchParams(location.search).has('bomdebug');
 
         // Load SheetJS dynamically
         function loadSheetJS() {
@@ -392,21 +235,11 @@
             });
         }
 
-        async function fetchRows(url, elForDebug) {
+        async function fetchWorkbook(url) {
             const res = await fetch(url, { cache: 'no-store' });
-            if (debugMode && elForDebug) {
-                const ct = res.headers.get('content-type') || '';
-                const info = document.createElement('div');
-                info.style.cssText = 'margin:6px 0;font-size:12px;color:#666;';
-                info.textContent = `BOM fetch: ${res.status} ${res.statusText} ${ct}`;
-                elForDebug.appendChild(info);
-            }
             if (!res.ok) throw new Error('BOMファイルの取得に失敗');
             const buf = await res.arrayBuffer();
-            const wb = XLSX.read(buf, { type: 'array' });
-            const sheet = wb.SheetNames[0];
-            const rows = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: '' });
-            return rows;
+            return XLSX.read(buf, { type: 'array' });
         }
 
         function normalize(v) { return (v ?? '').toString().trim(); }
@@ -427,7 +260,7 @@
             // Preferred column order; fall back to any present columns
             const preferred = ['部品名','仕様','型番','材質','表面処理','数量','備考'];
             const columns = preferred.filter(c => rows.some(r => c in r));
-            const rest = Object.keys(rows[0] || {}).filter(k => !columns.includes(k) && k !== '分類');
+            const rest = Object.keys(rows[0] || {}).filter(k => !columns.includes(k));
             const headers = [...columns, ...rest];
 
             const thead = '<thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead>';
@@ -438,62 +271,39 @@
             return true;
         }
 
-        function renderErrorWithUpload(el, url) {
-            const isWeb = /^https?:/i.test(location.protocol);
-            if (isWeb && !debugMode) {
-                // On web (non-debug), silently rely on static fallback to avoid confusing users
-                el.style.display = 'none';
-                const parent = el.parentElement;
-                const fallback = parent && parent.querySelector('.js-fallback');
-                if (fallback) fallback.style.display = '';
-                console.warn('BOM fetch failed on web, showing fallback:', url);
-                return;
-            }
-            // In debug mode on web or local preview: show inline debug + upload
-            // Local preview: offer upload UI for convenience
-            const msg = document.createElement('div');
-            msg.style.padding = '8px';
-            msg.style.color = '#c00';
-            msg.innerHTML = `BOMを読み込めませんでした。 解決URL: <code style="color:#333;">${url}</code> / <a href="${url}" target="_blank" rel="noopener">直接開く</a><br>ローカルのExcelを選択して表示することもできます。`;
-            const controls = document.createElement('div');
-            controls.style.marginTop = '6px';
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.xlsx,.xls';
-            input.style.marginRight = '8px';
-            const retry = document.createElement('button');
-            retry.textContent = '再試行';
-            retry.style.cursor = 'pointer';
-            retry.style.padding = '4px 8px';
-            controls.appendChild(input);
-            controls.appendChild(retry);
-            el.innerHTML = '';
-            el.appendChild(msg);
-            el.appendChild(controls);
+        function showFallback(el) {
+            el.style.display = 'none';
+            const parent = el.parentElement;
+            const fallback = parent && parent.querySelector('.js-fallback');
+            if (fallback) fallback.style.display = '';
+        }
 
-            retry.addEventListener('click', () => location.reload());
-            input.addEventListener('change', async (e) => {
-                const file = e.target.files && e.target.files[0];
-                if (!file) return;
-                try {
-                    const buf = await file.arrayBuffer();
-                    const wb = XLSX.read(buf, { type: 'array' });
-                    const sheet = wb.SheetNames[0];
-                    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: '' });
-                    const cats = el.getAttribute('data-category').split('|').map(s => s.trim()).filter(Boolean);
-                    const catKey = detectCategoryKey(rows);
-                    const filtered = rows.filter(r => cats.includes(normalize(r[catKey])));
-                    const ok = renderTable(el, filtered);
-                    if (ok) {
-                        const parent = el.parentElement;
-                        const fallback = parent && parent.querySelector('.js-fallback');
-                        if (fallback) fallback.style.display = 'none';
+        function rowsFromTarget(wb, el) {
+            const tableName = el.getAttribute('data-table');
+            try {
+                if (tableName && wb) {
+                    // Try defined names first (named range)
+                    const names = (wb.Workbook && wb.Workbook.Names) || [];
+                    const hit = names.find(n => (n.Name || '').toString().trim() === tableName);
+                    if (hit && hit.Ref) {
+                        const ref = hit.Ref.replace(/\$/g, ''); // remove $ anchors
+                        const [sheetName, a1] = ref.split('!');
+                        const sheet = wb.Sheets[sheetName.replace(/^'/, '').replace(/'$/, '')] || wb.Sheets[wb.SheetNames[0]];
+                        const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', range: a1 });
+                        return rows;
                     }
-                } catch (e) {
-                    console.warn(e);
-                    el.innerHTML = '<div style="padding:8px;color:#c00;">ローカルファイルの読み込みに失敗しました。</div>';
+                    // Fallback: if a sheet exists with this name, use it
+                    if (wb.Sheets[tableName]) {
+                        return XLSX.utils.sheet_to_json(wb.Sheets[tableName], { defval: '' });
+                    }
                 }
-            });
+                // Default: first sheet
+                const first = wb.Sheets[wb.SheetNames[0]];
+                return XLSX.utils.sheet_to_json(first, { defval: '' });
+            } catch (e) {
+                console.warn('rowsFromTarget error:', e);
+                return [];
+            }
         }
 
         (async () => {
@@ -508,27 +318,22 @@
                 }, {});
 
                 for (const [url, els] of Object.entries(byFile)) {
-                    let rows;
+                    let wb;
                     try {
-                        // add small debug note of resolved URL
-                        if (debugMode) {
-                            els.forEach(el => {
-                                const note = document.createElement('div');
-                                note.style.cssText = 'font-size:12px;color:#888;';
-                                note.textContent = `Resolved BOM URL: ${url}`;
-                                el.appendChild(note);
-                            });
-                        }
-                        rows = await fetchRows(url, debugMode ? els[0] : undefined);
-                    } catch (e) { rows = null; }
+                        wb = await fetchWorkbook(url);
+                    } catch (e) { wb = null; }
                     for (const el of els) {
-                        const cats = el.getAttribute('data-category').split('|').map(s => s.trim()).filter(Boolean);
-                        if (!rows) { renderErrorWithUpload(el, url); continue; }
-                        const catKey = detectCategoryKey(rows);
-                        const filtered = rows.filter(r => cats.includes(normalize(r[catKey])));
-                        const ok = renderTable(el, filtered);
+                        if (!wb) { showFallback(el); continue; }
+                        let rows = rowsFromTarget(wb, el);
+                        const catsAttr = el.getAttribute('data-category');
+                        if (catsAttr) {
+                            const cats = catsAttr.split('|').map(s => s.trim()).filter(Boolean);
+                            const catKey = detectCategoryKey(rows);
+                            rows = rows.filter(r => cats.includes(normalize(r[catKey])));
+                        }
+                        const ok = renderTable(el, rows);
                         if (ok) {
-                            // hide fallback in the same accordion content if present
+                            // hide fallback in the same container if present
                             const parent = el.parentElement;
                             const fallback = parent && parent.querySelector('.js-fallback');
                             if (fallback) fallback.style.display = 'none';
