@@ -133,7 +133,7 @@
                 <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:70%; height:auto;" />
             </div>
             <h3>部品表（フライホイール回転部 全体）</h3>
-            <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit" data-columns="バルーンNo.:baloon|部品名:partName|型番:partNumber|材質:material|表面処理:plating|単価:unitPrice|個数:qty|全額:total|備考:note"></div>
+            <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit" data-columns="Balloon|Partname|Material|Surface Finishing|Part Number|Supplier|Unit Price|QTY|Price|Lead Time|Note"></div>
         </section>
 
         <!-- 筐体（概要常時表示＋詳細折りたたみ） -->
@@ -141,7 +141,7 @@
             <h2>筐体</h2>
                 <p>ポリカーボネート製筐体</p>
                 <h3>部品表（筐体）</h3>
-                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーンNo.:baloon|部品名:partName|型番:partNumber|材質:material|表面処理:plating|単価:unitPrice|個数:qty|全額:total|備考:note"></div>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="Balloon|Partname|Material|Surface Finishing|Part Number|Supplier|Unit Price|QTY|Price|Lead Time|Note"></div>
     </section>
 
         <section id="first-gen">
@@ -248,6 +248,10 @@
                 .replace(/[\s_\-]+/g, '')
                 .replace(/[()（）\[\]【】]/g, '');
             return s;
+        }
+        function isCurrencyColName(name) {
+            const n = normalizeHeader(name);
+            return n === 'unitprice' || n === 'price';
         }
 
         // Canonical column keys and synonyms
@@ -367,8 +371,11 @@
                     if (h.key === '__total__') {
                         return `<td>${total === '' ? '' : yen.format(total)}</td>`;
                     }
-                    if (keyUnitPrice && h.key === keyUnitPrice) {
-                        return `<td>${isNaN(unitPrice) ? normalize(rawUnitPrice) : yen.format(unitPrice)}</td>`;
+                    // Currency format for Unit Price or Price columns
+                    if (h.key && isCurrencyColName(h.key)) {
+                        const raw = (r[h.key] ?? '').toString();
+                        const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
+                        return `<td>${isNaN(num) ? normalize(raw) : yen.format(num)}</td>`;
                     }
                     return `<td>${normalize(r[h.key])}</td>`;
                 }).join('') + '</tr>';
