@@ -264,8 +264,9 @@
         const COLUMN_SYNONYMS = {
             baloon: ['baloon','balloon','図番','番号','バルーン','ばるーん'],
             partName: ['partname','部品名','品名','品目','パーツ名','名称','なまえ'],
-            unitPrice: ['unitprice','price','単価','価格','値段','prc'],
+            unitPrice: ['unitprice','単価','価格','値段','prc'],
             qty: ['qty','quantity','数量','数','個数','個'],
+            price: ['price','金額','amount','合計金額'],
             material: ['material','材質','材料'],
             plating: ['plating','表面処理','メッキ','めっき','表面'],
             partNumber: ['partnumber','型番','形番','型式','品番','pn','p/n','part no','partno','型號','partcode','model','modelno','model number'],
@@ -373,6 +374,7 @@
             const tbody = '<tbody>' + rows.map(r => {
                 const keyUnitPrice = resolver.resolve('unitPrice');
                 const keyQty = resolver.resolve('qty');
+                const keyPrice = resolver.resolve('price');
                 const rawUnitPrice = keyUnitPrice ? (r[keyUnitPrice] ?? '').toString() : '';
                 const unitPrice = keyUnitPrice ? parseFloat(rawUnitPrice.replace(/[^0-9.\-]/g,'')) : NaN;
                 const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
@@ -384,9 +386,12 @@
                         return `<td class="${cls}">${total === '' ? '' : yen.format(total)}</td>`;
                     }
                     // Currency format for Unit Price or Price columns
-                    if (h.key && isCurrencyColName(h.key)) {
+                    const isUnitPriceCol = h.key && keyUnitPrice && h.key === keyUnitPrice;
+                    const isPriceCol = h.key && keyPrice && h.key === keyPrice;
+                    if (isUnitPriceCol || isPriceCol || (h.key && isCurrencyColName(h.key))) {
                         const raw = (r[h.key] ?? '').toString();
-                        const num = parseFloat(raw.replace(/[^0-9.\\-]/g,''));
+                        const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
+                        // 価格セルが非数値（例: "-" や空白）の場合は、そのまま表示
                         return `<td class="${cls}">${isNaN(num) ? normalize(raw) : yen.format(num)}</td>`;
                     }
                     return `<td class="${cls}">${normalize(r[h.key])}</td>`;
