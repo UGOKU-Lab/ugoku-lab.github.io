@@ -53,11 +53,11 @@ body {
 }
 
 footer {
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     color: #000000;
     text-align: center;
     padding: 10px 0;
-    border-top: 2px solid #f0641e;
+    border-top: none;
     width: 100%; /* フッターも全幅に広げる */
 }
 
@@ -363,16 +363,24 @@ tr:hover {
 }
 
 footer {
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     color: #000000;
     text-align: center;
     padding: 10px 0;
-    border-top: 2px solid #f0641e;
+    border-top: none;
 }
 
 footer p {
     margin: 0;
 }
+
+/* Footer links */
+footer a.footer-link {
+    color: inherit;
+    text-decoration: none;
+    margin-left: 10px;
+}
+footer a.footer-link:hover { text-decoration: underline; }
 
 /* --- TOC (目次) --- */
 .toc {
