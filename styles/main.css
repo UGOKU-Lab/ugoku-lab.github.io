@@ -248,6 +248,22 @@ a.link:hover {
     align-items: center; /* 垂直方向の中央揃え */
 }
 
+/* カード全体をクリック可能にしたときのホバー表現 */
+.project[data-href] {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.15s ease-in-out;
+}
+.project[data-href]:hover,
+.project[data-href]:focus-within,
+.project[data-href][data-hover] {
+    background-color: rgba(240, 100, 30, 0.08); /* 背面に色 */
+}
+.project[data-href]:active {
+    background-color: rgba(240, 100, 30, 0.18);
+}
+
 /* ボタン行のコンテナのスタイル - 階層セレクタで詳細度を高くして確実に適用されるようにする */
 .project .project-content .buttons-row {
     display: flex !important;              /* ボタンを横並びにする */
@@ -502,6 +518,32 @@ details.accordion > *:last-child { padding-bottom: 12px; }
 /* Headings use Quicksand; body stays on JP/system fonts */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* 見出しをリンク化したときの見た目調整 */
+.project-title h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+.project-title h2 a:hover {
+    text-decoration: none; /* 下線ホバーは廃止 */
+}
+
+/* index のプロジェクト見出しは下線なし */
+.project-title h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+}
+
+/* 画像をリンクにしても既存のtableレイアウトを維持 */
+.project a.project-image-link {
+    display: table-cell;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.project a.project-image-link img {
+    display: block; /* imgはtable-cellではなくblockに */
 }
 
 /* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */

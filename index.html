@@ -30,8 +30,8 @@
             ツールを使った体験型デバイスやロボットなどもつくってます！</p>
         </div>
 
-        <div class="project">
-            <img src="images/FlexConsole.png" alt="FlexConsole">
+    <div class="project" data-href="ugokupad.html">
+            <a href="ugokupad.html" target="_blank" class="project-image-link"><img src="images/FlexConsole.png" alt="FlexConsole"></a>
             
             
             <!-- <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/09/PCPV0.mpeg4_.aac-2.mp4"></video> -->
@@ -39,9 +39,7 @@
 
             <div class="project-content">
                 <div class="project-title">
-                    <h2>UGOKU Pad</h2>
-                    <!-- 新しい行にDocumentationボタンを追加 -->
-                    <a href="ugokupad.html" target="_blank" class="doc-button">Documentation</a>
+                    <h2><a href="ugokupad.html" target="_blank">UGOKU Pad</a></h2>
                 </div>
                 <p>UGOKU Padは、ESP32などのマイコンをBluetoothでスマートフォンと接続し、簡単に操作できるアプリです。ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。モーターの操作やセンサーデータをモニタリングなど、様々な用途で活用いただけます。 ESP32用のArduinoサンプルコードも用意しているので、気軽にお試しいただけます。</p>
                 <!-- GitHubリポジトリへのリンクボタン -->
@@ -60,12 +58,11 @@
         </div>
 
         
-        <div class="project">
-            <img src="images/UGOKU One Top.png" alt="UGOKU One">
+    <div class="project" data-href="ugokuone.html">
+            <a href="ugokuone.html" target="_blank" class="project-image-link"><img src="images/UGOKU One Top.png" alt="UGOKU One"></a>
             <div class="project-content">
                 <div class="project-title">
-                    <h2>UGOKU One</h2>
-                    <a href="ugokuone.html" target="_blank" class="doc-button">Documentation</a>
+                    <h2><a href="ugokuone.html" target="_blank">UGOKU One</a></h2>
                 </div>
                 <p>UGOKU One はモータやセンサを使ったロボットなどのDIY製作物を少しでも手軽に操作することを目的に開発しているオープンソースハードウェアの汎用基板です。
                     <ul>
@@ -84,13 +81,11 @@
         
 
 
-        <div class="project">
-            <img src="images/UGOKU-One.JPG" alt="UGOKU One">
+    <div class="project" data-href="ugokupro.html">
+            <a href="ugokupro.html" target="_blank" class="project-image-link"><img src="images/UGOKU-One.JPG" alt="UGOKU One"></a>
             <div class="project-content">
                 <div class="project-title">
-                    <h2>UGOKU Pro</h2>
-                    <!-- 新しい行にDocumentationボタンを追加 -->
-                    <a href="ugokupro.html" target="_blank" class="doc-button">Documentation</a>
+                    <h2><a href="ugokupro.html" target="_blank">UGOKU Pro</a></h2>
                 </div>
                 <p>UGOKU Pro はモータやセンサを使ったロボットなどのアプリケーションを少しでも手軽にテスト、制御することを目的に開発しているオープンソースハードウェアの汎用基板です。
                     広く普及しているマイコンボード(Nucleo-F303K8)や無線モジュール(ESP32-WROOM-32E)に加え、高出力なDCモータドライバ(TB67H303HG)を2個搭載しています。さらに、汎用IOポートを設け幅広いアプリケーションに対応します。 スマホアプリのUGOKU Padと組み合わせることでスマートフォンから手軽に遠隔操作やモニタリングが行えます。</p>
@@ -103,15 +98,13 @@
             </div>
         </div>
 
-        <div class="project">
+    <div class="project" data-href="feelgyro.html">
             <!-- <img src="images/UGOKU-One.JPG" alt="UGOKU Ono"> -->  
-            <img src="images/GYRO/GYRO_OMIYA.png" alt="GYRO OMIYA">
+            <a href="feelgyro.html" target="_blank" class="project-image-link"><img src="images/GYRO/GYRO_OMIYA.png" alt="GYRO OMIYA"></a>
     
             <div class="project-content">
                 <div class="project-title">
-                    <h2>ジャイロ効果を感じるやつ</h2>
-                    <!-- 新しい行にDocumentationボタンを追加 -->
-                    <a href="feelgyro.html" target="_blank" class="doc-button">Documentation</a>
+                    <h2><a href="feelgyro.html" target="_blank">ジャイロ効果を感じるやつ</a></h2>
                 </div>
                 <p>手にもって動かすと不思議な感覚、地球ゴマとしても遊べる。高速で回転する円盤を手のひらサイズのキューブに収めた、誰でも楽しめる体験型デバイス。</p>
                 <!-- リポジトリへのリンクボタン -->
@@ -124,5 +117,33 @@
         <p>&copy; 2025 UGOKU Lab</p>
     </footer>
 
+    <script>
+    // Make entire project blocks clickable while preserving inner links/buttons
+    (function() {
+        const cards = document.querySelectorAll('.project[data-href]');
+        cards.forEach(card => {
+            const href = card.getAttribute('data-href');
+            const openInNewTab = true;
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'link');
+            function go() {
+                if (!href) return;
+                openInNewTab ? window.open(href, '_blank') : (location.href = href);
+            }
+            card.addEventListener('click', (e) => {
+                // If clicked on an interactive element, let it handle the event
+                if (e.target.closest('a, button')) return;
+                go();
+            });
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    // Avoid scrolling on Space
+                    e.preventDefault();
+                    go();
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
