@@ -14,7 +14,7 @@ body {
 }
 
 .content-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -361,7 +361,7 @@ footer p {
 .toc-btn:hover { background: #f2f2f2; }
 
 /* --- Accordion sections --- */
-details.accordion { border: 1px solid #eee; border-radius: 8px; margin: 16px 0; }
+details.accordion { border: 1px solid #eee; border-radius: 8px; margin: 16px 0; overflow: hidden; }
 details.accordion > summary {
     list-style: none;
     cursor: pointer;
@@ -372,9 +372,29 @@ details.accordion > summary {
 }
 details.accordion > summary::-webkit-details-marker { display: none; }
 details.accordion > summary h2 { margin: 0; }
-details.accordion > summary .summary-text { margin: 0; color: #666; font-size: 0.95em; }
+details.accordion > summary .summary-title { font-weight: 600; font-size: 1.05em; }
+details.accordion > summary .summary-teaser {
+    position: relative;
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+    max-height: 2.6em; /* 約2行分 */
+    overflow: hidden;
+}
+details.accordion:not([open]) > summary .summary-teaser::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1.2em;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95));
+}
 details.accordion[open] > summary { border-bottom: 1px solid #eee; }
-.accordion-content { padding: 12px; }
+/* HTMLを触らず、summary以外の直下要素に内側余白を付与して“箱”の中身にパディングを確保 */
+details.accordion > *:not(summary) { padding-left: 12px; padding-right: 12px; }
+details.accordion > summary + * { padding-top: 12px; }
+details.accordion > *:last-child { padding-bottom: 12px; }
 
 /* --- Excel-like table --- */
 .excel-table {

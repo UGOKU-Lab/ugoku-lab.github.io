@@ -77,8 +77,9 @@
         <!-- 諸元（静的表） -->
         <section id="specs">
             <h2>諸元</h2>
-            <div class="table-scroll">
-                <table class="excel-table">
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+                <div class="table-scroll" style="flex:0 0 530px; max-width:100%;">
+                    <table class="excel-table" style="margin:0;">
                     <tbody>
                         <tr>
                             <th>サイズ</th>
@@ -101,6 +102,10 @@
                             <td>maxon EC frameless 45 flat 50W 574402</td>
                         </tr>
                         <tr>
+                            <th>最大回転数</th>
+                            <td>6500 RPM</td>
+                        </tr>
+                        <tr>
                             <th>消費電力</th>
                             <td>定常回転時 6.2 W / 加速時(最大) 50 W</td>
                         </tr>
@@ -113,7 +118,13 @@
                             <td>4 h</td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
+                </div>
+                <div style="flex:1; min-width:260px;">
+                    <p style="margin-top:0;">
+                        手のひらサイズで初代より大きいジャイロ効果を体感できるように慣性モーメントと回転数を設定。
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -121,7 +132,7 @@
         <section id="system">
             <h2>システム構成</h2>
             <div class="embed-center">
-                <img src="images/GYRO/Gen2_system_diagram.png" alt="システム構成図" style="max-width:100%; height:auto;" />
+                <img src="images/GYRO/Gen2_system_diagram.png" alt="システム構成図" style="max-width:90%; height:auto;" />
             </div>
           <h3>部品表（システム）</h3>
           <div class="table-scroll js-bom"
@@ -134,39 +145,106 @@
         <!-- 回転部（常時表示・部品表） -->
         <section id="rotor" class="structure-item">
             <h2>回転部</h2>
-            <p>インホイール・ダイレクトドライブ構造</p>
+            <p>低振動と静音性を実現するために下記の工夫をしました</p>
+            <ul>
+                <li>フレームレスのBLDCモーターにより、回転構造をベアリング2個のみに設定</li>
+                <li>組付け時にベアリングにスラスト与圧を加えられる構造とした</li>
+                <li>軸をゴムブッシュで支持し、つぶし代をあらかじめ設定しガタのない構造とした</li>
+            </ul>
             <div class="embed-center">
-                <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:70%; height:auto;" />
+            <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:65%; height:auto;" />
             </div>
             <h3>部品表（フライホイール回転部 全体）</h3>
             <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価:Unit Price|個数:QTY|全額:Price|納期:Lead Time|備考:Note"></div>
 
-            <!-- 画像（左） + 説明（右） -->
-            <h3>フライホイール旋削部品の交差設定</h3>
-            <div class="rotor-media">
-                    <div class="rotor-row">
-                        <img src="images/GYRO/shaft.png" alt="シャフト" height="220" style="width:auto;" />
-                        <div class="desc">
-                            <h3>シャフトの幾何公差・はめあい</h3>
-                            <p>フライホイール内径とのはめあいは H7/h6 程度を想定。真円度・円筒度を確保してラジアル振れを抑制し、段付き部の直角度で座面位置決めの再現性を確保する、という根拠で設定しています。</p>
-                        </div>
-                    </div>
-                    <div class="rotor-row">
-                        <img src="images/GYRO/Fly-wheel_1.png" alt="フライホイール 1" height="220" style="width:auto;" />
-                        <div class="desc">
-                            <h3>フライホイール（外周側）の幾何公差</h3>
-                            <p>外周と中心穴の同心度（または位置度）を厳しめに設定し一次不釣合いを低減。端面の平面度・直角度管理でフェイスランアウトを抑える方針です。許容値は目標回転数での振動限度から逆算しています。</p>
-                        </div>
-                    </div>
-                    <div class="rotor-row">
-                        <img src="images/GYRO/Fly-wheel_2.png" alt="フライホイール 2" height="220" style="width:auto;" />
-                        <div class="desc">
-                            <h3>フライホイール（ハブ側）のはめあい根拠</h3>
-                            <p>シャフトとの締結は常温組立の再現性と脱落防止のバランスから H7/h6 を基準に選定。圧入応力偏りを避ける面取り・リードインを設け、保守性重視時は H7/g6＋止めネジ/位置決めピンで対応する方針です。</p>
+            <details class="accordion">
+            <summary>
+                <span class="summary-title">設計詳細・組立手順</span>
+            </summary>
+            <!-- 画像配置: シャフトは画像左・説明右、下段は画像2枚のみ横並び -->
+            <h3>フライホイール旋削部品の公差設定</h3>
+            <!-- 上段: シャフト画像 + 右に説明 -->
+                <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:nowrap;">
+                    <img src="images/GYRO/shaft.png" alt="シャフト" style="max-height:480px; height:auto; width:auto; display:block;" />
+                    <div style="flex:1; min-width:240px;">
+                        <h4 style="margin:0 0 0.5rem;">ベアリングはめあい部の設定</h4>
+                        <p style="margin-top:0;">
+                            フライホイール回転部の軸受けは内輪静止外輪回転の構造をとり、外輪に回転荷重が作用するため外輪とフライホイールはしまりばめ、内輪と軸はすきまばめとしています。
+                        </p>
+                        <p>
+                            はめあい交差はメーカー推奨はめあいの公差に対し、meviy自動見積もりの範囲で設定可能なはめあい交差設定した。
+                            表面性状はmeviyで設定可能な最小値がRa1.6であるのに対し、カタログ基準値はRa0.8であり、挿入が難しかったため、ピカールによる追加研磨を行った。
+                        </p>
+                        <div class="table-scroll" style="margin-top:8px;">
+                            <table class="excel-table">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">管理項目</th>
+                                        <th colspan="2">軸 φ10</th>
+                                        <th colspan="2">フライホイール φ15</th>
+                                    </tr>
+                                    <tr>
+                                        <th>推奨値</th>
+                                        <th>発注値</th>
+                                        <th>推奨値</th>
+                                        <th>発注値</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>はめあい公差</th>
+                                        <td>h5</td>
+                                        <td>h6</td>
+                                        <td>N5</td>
+                                        <td>N7</td>
+                                    </tr>
+                                    <tr>
+                                        <th>はめあい面の粗さ Ra</th>
+                                        <td>0.8</td>
+                                        <td>1.6</td>
+                                        <td>1.6</td>
+                                        <td>1.6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            <!-- 下段: フライホイール画像2枚のみ（右説明なし） -->
+            <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; margin-top:12px;">
+                <img src="images/GYRO/Fly-wheel_1.png" alt="フライホイール 1" style="max-height:480px; height:auto; width:auto; display:block;" />
+                <img src="images/GYRO/Fly-wheel_2.png" alt="フライホイール 2" style="max-height:480px; height:auto; width:auto; display:block;" />
             </div>
+
+            <h3>フライホイールの組み立て</h3>
+            <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:nowrap;">
+                <img src="images/GYRO/bearing_press.JPG" alt="ベアリングプレス" style="max-height:480px; height:auto; width:auto; display:block;" />
+                <div style="flex:1; min-width:240px;">
+                    ボルトとナットを用いてベアリングをフライホイールに圧入
+                    フライホイール部品1とフライホイール部品2の固定には両面テープNitto NS.5000を使用。
+                    当初セメダインメタルロックを使用予定だったが、振動影響を確認するため両面テープを使用して試験、どうあがいても外れなかったためそのまま使用
+                </div>
+            </div>
+
+            <h3>モーターの組付け</h3>
+            <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap;">
+                <div style="flex:1 1 300px; max-width:calc(33.333% - 8px);">
+                    <img src="images/GYRO/shaft_with_stator.JPG" alt="モーター組付け1" style="display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;" />
+                </div>
+                <div style="flex:1 1 300px; max-width:calc(33.333% - 8px);">
+                    <img src="images/GYRO/shaft_with_stator_2.JPG" alt="モーター組付け2" style="display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;" />
+                </div>
+                <div style="flex:1 1 300px; max-width:calc(33.333% - 8px);">
+                    <img src="images/GYRO/fly-wheel_with_roter.JPG" alt="フライホイールとロータ" style="display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;" />
+                </div>
+            </div>
+
+            <p style="margin-top:8px;">
+                モーターはフライホイール部品1にM3ネジで固定。モーターの軸はフライホイール部品1の内輪にすきまばめで組付け。
+            </p>
+            </details>
+
+
         </section>
 
         <!-- 筐体（概要常時表示＋詳細折りたたみ） -->
@@ -240,6 +318,7 @@
         if (location.hash) openFromHash();
     })();
     </script>
+    
 
     <script>
     // Excel BOM loader: fetch and render BOM tables (supports category or named table/sheet)
