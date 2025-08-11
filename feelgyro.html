@@ -122,7 +122,7 @@
                 </div>
                 <div style="flex:1; min-width:260px;">
                     <p style="margin-top:0;">
-                        手のひらサイズで初代より大きいジャイロ効果を体感できるように慣性モーメントと回転数を設定。
+                        手のひらサイズで初代より大きいジャイロ効果を体感できるように慣性モーメントと回転数を設定
                     </p>
                 </div>
             </div>
@@ -134,7 +134,6 @@
             <div class="embed-center">
                 <img src="images/GYRO/Gen2_system_diagram.png" alt="システム構成図" style="max-width:90%; height:auto;" />
             </div>
-          <h3>部品表（システム）</h3>
           <div class="table-scroll js-bom"
               data-excel="images/GYRO/Gen2_BOM.xlsx"
               data-table="system|sysytem"
@@ -144,8 +143,8 @@
 
         <!-- 回転部（常時表示・部品表） -->
         <section id="rotor" class="structure-item">
-            <h2>回転部</h2>
-            <p>低振動と静音性を実現するために下記の工夫をしました</p>
+            <h2>フライホイール回転部</h2>
+            <p>下記の設計により低振動と静音性を実現</p>
             <ul>
                 <li>フレームレスのBLDCモーターにより、回転構造をベアリング2個のみに設定</li>
                 <li>組付け時にベアリングにスラスト与圧を加えられる構造とした</li>
@@ -154,7 +153,6 @@
             <div class="embed-center">
             <img src="images/GYRO/Fly-wheel_unit.png" alt="フライホイールユニット" style="max-width:65%; height:auto;" />
             </div>
-            <h3>部品表（フライホイール回転部 全体）</h3>
             <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="fly-wheel_unit" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価:Unit Price|個数:QTY|全額:Price|納期:Lead Time|備考:Note"></div>
 
             <details class="accordion">
@@ -220,9 +218,10 @@
             <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:nowrap;">
                 <img src="images/GYRO/bearing_press.JPG" alt="ベアリングプレス" style="max-height:480px; height:auto; width:auto; display:block;" />
                 <div style="flex:1; min-width:240px;">
-                    ボルトとナットを用いてベアリングをフライホイールに圧入
-                    フライホイール部品1とフライホイール部品2の固定には両面テープNitto NS.5000を使用。
-                    当初セメダインメタルロックを使用予定だったが、振動影響を確認するため両面テープを使用して試験、どうあがいても外れなかったためそのまま使用
+                    ボルトとナットを用いてベアリングをフライホイールに圧入<br>
+                    フライホイール部品1とフライホイール部品2は両面テープNitto NS.5000を用いて固定
+                    <br>
+                    <span style="color:#888; font-size:0.95em;">（当初セメダインメタルロックを使用予定だったが、振動影響を確認するため両面テープを使用して試験、どうあがいても外れなかったためそのまま使用）</span>
                 </div>
             </div>
 
@@ -239,9 +238,6 @@
                 </div>
             </div>
 
-            <p style="margin-top:8px;">
-                モーターはフライホイール部品1にM3ネジで固定。モーターの軸はフライホイール部品1の内輪にすきまばめで組付け。
-            </p>
             </details>
 
 
