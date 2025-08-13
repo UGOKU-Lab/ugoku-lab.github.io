@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "C:\\Users\\TA1\\OneDrive\\UGOKU\\ugoku-lab.github.io\\index.html"
+            "file": "C:\\Users\\TA1\\ugoku-lab.github.io\\index.html"
         }
     ]
 }
