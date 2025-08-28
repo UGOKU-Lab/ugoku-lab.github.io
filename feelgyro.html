@@ -246,7 +246,7 @@
             <h2>筐体</h2>
                 <p>ポリカーボネート製筐体</p>
                 <h3>部品表（筐体）</h3>
-                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価(USD):Unit Price|個数:QTY|合計(USD):Price|円(JPY):Yen|備考:Note"></div>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価:Unit Price|個数:QTY|合計:Price|円:Yen|備考:Note"></div>
     </section>
 
         <!-- 全体アセンブリ（写真ギャラリー） -->
@@ -379,12 +379,10 @@
             const n = normalizeHeader(name);
             return n === 'unitprice' || n === 'price' || n === 'yen' || n === 'jpy' || n.includes('usd');
         }
-        function detectCurrency(raw, headerKey, headerLabel) {
+        function detectCurrency(raw) {
             const txt = (raw ?? '').toString();
-            const nKey = normalizeHeader(headerKey || '');
-            const nLabel = normalizeHeader(headerLabel || '');
-            if (/[\$]|usd/i.test(txt) || nKey.includes('usd') || nLabel.includes('usd')) return 'USD';
-            if (/[¥￥]|jpy|円/i.test(txt) || nKey === 'yen' || nKey === 'jpy' || nLabel.includes('jpy') || nLabel.includes('yen') || nLabel.includes('円')) return 'JPY';
+            if (/[\$]|usd/i.test(txt)) return 'USD';
+            if (/[¥￥]|jpy|円/i.test(txt)) return 'JPY';
             return null;
         }
 
@@ -508,13 +506,13 @@
                 const keyPrice = resolver.resolve('price');
 
                 const rawUnitPrice = keyUnitPrice ? (r[keyUnitPrice] ?? '').toString() : '';
-                const unitCurrency = detectCurrency(rawUnitPrice, keyUnitPrice, activeHeaders.find(h => h.key === keyUnitPrice)?.label);
+                const unitCurrency = detectCurrency(rawUnitPrice);
                 const unitPrice = keyUnitPrice ? parseFloat(rawUnitPrice.replace(/[^0-9.\-]/g,'')) : NaN;
                 const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
 
                 // compute totals if same currency
                 const rawPrice = keyPrice ? (r[keyPrice] ?? '').toString() : '';
-                const priceCurrency = detectCurrency(rawPrice, keyPrice, activeHeaders.find(h => h.key === keyPrice)?.label) || unitCurrency;
+                const priceCurrency = detectCurrency(rawPrice) || unitCurrency;
                 const priceNum = keyPrice ? parseFloat(rawPrice.replace(/[^0-9.\-]/g,'')) : NaN;
 
                 // Prefer explicit Price cell, else compute from unit*qty
@@ -530,7 +528,7 @@
                     // Currency columns
                     if (h.key && isCurrencyColName(h.key)) {
                         const raw = (r[h.key] ?? '').toString();
-                        const cur = detectCurrency(raw, h.key, h.label);
+                        const cur = detectCurrency(raw);
                         const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
                         if (isNaN(num)) return `<td class="${cls}">${normalize(raw)}</td>`;
                         if (cur === 'USD') return `<td class="${cls}">${fmtUSD.format(num)}</td>`;
