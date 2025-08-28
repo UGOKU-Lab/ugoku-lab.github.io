@@ -246,7 +246,7 @@
             <h2>筐体</h2>
                 <p>ポリカーボネート製筐体</p>
                 <h3>部品表（筐体）</h3>
-                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価:Unit Price|個数:QTY|全額:Price|納期:Lead Time|備考:Note"></div>
+                <div class="table-scroll js-bom" data-excel="images/GYRO/Gen2_BOM.xlsx" data-table="enclosure" data-columns="バルーン:Balloon|部品名:Partname|材料:Material|表面処理:Surface Finishing|型番:Part Number|メーカー:Supplier|単価(USD):Unit Price|個数:QTY|合計(USD):Price|円(JPY):Yen|備考:Note"></div>
     </section>
 
         <!-- 全体アセンブリ（写真ギャラリー） -->
@@ -377,7 +377,15 @@
         }
         function isCurrencyColName(name) {
             const n = normalizeHeader(name);
-            return n === 'unitprice' || n === 'price';
+            return n === 'unitprice' || n === 'price' || n === 'yen' || n === 'jpy' || n.includes('usd');
+        }
+        function detectCurrency(raw, headerKey, headerLabel) {
+            const txt = (raw ?? '').toString();
+            const nKey = normalizeHeader(headerKey || '');
+            const nLabel = normalizeHeader(headerLabel || '');
+            if (/[\$]|usd/i.test(txt) || nKey.includes('usd') || nLabel.includes('usd')) return 'USD';
+            if (/[¥￥]|jpy|円/i.test(txt) || nKey === 'yen' || nKey === 'jpy' || nLabel.includes('jpy') || nLabel.includes('yen') || nLabel.includes('円')) return 'JPY';
+            return null;
         }
 
         // Canonical column keys and synonyms
@@ -438,7 +446,7 @@
             return hit ? hit.k : (keys[0] || '分類');
         }
 
-        function renderTable(container, rows) {
+    function renderTable(container, rows) {
             if (!rows.length) {
                 container.innerHTML = '<div style="padding:8px;color:#666;">該当する部品はありません。</div>';
                 return false;
@@ -491,28 +499,42 @@
                 return 'col-' + normalizeHeader(basis);
             }
             const thead = '<thead><tr>' + activeHeaders.map(h => `<th class="${colClass(h)}">${h.label}</th>`).join('') + '</tr></thead>';
+            const fmtJPY = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY', maximumFractionDigits: 0 });
+            const fmtUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+
             const tbody = '<tbody>' + rows.map(r => {
                 const keyUnitPrice = resolver.resolve('unitPrice');
                 const keyQty = resolver.resolve('qty');
                 const keyPrice = resolver.resolve('price');
+
                 const rawUnitPrice = keyUnitPrice ? (r[keyUnitPrice] ?? '').toString() : '';
+                const unitCurrency = detectCurrency(rawUnitPrice, keyUnitPrice, activeHeaders.find(h => h.key === keyUnitPrice)?.label);
                 const unitPrice = keyUnitPrice ? parseFloat(rawUnitPrice.replace(/[^0-9.\-]/g,'')) : NaN;
                 const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
-                const total = (!isNaN(unitPrice) && !isNaN(qty)) ? (unitPrice * qty) : '';
-                const yen = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY', maximumFractionDigits: 0 });
+
+                // compute totals if same currency
+                const rawPrice = keyPrice ? (r[keyPrice] ?? '').toString() : '';
+                const priceCurrency = detectCurrency(rawPrice, keyPrice, activeHeaders.find(h => h.key === keyPrice)?.label) || unitCurrency;
+                const priceNum = keyPrice ? parseFloat(rawPrice.replace(/[^0-9.\-]/g,'')) : NaN;
+
+                // Prefer explicit Price cell, else compute from unit*qty
+                let totalNum = !isNaN(priceNum) ? priceNum : ((!isNaN(unitPrice) && !isNaN(qty)) ? unitPrice * qty : NaN);
+                const totalCurrency = priceCurrency || unitCurrency || 'JPY';
+
                 return '<tr>' + activeHeaders.map(h => {
                     const cls = colClass(h);
                     if (h.key === '__total__') {
-                        return `<td class="${cls}">${total === '' ? '' : yen.format(total)}</td>`;
+                        if (isNaN(totalNum)) return `<td class="${cls}"></td>`;
+                        return `<td class="${cls}">${totalCurrency === 'USD' ? fmtUSD.format(totalNum) : fmtJPY.format(totalNum)}</td>`;
                     }
-                    // Currency format for Unit Price or Price columns
-                    const isUnitPriceCol = h.key && keyUnitPrice && h.key === keyUnitPrice;
-                    const isPriceCol = h.key && keyPrice && h.key === keyPrice;
-                    if (isUnitPriceCol || isPriceCol || (h.key && isCurrencyColName(h.key))) {
+                    // Currency columns
+                    if (h.key && isCurrencyColName(h.key)) {
                         const raw = (r[h.key] ?? '').toString();
+                        const cur = detectCurrency(raw, h.key, h.label);
                         const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
-                        // 価格セルが非数値（例: "-" や空白）の場合は、そのまま表示
-                        return `<td class="${cls}">${isNaN(num) ? normalize(raw) : yen.format(num)}</td>`;
+                        if (isNaN(num)) return `<td class="${cls}">${normalize(raw)}</td>`;
+                        if (cur === 'USD') return `<td class="${cls}">${fmtUSD.format(num)}</td>`;
+                        return `<td class="${cls}">${fmtJPY.format(num)}</td>`;
                     }
                     return `<td class="${cls}">${normalize(r[h.key])}</td>`;
                 }).join('') + '</tr>';
