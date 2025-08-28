@@ -506,12 +506,17 @@
                 const keyPrice = resolver.resolve('price');
 
                 const rawUnitPrice = keyUnitPrice ? (r[keyUnitPrice] ?? '').toString() : '';
-                const unitCurrency = detectCurrency(rawUnitPrice);
+                const rawPrice = keyPrice ? (r[keyPrice] ?? '').toString() : '';
+                const keyYen = Object.keys(r).find(k => {
+                    const n = normalizeHeader(k);
+                    return n === 'yen' || n === 'jpy' || n.includes('yen') || n.includes('jpy');
+                });
+                const rawYen = keyYen ? (r[keyYen] ?? '').toString() : '';
+                const unitCurrency = detectCurrency(rawUnitPrice) || detectCurrency(rawPrice) || (rawYen ? 'JPY' : null);
                 const unitPrice = keyUnitPrice ? parseFloat(rawUnitPrice.replace(/[^0-9.\-]/g,'')) : NaN;
                 const qty = keyQty ? parseFloat((r[keyQty] ?? '').toString().replace(/[^0-9.\-]/g,'')) : NaN;
 
                 // compute totals if same currency
-                const rawPrice = keyPrice ? (r[keyPrice] ?? '').toString() : '';
                 const priceCurrency = detectCurrency(rawPrice) || unitCurrency;
                 const priceNum = keyPrice ? parseFloat(rawPrice.replace(/[^0-9.\-]/g,'')) : NaN;
 
@@ -528,11 +533,19 @@
                     // Currency columns
                     if (h.key && isCurrencyColName(h.key)) {
                         const raw = (r[h.key] ?? '').toString();
-                        const cur = detectCurrency(raw);
+                        // infer currency from the cell; if missing symbol, fall back to sibling columns
+                        let cur = detectCurrency(raw);
+                        if (!cur) {
+                            if (h.key === keyUnitPrice) cur = unitCurrency || priceCurrency || (rawYen ? 'JPY' : null);
+                            else if (h.key === keyPrice) cur = priceCurrency || unitCurrency || (rawYen ? 'JPY' : null);
+                            else if (keyYen && h.key === keyYen) cur = 'JPY';
+                        }
                         const num = parseFloat(raw.replace(/[^0-9.\-]/g,''));
                         if (isNaN(num)) return `<td class="${cls}">${normalize(raw)}</td>`;
                         if (cur === 'USD') return `<td class="${cls}">${fmtUSD.format(num)}</td>`;
-                        return `<td class="${cls}">${fmtJPY.format(num)}</td>`;
+                        if (cur === 'JPY') return `<td class="${cls}">${fmtJPY.format(num)}</td>`;
+                        // Unknown currency: leave as plain number to avoid wrong symbol
+                        return `<td class="${cls}">${normalize(raw)}</td>`;
                     }
                     return `<td class="${cls}">${normalize(r[h.key])}</td>`;
                 }).join('') + '</tr>';
@@ -556,20 +569,20 @@
                             const ref = hit.Ref.replace(/\$/g, ''); // remove $ anchors
                             const [sheetName, a1] = ref.split('!');
                             const sheet = wb.Sheets[sheetName.replace(/^'/, '').replace(/'$/, '')] || wb.Sheets[wb.SheetNames[0]];
-                            const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', range: a1 });
+                            const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', range: a1, raw: false });
                             return rows;
                         }
                     }
                     // Fallback: if a sheet exists with candidate name, use it
                     for (const cand of candidates) {
                         if (wb.Sheets[cand]) {
-                            return XLSX.utils.sheet_to_json(wb.Sheets[cand], { defval: '' });
+                            return XLSX.utils.sheet_to_json(wb.Sheets[cand], { defval: '', raw: false });
                         }
                     }
                 }
                 // Default: first sheet
                 const first = wb.Sheets[wb.SheetNames[0]];
-                return XLSX.utils.sheet_to_json(first, { defval: '' });
+                return XLSX.utils.sheet_to_json(first, { defval: '', raw: false });
             } catch (e) {
                 console.warn('rowsFromTarget error:', e);
                 return [];
