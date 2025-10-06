@@ -93,45 +93,57 @@
             <img src="images/sample-useage.png" alt="sample-useage" class="full-width">
 
         <section>
-            <h2> データ交換仕様</h2>
-            <p>このアプリは、3バイトのデータを単位として送受信します。</p>
+            <h2>BLE通信について</h2>
+            <p>
+                <strong>Flutter</strong> の <strong>flutter_blue_plus</strong> ライブラリを用いて、Android/iOS の標準BLEに対応しています。<br>
+                チャンネル・バリュー・チェックサムの3バイトのデータを単位として送受信します。<br>
+                最大9チャンネル分のデータを1パケットに集約して送受信することでBLE通信を効率化し、低遅延を実現しています。
+            </p>
 
-            <h3>1番目のバイトデータ: チャンネル</h3>
-            <p><strong>チャンネル</strong>は、ペイロードの宛先を示します。システムにより予約されたチャンネルはありません。任意のチャンネルと要求を紐づけてください。</p>
-
-            <h3>2番目のバイトデータ: バリュー</h3>
-            <p><strong>バリュー</strong>はシングルバイトデータであり、0-255の範囲のデータが格納されます。小数や符号付の値を使用したい場合、デバイス側でデータを変換してください。</p>
-
-            <h3>3番目のバイトデータ: チェックサム</h3>
-            <p><strong>チェックサム</strong>は、<strong>チャンネル</strong>と<strong>バリュー</strong>の排他的論理和です。</p>
-
-            <h3>データ構造</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Index</th>
-                        <th>Data</th>
-                        <th>Description</th>
+                        <th>要素</th>
+                        <th>役割</th>
+                        <th>単位サイズ</th>
+                        <th>9チャンネル時の合計</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
                         <td>チャンネル</td>
-                        <td>ペイロードの宛先 (0-255)。</td>
+                        <td>各ウィジェット・軸に割り当てる任意の番号 (0-255)</td>
+                        <td>1バイト</td>
+                        <td>9バイト</td>
                     </tr>
                     <tr>
-                        <td>2</td>
                         <td>バリュー</td>
-                        <td>ペイロード (0-255)。</td>
+                        <td>各ウィジェットで送信または受信する値 (0-255)</td>
+                        <td>1バイト</td>
+                        <td>9バイト</td>
                     </tr>
                     <tr>
-                        <td>3</td>
                         <td>チェックサム</td>
-                        <td>チャンネルとバリューの排他的論理和。</td>
+                        <td>チャンネルとバリューの排他的論理和</td>
+                        <td>1バイト</td>
+                        <td>1バイト</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">合計</td>
+                        <td>19バイト</td>
+                    </tr>
+                </tfoot>
             </table>
+
+            <p>50msごとに呼び出される <code>periodicSend()</code> により、以下を実行します。</p>
+            <ul>
+                <li>最大9チャンネル分のデータを1パケットに集約</li>
+                <li>XORチェックサムの計算</li>
+                <li>Write Without Response で BLE 送信</li>
+                <li>9チャンネル超過分は自動的に複数パケットへ分割して送信</li>
+            </ul>
         </section>
 
         </div>
