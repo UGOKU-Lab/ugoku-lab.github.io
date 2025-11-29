@@ -1,11 +1,3 @@
-/* --- Events section (compact cards) --- */
-#events { margin: 12px 0 16px; }
-#events h3 { margin: 0 0 6px; }
-#events .events-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
-#events .events-list li { line-height: 1.4; }
-#events .events-list a { color: #f0641e; text-decoration: none; font-weight: 600; }
-#events .events-list a:hover { text-decoration: underline; }
-#events .events-list .past { color: #888; }
 /* --- Events section (compact cards, single-line head) --- */
 #events { margin: 16px 0 20px; }
 #events h3 { margin: 0 0 8px; }
@@ -92,15 +84,18 @@ footer {
 
 .project {
     padding: 20px;
-    display: table; /* Use display:table for structure */
+    display: flex;
+    align-items: center;
+    gap: 20px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .project img {
-    display: table-cell;
-    vertical-align: middle;
-    width: 600px; /* Fixed width, adjust as needed */
+    width: 100%;
+    max-width: 600px;
     height: auto;
+    object-fit: contain;
 }
 
 .full-width {
@@ -234,9 +229,8 @@ a.link:hover {
 }
 
 .project video {
-    display: table-cell;
-    vertical-align: middle;
-    width: 600px;   /* 画像と同じ幅 */
+    width: 100%;
+    max-width: 600px;
     height: auto;
 }
 
@@ -265,10 +259,8 @@ a.link:hover {
 }
 
 .project-content {
-    display: table-cell;
-    vertical-align: middle; 
-    padding-left: 20px;
-    align-items: center; /* 垂直方向の中央揃え */
+    flex: 1;
+    min-width: 0; /* Prevent flex item from overflowing */
 }
 
 /* カード全体をクリック可能にしたときのホバー表現 */
@@ -287,47 +279,47 @@ a.link:hover {
     background-color: rgba(240, 100, 30, 0.18);
 }
 
-/* ボタン行のコンテナのスタイル - 階層セレクタで詳細度を高くして確実に適用されるようにする */
+/* ボタン行のコンテナのスタイル */
 .project .project-content .buttons-row {
-    display: flex !important;              /* ボタンを横並びにする */
-    flex-wrap: wrap !important;            /* 画面幅が狭いときに折り返す */
-    align-items: center !important;        /* ボタンを縦方向中央揃えにする */
-    gap: 20px !important;                  /* ボタン間の間隔を設定 */
-    margin: 15px 0 !important;             /* 上下の余白を設定 */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
 }
 
-/* ストアボタンの画像スタイル - .project img (width: 600px)より詳細度を高くして上書き */
+/* ストアボタンの画像スタイル */
 .project .buttons-row img.store-badge {
-    display: inline-block !important;      /* table-cellではなくinline-blockに変更 */
-    height: 50px !important;               /* 高さを40pxに固定 */
-    max-height: 50px !important;           /* 最大高さも40pxに制限 */
-    width: auto !important;                /* 幅は自動計算（アスペクト比を維持） */
-    vertical-align: middle !important;     /* テキストの中央に合わせる */
+    display: inline-block;
+    height: 50px;
+    max-height: 50px;
+    width: auto;
+    vertical-align: middle;
 }
 
-/* すべてのボタンリンクの基本スタイル - .project-content a のスタイルを上書き */
+/* すべてのボタンリンクの基本スタイル */
 .project .buttons-row a {
-    display: inline-flex !important;       /* flexboxで内部要素を配置 */
-    align-items: center !important;        /* 内部要素を縦方向中央揃え */
-    height: 50px !important;               /* 高さを40pxに統一 */
-    text-decoration: none !important;      /* 下線を削除 */
-    background-color: transparent !important; /* 背景を透明に（ストアボタン用） */
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    background-color: transparent;
 }
 
-/* オレンジボタンのスタイル - 上のaタグのスタイルを拡張 */
+/* オレンジボタンのスタイル */
 .project .buttons-row a.orange-button {
-    justify-content: center !important;    /* 内部テキストを中央揃え */
-    padding: 0 20px !important;            /* 左右の内部余白 */
-    background-color: #f0641e !important;  /* オレンジ色の背景 */
-    color: white !important;               /* 文字色を白に */
-    border-radius: 8px !important;        /* 角を丸くする */
-    font-size: 18px !important;            /* フォントサイズ */
-    transition: background-color 0.3s !important; /* ホバー時のアニメーション */
+    justify-content: center;
+    padding: 0 20px;
+    background-color: #f0641e;
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: background-color 0.3s;
 }
 
 /* オレンジボタンのホバー時のスタイル */
 .project .buttons-row a.orange-button:hover {
-    background-color: #e2561a !important;  /* ホバー時に少し暗い色に */
+    background-color: #e2561a;
 }
 
 table {
@@ -567,14 +559,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 8px;
 }
 
-/* 画像をリンクにしても既存のtableレイアウトを維持 */
+/* 画像リンクのスタイル */
 .project a.project-image-link {
-    display: table-cell;
-    vertical-align: middle;
+    display: block;
     text-decoration: none;
+    width: 100%;
+    max-width: 600px;
 }
 .project a.project-image-link img {
-    display: block; /* imgはtable-cellではなくblockに */
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */
@@ -616,7 +611,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .project-content {
-        padding-left: 0;
+        /* padding-left: 0; Removed as it is no longer set in desktop */
     }
     
     .project-content .project-title {
