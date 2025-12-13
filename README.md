@@ -12,19 +12,21 @@ UGOKU-Labのホームぺージ
 
 **よく使うクラス:**
 - **レイアウト**:
-  - `.d-flex`: Flexboxを有効化
+  - `.display-flex`: Flexboxを有効化
   - `.flex-center`: 中央揃え (上下左右)
   - `.flex-between`: 両端揃え
+  - `.flex-start`: 上端揃え (Flexboxのアイテムを上に寄せる)
   - `.text-center`: テキスト中央揃え
 - **余白 (Spacing)**:
-  - `.gap-sm` (10px), `.gap-md` (20px): 要素間の隙間
-  - `.mb-sm`, `.mb-md`: 下方向の余白
+  - `.gap-small` (10px), `.gap-medium` (20px): 要素間の隙間
+  - `.margin-bottom-small`, `.margin-bottom-medium`: 下方向の余白
 - **コンポーネント**:
   - `.btn`, `.orange-button`: オレンジ色のボタン
   - `.btn-outline`, `.doc-button`: 白背景・黒枠のボタン
   - `.alert-box`: お知らせ用のアラートボックス
 - **画像**:
   - `.img-responsive`: 親要素に合わせてリサイズ
+  - `.width-full`: 幅を100%にする
 
 ### 2. 色の指定
 色は直接カラーコード（`#f0641e`など）を書かず、CSS変数を使用してください。

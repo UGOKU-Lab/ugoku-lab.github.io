@@ -29,20 +29,20 @@
    ========================================= */
 
 /* Flexbox Layouts */
-.d-flex { display: flex; }
+.display-flex { display: flex; }
 .flex-center { display: flex; justify-content: center; align-items: center; }
 .flex-between { display: flex; justify-content: space-between; align-items: center; }
 .flex-start { display: flex; align-items: flex-start; }
 .flex-wrap { flex-wrap: wrap; }
-.gap-sm { gap: var(--spacing-sm); }
-.gap-md { gap: var(--spacing-md); }
+.gap-small { gap: var(--spacing-sm); }
+.gap-medium { gap: var(--spacing-md); }
 
 /* Width & Spacing */
-.w-full { width: 100%; }
+.width-full { width: 100%; }
 .m-auto { margin: 0 auto; }
 .text-center { text-align: center; }
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
+.margin-bottom-small { margin-bottom: var(--spacing-sm); }
+.margin-bottom-medium { margin-bottom: var(--spacing-md); }
 
 /* Images */
 .img-responsive {
