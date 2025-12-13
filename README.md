@@ -18,7 +18,7 @@ UGOKU-Labのホームぺージ
   - `.flex-start`: 上端揃え (Flexboxのアイテムを上に寄せる)
   - `.text-center`: テキスト中央揃え
 - **余白 (Spacing)**:
-  - `.gap-small` (10px), `.gap-medium` (20px): 要素間の隙間
+  - `.gap-small` (10px), `.gap-medium` (20px), `.gap-large` (50px): 要素間の隙間
   - `.margin-bottom-small`, `.margin-bottom-medium`: 下方向の余白
 - **コンポーネント**:
   - `.btn`, `.orange-button`: オレンジ色のボタン

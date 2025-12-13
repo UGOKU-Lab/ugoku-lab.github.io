@@ -8,6 +8,6 @@
 
 ## コーディング規約 (CSS/HTML)
 - **CSS変数の使用**: 色や余白は `styles/main.css` で定義された変数 (`var(--primary-color)` など) を使用してください。ハードコードは避けてください。
-- **ユーティリティクラス**: レイアウトには `.display-flex`, `.flex-center`, `.flex-between`, `.gap-medium` などのユーティリティクラスを優先して使用してください。
+- **ユーティリティクラス**: レイアウトには `.display-flex`, `.flex-center`, `.flex-between`, `.gap-medium`, `.gap-large` などのユーティリティクラスを優先して使用してください。
 - **インラインスタイルの禁止**: HTMLタグに直接 `style="..."` を書かないでください。
 - **既存クラスの再利用**: 新しいクラスを作る前に、既存の `.btn`, `.card`, `.alert-box` などが使えないか確認してください。

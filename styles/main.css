@@ -36,6 +36,7 @@
 .flex-wrap { flex-wrap: wrap; }
 .gap-small { gap: var(--spacing-sm); }
 .gap-medium { gap: var(--spacing-md); }
+.gap-large { gap: 40px; }
 
 /* Width & Spacing */
 .width-full { width: 100%; }
@@ -96,7 +97,7 @@
     margin: 12px auto;
     border-radius: 6px;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
     max-width: 960px;
 }
 
@@ -125,6 +126,7 @@ body {
     font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', system-ui, -apple-system, 'Segoe UI', sans-serif;
     background-color: var(--white);
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 .content-container {
@@ -721,4 +723,12 @@ h1, h2, h3, h4, h5, h6 {
     details.accordion > summary h2 { font-size: 1.1rem; }
     .excel-table { font-size: 14px; }
     .table-scroll { max-height: 360px; } 
+}
+
+/* オレンジの白抜き文字 */
+.orange-highlight {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0px 4px;
+    border-radius: 3px;
 }
