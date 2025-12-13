@@ -1,3 +1,109 @@
+/* =========================================
+   基本設定 (Variables & Base)
+   ========================================= */
+:root {
+    /* Colors */
+    --primary-color: #f0641e;       /* ブランドカラー (オレンジ) */
+    --primary-light: #ffd1b8;       /* 薄いオレンジ */
+    --primary-bg: #fff7f2;          /* 背景用オレンジ */
+    --text-main: #333333;           /* 基本テキスト色 */
+    --text-sub: #666666;            /* サブテキスト色 */
+    --bg-light: #f7f7f7;            /* 薄いグレー背景 */
+    --border-color: #cccccc;        /* 枠線色 */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Spacing */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    
+    /* Table Spacing */
+    --table-cell-padding-y: 4px;
+    --table-cell-padding-x: 5px;
+}
+
+/* =========================================
+   ユーティリティクラス (Utilities)
+   レイアウトや余白の調整に使います
+   ========================================= */
+
+/* Flexbox Layouts */
+.d-flex { display: flex; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+
+/* Width & Spacing */
+.w-full { width: 100%; }
+.m-auto { margin: 0 auto; }
+.text-center { text-align: center; }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+
+/* Images */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================
+   コンポーネント (Components)
+   ボタンやカードなどの共通パーツ
+   ========================================= */
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* オレンジ背景のボタン */
+.btn-primary, .orange-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+.btn-primary:hover, .orange-button:hover {
+    background-color: #d14d0b; /* 少し暗いオレンジ */
+}
+
+/* 白背景・黒枠のボタン */
+.btn-outline, .doc-button {
+    background-color: var(--white);
+    color: var(--black);
+    border: 2px solid var(--black);
+    box-sizing: border-box;
+}
+.btn-outline:hover, .doc-button:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* アラートボックス (お知らせなど) */
+.alert-box {
+    background: var(--primary-bg);
+    border: 1px solid var(--primary-light);
+    padding: 12px 16px;
+    margin: 12px auto;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 960px;
+}
+
+/* =========================================
+   既存スタイルの調整 (Legacy Support)
+   ========================================= */
+
 /* --- Events section (compact cards, single-line head) --- */
 #events { margin: 16px 0 20px; }
 #events h3 { margin: 0 0 8px; }
@@ -8,24 +114,17 @@
 #events .event .event-title { font-weight: 700; }
 #events .event .event-title a { color: inherit; text-decoration: none; }
 #events .event .event-title a:hover { text-decoration: underline; }
-#events .event .event-date { color: #666; }
+#events .event .event-date { color: var(--text-sub); }
 #events .event .event-status { color: #888; font-size: 0.9em; }
-#events .event .event-badge { background: #f0641e; color: #fff; border-radius: 999px; padding: 0 8px; font-size: 0.75rem; line-height: 1.6; }
-#events .event.upcoming { border-color: #ffd1b8; background: #fff7f2; }
+#events .event .event-badge { background: var(--primary-color); color: #fff; border-radius: 999px; padding: 0 8px; font-size: 0.75rem; line-height: 1.6; }
+#events .event.upcoming { border-color: var(--primary-light); background: var(--primary-bg); }
 #events .event.past { opacity: 0.7; }
+
 body {
     margin: 0;
     font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    background-color: #ffffff;
-    /* max-width: 1200px; /* 幅を制限 */
-    margin: 0 auto; /* 水平方向に中央揃え */
-}
-
-/* ---- Global table cell spacing controls ----
-   ここを変えるだけで、全テーブルのセル余白（上下・左右）を一括調整できます。 */
-:root {
-    --table-cell-padding-y: 4px; /* 上下 */
-    --table-cell-padding-x: 5px; /* 左右 */
+    background-color: var(--white);
+    margin: 0 auto;
 }
 
 .content-container {
@@ -34,23 +133,23 @@ body {
 }
 
 .header {
-    background-color: #f0641e;
-    padding: 20px;
-    color: white;
+    background-color: var(--primary-color);
+    padding: var(--spacing-md);
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    box-sizing: border-box; /* パディングを幅計算に含める */
+    box-sizing: border-box;
 }
 
 footer {
-    background-color: #f7f7f7;
-    color: #000000;
+    background-color: var(--bg-light);
+    color: var(--black);
     text-align: center;
     padding: 10px 0;
     border-top: none;
-    width: 100%; /* フッターも全幅に広げる */
+    width: 100%;
 }
 
 .header h1 {
@@ -60,33 +159,31 @@ footer {
 }
 
 .header a {
-    text-decoration: none; /* 下線を消す */
-    color: white; /* テキストの色を白に設定 */
-    display: inline; /* aタグをインライン要素に設定 */
-    /*padding: 20px; /* 既存のヘッダーのパディングに合わせる */
+    text-decoration: none;
+    color: var(--white);
+    display: inline;
 }
 
-/* ソーシャルアイコンのスタイル */
 .header .social-icons {
     display: flex;
     align-items: center;
 }
 
 .header .social-icons a {
-    color: white;
+    color: var(--white);
     padding: 0 10px;
-    font-size: 24px; /* アイコンのサイズを調整 */
+    font-size: 24px;
 }
 
 .header .social-icons a:hover {
-    color: #000000;
+    color: var(--black);
 }
 
 .project {
-    padding: 20px;
+    padding: var(--spacing-md);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing-md);
     width: 100%;
     box-sizing: border-box;
 }
@@ -99,133 +196,119 @@ footer {
 }
 
 .full-width {
-    max-width: calc(100% - 40px); /* 親要素の幅から左右の余白分を引く */
-    height: auto; /* アスペクト比を保持 */
-    display: block; /* 不要な余白を防ぐ */
-    padding: 0 20px; /* 左右に20pxの余白を設定 */
+    max-width: calc(100% - 40px);
+    height: auto;
+    display: block;
+    padding: 0 20px;
 }
 
 .project-content h2 {
-    color: #333333;
+    color: var(--text-main);
     margin: 0 0 0px 0;
 }
 
+/* h2の下線スタイル (ugokuone.htmlなどで使用されていたものを共通化) */
+.project-content h2.underlined, 
+.content-container > h2 {
+    border-bottom: 1px solid #2b2b2b;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+}
+
 .project-content p {
-    color: #666666;
+    color: var(--text-sub);
 }
 
 .project-content .project-title {
-    display: flex; /* フレックスボックスを使ってアイテムを横に並べる */
-    align-items: center; /* アイテムを中央揃え */
-    flex-wrap: wrap; /* 必要に応じてアイテムを折り返す */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+/* .doc-button は .btn-outline に統合されましたが、互換性のために残すか、HTML側でクラスを変更します */
+/* ここでは .btn-outline 定義時に .doc-button も併記しています */
 
 .project-content .doc-button {
-    display: inline-block;
-    padding: 10px 15px;
-    margin-left: 20px; /* 左に余白を追加 */
-    background-color: white;
-    color: black;
-    text-decoration: none;
-    border: 2px solid black;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.project-content .doc-button:hover {
-    background-color: black;
-    color: white;
+    margin-left: 20px;
 }
 
 .license-section h3 {
-    /* 既存のh3スタイルに加えて */
-    margin-bottom: 10px; /* h3タグの下の余白を設定 */
-}
-
-.license-content a {
-    background-color: transparent; /* 背景色を透明に設定 */
-    padding: 0; /* パディングをリセット */
-    margin: 0; /* マージンをリセット */
-    display: inline-block; /* 必要に応じて display を調整 */
+    margin-bottom: 10px;
 }
 
 .license-content {
-    display: flex; /* Flexboxを有効にして項目を横並びにする */
-    align-items: center; /* 画像とテキストを中央揃えにする */
+    display: flex;
+    align-items: center;
 }
 
 .license-content .license-image {
-    margin-right: 10px; /* 画像とテキストの間に余白を追加 */
+    margin-right: 10px;
 }
 
 .license-content p {
-    margin: 0; /* パラグラフの余白をリセット */
+    margin: 0;
 }
 
 .license-badge {
-    border-width: 0; /* 枠線を消す */
-    width: 100%; /* コンテナに合わせて幅を調整 */
-    height: auto; /* 高さを自動で調整し、アスペクト比を維持 */
-    max-width: 88px; /* 画像の最大幅を指定 */
+    border-width: 0;
+    width: 100%;
+    height: auto;
+    max-width: 88px;
 }
 
-/* 既存のスタイルをオーバーライドするために、より具体的なセレクタを使用します */
 .license-content .license-image,
 .license-content .link {
-    background-color: transparent; /* 背景色を透明に設定 */
-    padding: 0; /* パディングをリセット */
-    margin: 0; /* マージンをリセット */
-    color: inherit; /* 親要素から色を継承 */
-    border: none; /* 枠線を削除 */
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    border: none;
 }
 
-/* ホバー時のスタイル */
 .license-content .license-image:hover,
 .license-content .link:hover {
-    background-color: transparent; /* 背景色を透明に保つ */
-    color: inherit; /* 親要素から色を継承 */
+    background-color: transparent;
+    color: inherit;
 }
 
-/* 一般的なリンクのスタイル */
 a.link {
-    color: #0000EE; /* 一般的なリンクの色 */
-    text-decoration: underline; /* 下線を付ける */
+    color: #0000EE;
+    text-decoration: underline;
 }
 
 a.link:hover {
-    color: #FF4500; /* ホバー時の色（任意の色に設定） */
-    text-decoration: none; /* ホバー時に下線を消す（必要に応じて） */
+    color: #FF4500;
+    text-decoration: none;
 }
 
 .components-table {
-    width: 100%; /* 表の幅を100%に設定 */
-    border-collapse: collapse; /* セルのボーダーを重ねる */
-    margin-top: 0; /* 上余白をなくす */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
 }
 
 .components-table th,
 .components-table td {
-    border: 1px solid #cccccc; /* セルのボーダー */
-    padding: var(--table-cell-padding-y) var(--table-cell-padding-x); /* セル内のパディング（共通変数） */
-    text-align: left; /* テキストを左揃え */
+    border: 1px solid var(--border-color);
+    padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+    text-align: left;
 }
 
 .components-table th {
-    background-color: #f2f2f2; /* ヘッダーセルの背景色 */
-    font-weight: bold; /* ヘッダーテキストを太字に */
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
 
 .video {
-    display: flex; /* Flexboxを使用して中央寄せを行います */
-    justify-content: center; /* 水平方向の中央寄せ */
-    align-items: center; /* 垂直方向の中央寄せ（必要な場合） */
-    margin: auto; /* 左右のマージンを自動に設定して中央寄せ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 .video video {
-    max-width: 80%; /* ビデオの最大幅を親要素の幅に合わせます */
-    height: auto; /* 高さを自動調整してアスペクト比を維持 */
+    max-width: 80%;
+    height: auto;
 }
 
 .project video {
@@ -235,35 +318,34 @@ a.link:hover {
 }
 
 .container {
-    display: flex; /* Flexboxを有効にする */
-    align-items: flex-start; /* 要素を上端で揃える */
-    justify-content: space-between; /* 要素間に均等なスペースを設定 */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .table-container {
-    flex: 2; /* 表が他の要素よりも幅を取るようにする */
-    margin-right: 20px; /* 表と画像の間にスペースを設定 */
+    flex: 2;
+    margin-right: 20px;
 }
 
 .images-container {
-    flex: 3; /* 画像が表よりも広いスペースを取るようにする */
-    display: flex; /* Flexboxを有効にして画像を横に並べる */
-    justify-content: space-between; /* 画像間に均等なスペースを設定 */
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
 .images-container img {
-    max-width: calc(50% - 10px); /* 画像がコンテナの半分の幅になるように計算し、間のスペースを考慮する */
-    height: auto; /* 画像の高さを自動調整し、アスペクト比を保持する */
-    margin: 0 10px; /* 画像の周囲にマージンを設定 */
+    max-width: calc(50% - 10px);
+    height: auto;
+    margin: 0 10px;
 }
 
 .project-content {
     flex: 1;
-    min-width: 0; /* Prevent flex item from overflowing */
+    min-width: 0;
 }
 
-/* カード全体をクリック可能にしたときのホバー表現 */
 .project[data-href] {
     position: relative;
     cursor: pointer;
@@ -273,13 +355,12 @@ a.link:hover {
 .project[data-href]:hover,
 .project[data-href]:focus-within,
 .project[data-href][data-hover] {
-    background-color: rgba(240, 100, 30, 0.08); /* 背面に色 */
+    background-color: rgba(240, 100, 30, 0.08);
 }
 .project[data-href]:active {
     background-color: rgba(240, 100, 30, 0.18);
 }
 
-/* ボタン行のコンテナのスタイル */
 .project .project-content .buttons-row {
     display: flex;
     flex-wrap: wrap;
@@ -288,7 +369,6 @@ a.link:hover {
     margin: 15px 0;
 }
 
-/* ストアボタンの画像スタイル */
 .project .buttons-row img.store-badge {
     display: inline-block;
     height: 50px;
