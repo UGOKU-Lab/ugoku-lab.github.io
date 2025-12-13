@@ -3,7 +3,7 @@
    ========================================= */
 :root {
     /* Colors */
-    --primary-color: #f0641e;       /* ブランドカラー (オレンジ) */
+    --primary-color: #F0641E;       /* ブランドカラー (オレンジ) */
     --primary-light: #ffd1b8;       /* 薄いオレンジ */
     --primary-bg: #fff7f2;          /* 背景用オレンジ */
     --text-main: #333333;           /* 基本テキスト色 */
@@ -49,6 +49,15 @@
 .img-responsive {
     max-width: 100%;
     height: auto;
+}
+
+/* 左余白が必要な特定画像用ユーティリティ */
+.img-left-gap {
+    margin-left: 60px;
+}
+
+@media (max-width: 768px) {
+    .img-left-gap { margin-left: 0; }
 }
 
 /* =========================================
@@ -132,6 +141,14 @@ body {
 .content-container {
     max-width: 1300px;
     margin: 0 auto;
+}
+
+/* Ensure there's comfortable horizontal padding on small viewports
+   so content does not touch the window edges. box-sizing keeps
+   padding included in the width calculations. */
+.content-container {
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 .header {
@@ -655,7 +672,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 見出しのデフォルト余白は維持。テーブル直前はわずかに間隔を確保 */
-.content-container h3 { margin: 12px 0; }
+.content-container h3 {
+    margin: 12px 0 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
 
 /* --- Rotor media two-column layout --- */
 .rotor-media {
