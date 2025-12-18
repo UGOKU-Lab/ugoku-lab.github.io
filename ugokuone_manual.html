@@ -55,7 +55,85 @@
                 </div>
             <h3>サーボモータ出力</h3>
             <h3>DCモータ出力</h3>
+                    <div class="display-flex gap-large flex-start">
+                        <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
+                        <div style="flex:1; min-width:240px;">
+                            <p>TB67H303HGを2個搭載しています</p>
+                            <div class="table-scroll">
+                                <table class="excel-table" aria-label="DCモータ出力スペック">
+                                    <thead>
+                                        <tr>
+                                            <th>項目</th>
+                                            <th>仕様</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>電圧</td>
+                                            <td>5V系統（USB/電池） / 外部電源入力時は外部電源に準拠 — 上限はデータシート参照</td>
+                                        </tr>
+                                        <tr>
+                                            <td>連続電流</td>
+                                            <td>要確認（TB67H303HG の定格を参照）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>最大（ピーク）電流</td>
+                                            <td>要確認（モータドライバの短時間最大許容値を参照）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>保護機能</td>
+                                            <td>過電流保護、過熱保護（ドライバ標準機能。詳細はデータシート参照）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>備考</td>
+                                            <td>実使用での連続駆動は発熱と電源能力に注意。正確な定格はデータシート参照</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
             <h3>FET出力</h3>
+                    <div class="display-flex gap-large flex-start">
+                        <img src="images/UGOKU-One/UGOKU-One_FET-output.png" width="40%" alt="FET出力端子図">
+                        <div style="flex:1; min-width:240px;">
+                            <p>FET出力は、外部機器（LED、リレー、ソレノイド等）を直接スイッチングするためのトランジスタ出力（MOSFET）です。SSM3K333R</p>
+                            <div class="table-scroll">
+                                <table class="excel-table" aria-label="FET出力スペック">
+                                    <thead>
+                                        <tr>
+                                            <th>項目</th>
+                                            <th>仕様</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>使用素子</td>
+                                            <td>MOSFET（SSM3K333R）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>電圧</td>
+                                            <td>5V系統で駆動（外部電源に接続する場合は外部電源電圧に依存） — 詳細はデータシート参照</td>
+                                        </tr>
+                                        <tr>
+                                            <td>連続電流</td>
+                                            <td>要確認（SSM3K333R のデータシートを参照してください）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>出力タイプ</td>
+                                            <td>Low-side スイッチ（接地側でのオン/オフ）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>備考</td>
+                                            <td>誘導負荷（ソレノイド、リレー等）を駆動する際はフライバック対策が必要。定格はデバイスデータシート参照</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
 
         <h2>プログラムの書き込み</h2>
         <p></p>
