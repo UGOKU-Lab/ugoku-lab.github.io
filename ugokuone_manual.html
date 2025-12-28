@@ -40,10 +40,19 @@
                         <img src="images/UGOKU-One/UGOKU-One_power-diagram.png" style="margin-top:15px;" class="width-full" alt="電源入力とアクチュエータ出力図">
                     </div>
                 </div>
+            <h3>単4電池</h3>
+                <div class="display-flex" gap-large flex-start style="margin-top:12px;">
+                    
+                <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
+                </div>
+            <h3>USB接続</h3>
+                <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
+            <h3>外部電源入力</h3>
+                <p>外部電源入力は7〜24Vの直流電源を接続できます。DCジャック（センタープラス）または2ピン端子台に接続します。</p>
             <h3>電源選択</h3>
-                    <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
-                    <div class="display-flex gap-large flex-start" style="margin-top:12px;">
-                    <img src="images/UGOKU-One/UGOKU-One_power-selection.png" width="40%" class="img-left-gap" alt="DCモータドライバブロック図">
+                <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
+                <div class="display-flex gap-large flex-start" style="margin-top:12px;">
+                <img src="images/UGOKU-One/UGOKU-One_power-selection.png" width="40%" class="img-left-gap" alt="DCモータドライバブロック図">
                     <div style="flex:1; min-width:240px;">  
                         <ul>
                             <li>アクチュエータに供給する電力は<span class="orange-highlight">5V系統</span>と<span class="orange-highlight">外部電源入力</span>の2つから選択できます</li>
@@ -54,51 +63,63 @@
                     </div>
                 </div>
             <h3>サーボモータ出力</h3>
-            <h3>DCモータ出力</h3>
-                    <div class="display-flex gap-large flex-start">
-                        <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
-                        <div style="flex:1; min-width:240px;">
-                            <p>TB67H303HGを2個搭載しています</p>
-                            <div class="table-scroll">
-                                <table class="excel-table" aria-label="DCモータ出力スペック">
-                                    <thead>
-                                        <tr>
-                                            <th>項目</th>
-                                            <th>仕様</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>電圧</td>
-                                            <td>5V系統（USB/電池） / 外部電源入力時は外部電源に準拠 — 上限はデータシート参照</td>
-                                        </tr>
-                                        <tr>
-                                            <td>連続電流</td>
-                                            <td>要確認（TB67H303HG の定格を参照）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>最大（ピーク）電流</td>
-                                            <td>要確認（モータドライバの短時間最大許容値を参照）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>保護機能</td>
-                                            <td>過電流保護、過熱保護（ドライバ標準機能。詳細はデータシート参照）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>備考</td>
-                                            <td>実使用での連続駆動は発熱と電源能力に注意。正確な定格はデータシート参照</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+            <h3>DCモータ出力 </h3>
+                <div class="display-flex gap-large flex-start">
+                    <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
+                    <div style="flex:1; min-width:240px;">
+                        <p>TB67H303HGを2個搭載しています</p>
+                        — <a href="ugoku-one_dc-motor.html">詳細ページへ</a>
+                        <div class="table-scroll">
+                            <table class="excel-table" aria-label="DCモータ出力スペック">
+                                <thead>
+                                    <tr>
+                                        <th>項目</th>
+                                        <th>2個同時使用時（1chあたり）</th>
+                                        <th>1個のみ使用時</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>電圧</td>
+                                        <td colspan="2">4.5 ~ 28V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>連続電流</td>
+                                        <td>1.3 A *1</td>
+                                        <td>1.5 A *1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>90秒目安</td>
+                                        <td>1.5 A *1</td>
+                                        <td>—</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5秒（短時間ピーク）</td>
+                                        <td>2.0 A *1</td>
+                                        <td>2.0 A *1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>最大（ピーク）電流</td>
+                                        <td colspan="2">3 A（チャンネルあたり、ドライバ定格）</td>
+                                    </tr>
+                                    <tr>
+                                        <td>保護機能</td>
+                                        <td colspan="2">過電流保護、過熱保護（ドライバ標準機能。詳細はデータシート参照）</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        *1: テスト結果より安全マージンを取った値です。<br>
+                        *3: 実際の出力電力は電池または電源の能力に依存します。
                     </div>
+                </div>
 
             <h3>FET出力</h3>
                     <div class="display-flex gap-large flex-start">
                         <img src="images/UGOKU-One/UGOKU-One_FET-output.png" width="40%" alt="FET出力端子図">
                         <div style="flex:1; min-width:240px;">
-                            <p>FET出力は、外部機器（LED、リレー、ソレノイド等）を直接スイッチングするためのトランジスタ出力（MOSFET）です。SSM3K333R</p>
+                            <p>Nch MOSFET（SSM3K333R）によるローサイド出力です。</p>
+                            <a href="ugoku-one_fet.html">詳細ページへ</a>
                             <div class="table-scroll">
                                 <table class="excel-table" aria-label="FET出力スペック">
                                     <thead>
@@ -109,24 +130,16 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>使用素子</td>
-                                            <td>MOSFET（SSM3K333R）</td>
-                                        </tr>
-                                        <tr>
                                             <td>電圧</td>
-                                            <td>5V系統で駆動（外部電源に接続する場合は外部電源電圧に依存） — 詳細はデータシート参照</td>
+                                            <td>4.5 ~ 28V</td>
                                         </tr>
                                         <tr>
                                             <td>連続電流</td>
-                                            <td>要確認（SSM3K333R のデータシートを参照してください）</td>
+                                            <td>3.0 A</td>
                                         </tr>
                                         <tr>
-                                            <td>出力タイプ</td>
-                                            <td>Low-side スイッチ（接地側でのオン/オフ）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>備考</td>
-                                            <td>誘導負荷（ソレノイド、リレー等）を駆動する際はフライバック対策が必要。定格はデバイスデータシート参照</td>
+                                            <td>90秒目安</td>
+                                            <td>6.0 A</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -134,6 +147,14 @@
                             
                         </div>
                     </div>
+        <h2>IMU</h2>
+            <div class="display-flex gap-large flex-start">
+            <img src="images/UGOKU-One/UGOKU-One_IMU.png" width="40%" alt="IMU">
+                <div style="flex:1; min-width:240px;">
+                <p>BMI270</p>
+                </div>
+            </div>
+        <p></p>
 
         <h2>プログラムの書き込み</h2>
         <p></p>

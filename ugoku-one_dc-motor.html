@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGOKU One — DCモータ出力詳細</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html"><h1>UGOKU Lab</h1></a>
+        <div class="social-icons">
+            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <h1>DCモータ出力（詳細）</h1>
+
+        <div class="display-flex gap-large flex-start">
+            <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
+            <div style="flex:1; min-width:240px;">
+                <p>TB67H303HGを2個搭載しています</p>
+                <div class="table-scroll">
+                    <table class="excel-table" aria-label="DCモータ出力スペック">
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>仕様</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>電圧</td>
+                                <td>4.5 ~ 28V</td>
+                            </tr>
+                            <tr>
+                                <td>連続電流</td>
+                                <td>要確認（TB67H303HG の定格を参照）</td>
+                            </tr>
+                            <tr>
+                                <td>最大（ピーク）電流</td>
+                                <td>要確認（モータドライバの短時間最大許容値を参照）</td>
+                            </tr>
+                            <tr>
+                                <td>保護機能</td>
+                                <td>過電流保護、過熱保護（ドライバ標準機能。詳細はデータシート参照）</td>
+                            </tr>
+                            <tr>
+                                <td>備考</td>
+                                <td>実使用での連続駆動は発熱と電源能力に注意。正確な定格はデータシート参照</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top:20px;"><a href="ugokuone_manual.html">マニュアルに戻る</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 UGOKU Lab</p>
+    </footer>
+
+</body>
+</html>

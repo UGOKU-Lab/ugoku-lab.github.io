@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGOKU One — FET出力詳細</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html"><h1>UGOKU Lab</h1></a>
+        <div class="social-icons">
+            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <h1>FET出力（詳細）</h1>
+
+        <div class="display-flex gap-large flex-start">
+            <img src="images/UGOKU-One/UGOKU-One_FET-output.png" width="40%" alt="FET出力端子図">
+            <div style="flex:1; min-width:240px;">
+                <p>Nch MOSFET（SSM3K333R）によるローサイド出力です。</p>
+                <div class="table-scroll">
+                    <table class="excel-table" aria-label="FET出力スペック">
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>仕様</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>使用素子</td>
+                                <td>MOSFET（SSM3K333R）</td>
+                            </tr>
+                            <tr>
+                                <td>電圧</td>
+                                <td>5V系統で駆動（外部電源に接続する場合は外部電源電圧に依存） — 詳細はデータシート参照</td>
+                            </tr>
+                            <tr>
+                                <td>連続電流</td>
+                                <td>要確認（SSM3K333R のデータシートを参照してください）</td>
+                            </tr>
+                            <tr>
+                                <td>出力タイプ</td>
+                                <td>Low-side スイッチ（接地側でのオン/オフ）</td>
+                            </tr>
+                            <tr>
+                                <td>備考</td>
+                                <td>誘導負荷（ソレノイド、リレー等）を駆動する際はフライバック対策が必要。定格はデバイスデータシート参照</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top:20px;"><a href="ugokuone_manual.html">マニュアルに戻る</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 UGOKU Lab</p>
+    </footer>
+
+</body>
+</html>

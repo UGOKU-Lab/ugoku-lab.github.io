@@ -753,3 +753,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px 4px;
     border-radius: 3px;
 }
+/* Annotations / Footnotes */
+.annotation-list {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+.annotation-list li {
+    margin-bottom: 4px;
+}
