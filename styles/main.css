@@ -60,6 +60,21 @@
     .img-left-gap { margin-left: 0; }
 }
 
+/* 注釈用スタイル：注釈や脚注の文字を小さく、薄めの色にする */
+.annotation {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.4;
+}
+
+/* 注釈記号（上付き表示） */
+.annotation-mark {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    vertical-align: super;
+    line-height: 1;
+}
+
 /* =========================================
    コンポーネント (Components)
    ボタンやカードなどの共通パーツ
