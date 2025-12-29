@@ -48,7 +48,8 @@
             <h3>USB接続</h3>
                 <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
             <h3>外部電源入力</h3>
-                <p>外部電源入力は7〜24Vの直流電源を接続できます。DCジャック（センタープラス）または2ピン端子台に接続します。</p>
+                <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。
+                    逆接しないように注意してください。</p>
             <h3>電源選択</h3>
                 <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
                 <div class="display-flex gap-large flex-start" style="margin-top:12px;">
@@ -68,7 +69,6 @@
                     <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
                     <div style="flex:1; min-width:240px;">
                         <p>TB67H303HGを2個搭載しています</p>
-                        — <a href="ugoku-one_dc-motor.html">詳細ページへ</a>
                         <div class="table-scroll">
                             <table class="excel-table" aria-label="DCモータ出力スペック">
                                 <thead>
@@ -85,18 +85,18 @@
                                     </tr>
                                     <tr>
                                         <td>連続電流</td>
-                                        <td>1.3 A *1</td>
-                                        <td>1.5 A *1</td>
+                                        <td>1.3 A <sup class="annotation-mark">*1</sup></td>
+                                        <td>1.5 A <sup class="annotation-mark">*1</sup></td>
                                     </tr>
                                     <tr>
                                         <td>90秒目安</td>
-                                        <td>1.5 A *1</td>
+                                        <td>1.5 A <sup class="annotation-mark">*1</sup></td>
                                         <td>—</td>
                                     </tr>
                                     <tr>
                                         <td>5秒（短時間ピーク）</td>
-                                        <td>2.0 A *1</td>
-                                        <td>2.0 A *1</td>
+                                        <td>2.0 A <sup class="annotation-mark">*1</sup></td>
+                                        <td>2.0 A <sup class="annotation-mark">*1</sup></td>
                                     </tr>
                                     <tr>
                                         <td>最大（ピーク）電流</td>
@@ -109,8 +109,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        *1: テスト結果より安全マージンを取った値です。<br>
-                        *3: 実際の出力電力は電池または電源の能力に依存します。
+                        <p>
+                            <sup class="annotation-mark">*1</sup> テスト結果より安全マージンを取った値です。<br>
+                            <sup class="annotation-mark">*3</sup> 実際の出力電力は電池または電源の能力に依存します。
+                        </p>
                     </div>
                 </div>
 
@@ -119,14 +121,13 @@
                         <img src="images/UGOKU-One/UGOKU-One_FET-output.png" width="40%" alt="FET出力端子図">
                         <div style="flex:1; min-width:240px;">
                             <p>Nch MOSFET（SSM3K333R）によるローサイド出力です。</p>
-                            <a href="ugoku-one_fet.html">詳細ページへ</a>
                             <div class="table-scroll">
                                 <table class="excel-table" aria-label="FET出力スペック">
                                     <thead>
                                         <tr>
                                             <th>項目</th>
                                             <th>仕様</th>
-                                        </tr>
+                                           </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -147,19 +148,23 @@
                             
                         </div>
                     </div>
-        <h2>IMU</h2>
-            <div class="display-flex gap-large flex-start">
-            <img src="images/UGOKU-One/UGOKU-One_IMU.png" width="40%" alt="IMU">
-                <div style="flex:1; min-width:240px;">
-                <p>BMI270</p>
-                </div>
-            </div>
-        <p></p>
 
         <h2>プログラムの書き込み</h2>
         <p></p>
 
         <h2>I/Oピン ユーザースイッチ</h2>
+        <p></p>
+
+        <h2>LED</h2>
+
+
+        <h2>IMU</h2>
+            <div class="display-flex gap-large flex-start">
+            <img src="images/UGOKU-One/UGOKU-One_IMU.png" width="40%" alt="IMU">
+                <div style="flex:1; min-width:240px;">
+                <p>BMI270を搭載しています。</p>
+                </div>
+            </div>
         <p></p>
 
     </div>
