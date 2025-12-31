@@ -7,6 +7,22 @@
     <link href="styles/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent || codeBlock.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -66,10 +82,212 @@
         
         <h2>使い方</h2>
 
-            <h3>使用例：ESP32を使ってLEDやサーボモータの操作、アナログ出力距離センサの読み取りをする（サンプルプログラム使用）</h3>
+            <h3>ESP32を使ってLEDやサーボモータの操作、アナログ入力値の表示（サンプルプログラム使用）</h3>
 
             <h4>ESP32の準備</h4>
-            <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad">こちら</a>を参照
+            <a href="https://github.com/UGOKU-Lab/UGOKU-Pad_Arduino">こちら</a>を参照
+
+            <h4>Arduino IDE での準備</h4>
+            <ul>
+                <li>BOARD MANAGER で ESP32 を検索して <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストールする</li>
+            </ul>
+            <img src="https://github.com/user-attachments/assets/34e671e7-9068-47e4-8431-86b137ea8c13" width="350">
+            <ul>
+                <li>LIBRARY MANAGER で <strong>UGOKU-Pad</strong> を検索してインストールする</li>
+                <li>LIBRARY MANAGER で <strong>ESP32Servo</strong> を検索してインストールする</li>
+            </ul>
+            <img src="https://github.com/user-attachments/assets/cae88e9d-53ed-4a1c-bf38-bd7de3d8b462" width="350">
+            <ul>
+                <li>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択する</li>
+            </ul>
+            <img src="https://github.com/user-attachments/assets/670f19c9-2996-4bbd-9af5-0fa0ecb96540" width="350">
+
+            <h2>UGOKU Pad の設定</h2>
+            <p>UGOKU Padをインストール</p>
+            <p>
+                <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console">
+                    <img src="https://github.com/user-attachments/assets/73952bbe-7f89-46e9-9a6e-cdc7eea8e7c8" alt="Get it on Google Play" height="60">
+                </a>
+                <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098">
+                    <img src="https://github.com/user-attachments/assets/e27e5d09-63d0-4a2e-9e14-0bb05dabd487" alt="Get it on Google Play" height="60">
+                </a>
+            </p>
+            <p>Console内の「ESP32 Arduino Sample」を使用</p>
+            <img src="https://github.com/user-attachments/assets/a0c7ed43-5082-4802-9647-cbb8cc861142" width="200">
+            <img src="https://github.com/user-attachments/assets/578605c3-9ea8-434b-b564-59bf12aa8233" width="200">
+
+            <h2>ピン配置</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>機能</th>
+                        <th>ピン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>デジタル出力</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <td>測距モジュール</td>
+                        <td>26</td>
+                    </tr>
+                    <tr>
+                        <td>RCサーボ</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>ローテーションサーボ</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>下記のサンプルスケッチをESP32に書き込みます。</p>
+
+            <details class="code-explanation">
+                <summary>サンプルスケッチの解説はこちら</summary>
+                <div class="explanation-content">
+                    <h3>ヘッダーとライブラリ読み込み</h3>
+                    <p>UGOKU Pad と通信するためのライブラリと、ESP32でサーボを使うためのライブラリを読み込みます。</p>
+                    <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
+#include &lt;ESP32Servo.h&gt;</code></pre>
+
+                    <h3>グローバル変数（プログラム全体で使うもの）</h3>
+                    <ul>
+                        <li><code>UGOKUPad</code> はUGOKU Padとやり取りするための箱（オブジェクト）です。</li>
+                        <li><code>isConnected</code> はスマホがつながっているかどうかを覚えておくフラグ（true/false）です。</li>
+                        <li><code>servo2</code> と <code>servo3</code> はサーボモーターを動かすための変数です。</li>
+                    </ul>
+                    <pre><code class="language-cpp">UGOKUPadController UGOKUPad;
+bool isConnected = false;
+
+Servo servo2;
+Servo servo3;</code></pre>
+
+                    <h3>接続されたときに呼ばれる関数</h3>
+                    <p>UGOKU PadがESP32に接続したときに実行されます。サーボを指定ピンに接続して（attach）、中央の90度に動かします。ローテーションサーボの場合は停止させます。</p>
+                    <pre><code class="language-cpp">void onConnect() {
+  isConnected = true;
+  servo2.attach(12);
+  servo3.attach(14);
+  servo2.write(90);
+  servo3.write(90);
+}</code></pre>
+
+                    <h3>切断されたときに呼ばれる関数</h3>
+                    <p>UGOKU Padが切断されたら呼ばれます。フラグを下ろして（false）、LEDなどの出力を消し、サーボの制御を止めて安全にします。</p>
+                    <pre><code class="language-cpp">void onDisconnect() {
+  isConnected = false;
+  digitalWrite(27, LOW);
+  servo2.detach();
+  servo3.detach();
+}</code></pre>
+
+                    <h3>初期化：<code>setup()</code></h3>
+                    <p>起動時に一度だけ動く部分です。</p>
+                    <ul>
+                        <li><code>UGOKUPad.begin("My ESP32")</code> でデバイス名を決めて通信を始めます。</li>
+                        <li>接続/切断のときに先ほどの関数を呼ぶよう登録します。</li>
+                        <li>ピンの役割を決めます。ピン26はセンサーなどの入力、ピン27はLEDなどの出力です。</li>
+                    </ul>
+                    <pre><code class="language-cpp">void setup() {
+  UGOKUPad.begin("My ESP32");
+  UGOKUPad.setConnectionHandlers(onConnect, onDisconnect);
+  pinMode(26, INPUT);
+  pinMode(27, OUTPUT);
+}</code></pre>
+
+                    <h3>繰り返し処理：<code>loop()</code></h3>
+                    <pre><code class="language-cpp">void loop() {
+  //Disconnected: stop outputs
+  //接続していないときにループに入らないようにしています。
+  if (!isConnected) return;
+
+  //Update UGOKU Pad data
+  //アプリから来た最新データを受け取ります。データに問題があれば中断します。
+  if (!UGOKUPad.update()) return;
+  
+  //Digital output from UGOKU Pad
+  //アプリの ch1（トグルスイッチ）を読み取りピン27をオン/オフします。
+  digitalWrite(27, UGOKUPad.read(1)); 
+  
+  //Servo control from UGOKU Pad
+  //アプリの ch2 と ch3 の値（0〜180）をサーボ角度(ローテーションサーボの場合は速度)にして動かします。
+  servo2.write(UGOKUPad.read(2)); 
+  servo3.write(UGOKUPad.read(3));
+  
+  //Analog read and send to UGOKU Pad
+  //アナログ入力ピンの値を読み、0〜4095の値を0〜100のパーセントに変換してからでアプリに送ります。
+  uint8_t percent = (analogRead(26) * 100U) / 4095U; // 0-100 from ADC.
+  UGOKUPad.write(5, percent); // Send 0-100 value.
+
+  //Small delay to avoid flooding
+  //
+  delay(50);
+}</code></pre>
+                </div>
+            </details>
+
+            
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+                <pre><code>#include &lt;UGOKU-Pad_Controller.h&gt;
+#include &lt;ESP32Servo.h&gt;
+
+UGOKUPadController UGOKUPad;
+bool isConnected = false;
+
+Servo servo2;
+Servo servo3;
+
+void onConnect() {
+  isConnected = true;
+  servo2.attach(12);
+  servo3.attach(14);
+  servo2.write(90);
+  servo3.write(90);
+}
+
+void onDisconnect() {
+  isConnected = false;
+  digitalWrite(27, LOW);
+  servo2.detach();
+  servo3.detach();
+}
+
+void setup() {
+  UGOKUPad.begin("My ESP32");
+  UGOKUPad.setConnectionHandlers(onConnect, onDisconnect);
+  pinMode(26, INPUT);
+  pinMode(27, OUTPUT);
+}
+
+void loop() {
+  //Disconnected: stop outputs
+  if (!isConnected) return;
+
+  //Update UGOKU Pad data
+  if (!UGOKUPad.update()) return;
+  
+  //Digital output from UGOKU Pad
+  digitalWrite(27, UGOKUPad.read(1)); 
+  
+  //Servo control from UGOKU Pad
+  servo2.write(UGOKUPad.read(2)); 
+  servo3.write(UGOKUPad.read(3));
+  
+  //Analog read and send to UGOKU Pad
+  uint8_t percent = (analogRead(26) * 100U) / 4095U; // 0-100 from ADC.
+  UGOKUPad.write(5, percent); // Send 0-100 value.
+
+  //Small delay to avoid flooding
+  delay(50);
+}</code></pre>
+            </div>
 
             <h4>アプリの操作</h4>
 

@@ -779,3 +779,153 @@ h1, h2, h3, h4, h5, h6 {
 .annotation-list li {
     margin-bottom: 4px;
 }
+
+/* =========================================
+   コードブロック (Code Blocks)
+   ========================================= */
+.code-block {
+    position: relative;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+.code-block code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.copy-btn:hover {
+    opacity: 1;
+    background-color: var(--primary-light);
+}
+
+.copy-btn.copied {
+    background-color: #48bb78;
+    color: var(--white);
+}
+/* =========================================
+   コード解説 (Code Explanation)
+   ========================================= */
+details.code-explanation {
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+details.code-explanation summary {
+    padding: 15px 20px;
+    background-color: var(--bg-light);
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--primary-color);
+    list-style: none; /* デフォルトの三角を消す */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+details.code-explanation summary:hover {
+    background-color: #eaeaea;
+}
+
+/* カスタムアイコン */
+details.code-explanation summary::after {
+    content: '\f078'; /* FontAwesome chevron-down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    transition: transform 0.3s;
+}
+
+details.code-explanation[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* WebKit系ブラウザのデフォルトマーカーを消す */
+details.code-explanation summary::-webkit-details-marker {
+    display: none;
+}
+
+.explanation-content {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.explanation-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+.explanation-content h3:first-child {
+    margin-top: 0;
+}
+
+.explanation-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.explanation-content ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.explanation-content li {
+    margin-bottom: 5px;
+}
+
+.explanation-content pre {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
