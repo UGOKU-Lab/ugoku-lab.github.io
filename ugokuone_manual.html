@@ -23,6 +23,7 @@
     <!-- メインコンテンツのコンテナ：ページの幅を制限して中央揃え -->
     <div class="content-container">
         <h1>UGOKU One ユーザーガイド</h1>
+        <h2>はじめに</h2>
 
         <h2>電源入力とアクチュエータ出力</h2>
             <h3>概要</h3>
@@ -50,10 +51,12 @@
                 <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。
                     逆接しないように注意してください。</p>
             <h3>電源選択</h3>
+
                 <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
                 <div class="display-flex gap-large flex-start" style="margin-top:12px;">
                 <img src="images/UGOKU-One/UGOKU-One_power-selection.png" width="40%" class="img-left-gap" alt="DCモータドライバブロック図">
                     <div style="flex:1; min-width:240px;">  
+                        <p>ピンヘッダ上のジャンパの位置を変えることでアクチュエータを駆動する電力源を選択できます。</p>
                         <ul>
                             <li>アクチュエータに供給する電力は<span class="orange-highlight">5V系統</span>と<span class="orange-highlight">外部電源入力</span>の2つから選択できます</li>
                             <li>サーボモータ出力と<span class="orange-highlight">DCモータ/FET出力</span>に供給する系統をそれぞれ独立して選択が可能です</li>
@@ -73,13 +76,16 @@
                 <div class="display-flex gap-large flex-start">
                     <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
                     <div style="flex:1; min-width:240px;">
-                        <p>TB67H303HGを2個搭載しています</p>
+                        <p>モータドライブICTB67H303HGを2個搭載しています。<br>
+                        260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
+                        </p>
+                        <strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）
                         <div class="table-scroll">
                             <table class="excel-table" aria-label="DCモータ出力スペック">
                                 <thead>
                                     <tr>
                                         <th>項目</th>
-                                        <th>2個同時使用時 (1chあたり) </th>
+                                        <th>2個同時使用時</th>
                                         <th>1個のみ使用時</th>
                                     </tr>
                                 </thead>
@@ -90,33 +96,28 @@
                                     </tr>
                                     <tr>
                                         <td>連続電流</td>
-                                        <td>1.3 A <sup class="annotation-mark">*1 *2</sup></td>
-                                        <td>1.5 A <sup class="annotation-mark">*1 *2</sup></td>
+                                        <td>1.3 A </td>
+                                        <td>1.5 A </td>
                                     </tr>
                                     <tr>
-                                        <td>短時間電流 (90s) </td>
-                                        <td>1.5 A <sup class="annotation-mark">*1 *2</sup></td>
+                                        <td>短時間電流 (90s<sup class="annotation-mark">*1</sup>)</td>
+                                        <td>1.5 A </td>
                                         <td>—</td>
                                     </tr>
                                     <tr>
-                                        <td>短時間電流 (5s)</td>
-                                        <td>2.0 A <sup class="annotation-mark">*1 *2</sup></td>
-                                        <td>2.0 A <sup class="annotation-mark">*1 *2</sup></td>
+                                        <td>短時間電流 (5s<sup class="annotation-mark">*1</sup>)</td>
+                                        <td>2.0 A </td>
+                                        <td>2.0 A </td>
                                     </tr>
                                     <tr>
-                                        <td>瞬時最大電流 (モータドライブIC最大絶対定格値)</td>
-                                        <td colspan="2">3.5 A <sup class="annotation-mark">*3</sup></td>
-                                    </tr>
-                                    <tr>
-                                        <td>保護機能</td>
-                                        <td colspan="2">過電流保護、過熱保護</td>
+                                        <td>瞬時最大電流</td>
+                                        <td colspan="2">3.5 A (モータードライバIC最大絶対定格)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p>
-                            <sup class="annotation-mark">*1</sup> テスト結果より安全マージンを取った値です。<br>
-                            <sup class="annotation-mark">*2</sup> 実際の出力電力は電池または電源の能力に依存します。
+                            <sup class="annotation-mark">*1</sup> 時間はテスト結果より安全マージンを取った値です<br>
                         </p>
                     </div>
                 </div>
