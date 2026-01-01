@@ -6,10 +6,13 @@
     <title>UGOKU Lab</title>
     <link href="styles/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <script>
         function copyToClipboard(button) {
-            const codeBlock = button.nextElementSibling;
+            const codeBlock = button.nextElementSibling.querySelector('code');
             const code = codeBlock.textContent || codeBlock.innerText;
             navigator.clipboard.writeText(code).then(() => {
                 button.innerHTML = '<i class="fas fa-check"></i> Copied!';
@@ -26,7 +29,6 @@
 </head>
 
 <body>
-
     <header class="header">
         <a href="index.html">
             <h1>UGOKU Lab</h1>
@@ -40,12 +42,10 @@
     <div class="content-container">
     
         <h1>UGOKU Pad</h1>
-        
         <p>
-            <strong>お知らせ 2025/6/16</strong><br>
-            Google Play, App Storeにて UGOKU PadをV2.0.0に更新しました。<br>
-            データ転送方式をBLEに適したものに変更し、複数チャンネル同時使用時に発生していた遅延を改善しました。<br>
-            以前のサンプルプログラムには前方互換性がないため、サンプルプログラムも最新のものをご利用ください。
+        UGOKU Padは、ESP32などのマイコンとBluetoothでスマートフォンを接続し、簡単に操作できるアプリです。<br>
+        ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。<br>
+        モーターの操作やセンサー値の表示など、様々な用途でつかえます。<br>
         </p>
 
         <figure class="video">
@@ -66,84 +66,108 @@
                     </a>
                     
                     <!-- Repositoryボタン -->
-                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="orange-button">Repository</a>
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="orange-button"> App Repository</a>
                     
                     <!-- ESP32 Arduino sample Repositoryボタン -->
-                    <a href="https://github.com/UGOKU-Lab/ESP32_Arduino_for_UGOKU_Pad" target="_blank" class="orange-button">ESP32 Arduino sample Repository</a>
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad_Arduino" target="_blank" class="orange-button">Arduino library</a>
                 </div>
             </div>
         </div>
 
-        <h2>概要</h2>
-        <p>
-        UGOKU Padは、ESP32などのマイコンと無線でスマートフォンを接続し、簡単に操作できるアプリです。ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。モーターの操作やセンサーデータをモニタリングなど、様々な用途で活用いただけます。
-        ESP32用のArduinoサンプルコードも用意しているので、気軽にお試しいただけます。
-        </p>
         
-        <h2>使い方</h2>
+        
+        <h2>スタートガイド</h2>
+        <div class="display-flex cols-40-60 flex-start">
+            <div class="col">
+                <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad overview" class="img-responsive">
+            </div>
+            <div class="col" style="min-width:240px;">
+                <p>UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU Padと通信できます。<br>
+                    最小コード例：
+                </p>
+                    <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard(this)">
+                <i class="fas fa-copy"></i> Copy
+            </button>
+                <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
+UGOKUPadController UGOKUPad;
 
-            <h3>ESP32を使ってLEDやサーボモータの操作、アナログ入力値の表示（サンプルプログラム使用）</h3>
+void setup() {
+  UGOKUPad.begin("UGOKU Pad ESP32");
+}
 
-            <h4>ESP32の準備</h4>
-            <a href="https://github.com/UGOKU-Lab/UGOKU-Pad_Arduino">こちら</a>を参照
+void loop() {
+  if (!UGOKUPad.update()) return; // 受信値を更新
+  uint8_t value = UGOKUPad.read(1); // ch1 の値を取得
+  UGOKUPad.write(2, 123); // ch2 に 123 の値を送信
+  delay(50);
+}</code></pre>
+        </div>
+        </div>
+        </div>
+                
+        <h2>サンプルスケッチ： UGOKU Pad で ESP32 に接続したサーボモーターを操作する / UGOKU PadでADC読取値を表示する </h2>
+            
+            <h3>ESP32の準備</h3>
+            <div class="display-flex cols-40-60 flex-start">
+            <div class="col">
+            <img src="images/UGOKU-Pad/ESP_sample_wire.png" alt="ESP32 配線サンプル" class="img-responsive">
+            </div>
+                <div class="col" style="min-width:240px;">
 
-            <h4>Arduino IDE での準備</h4>
-            <ul>
-                <li>BOARD MANAGER で ESP32 を検索して <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストールする</li>
-            </ul>
-            <img src="https://github.com/user-attachments/assets/34e671e7-9068-47e4-8431-86b137ea8c13" width="350">
-            <ul>
-                <li>LIBRARY MANAGER で <strong>UGOKU-Pad</strong> を検索してインストールする</li>
-                <li>LIBRARY MANAGER で <strong>ESP32Servo</strong> を検索してインストールする</li>
-            </ul>
-            <img src="https://github.com/user-attachments/assets/cae88e9d-53ed-4a1c-bf38-bd7de3d8b462" width="350">
-            <ul>
-                <li>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択する</li>
-            </ul>
-            <img src="https://github.com/user-attachments/assets/670f19c9-2996-4bbd-9af5-0fa0ecb96540" width="350">
+                    <p>ESP32とUGOKU Padを接続するための配線例です。<br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>機能</th>
+                                <th>ピン</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>デジタル出力</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>測距モジュール</td>
+                                <td>26</td>
+                            </tr>
+                            <tr>
+                                <td>RCサーボ</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>ローテーションサーボ</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <h2>UGOKU Pad の設定</h2>
-            <p>UGOKU Padをインストール</p>
-            <p>
-                <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console">
-                    <img src="https://github.com/user-attachments/assets/73952bbe-7f89-46e9-9a6e-cdc7eea8e7c8" alt="Get it on Google Play" height="60">
-                </a>
-                <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098">
-                    <img src="https://github.com/user-attachments/assets/e27e5d09-63d0-4a2e-9e14-0bb05dabd487" alt="Get it on Google Play" height="60">
-                </a>
-            </p>
-            <p>Console内の「ESP32 Arduino Sample」を使用</p>
-            <img src="https://github.com/user-attachments/assets/a0c7ed43-5082-4802-9647-cbb8cc861142" width="200">
-            <img src="https://github.com/user-attachments/assets/578605c3-9ea8-434b-b564-59bf12aa8233" width="200">
+            <h3>Arduino IDE の準備</h3>
+            <div class="display-flex flex-wrap gap-medium">
+                <div class="project-content">
+                    <h4>ESP32ボードのインストール</h4>
+                    <p>BOARD MANAGER で <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストール</p>
+                    <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
+                </div>
 
-            <h2>ピン配置</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>機能</th>
-                        <th>ピン</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>デジタル出力</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>測距モジュール</td>
-                        <td>26</td>
-                    </tr>
-                    <tr>
-                        <td>RCサーボ</td>
-                        <td>14</td>
-                    </tr>
-                    <tr>
-                        <td>ローテーションサーボ</td>
-                        <td>12</td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="project-content">
+                    <h4>ライブラリのインストール</h4>
+                    <p>LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
+                        <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library" class="img-responsive">
+                        <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
+                </div>
 
+                <div class="project-content">
+                    <h4>ボードの選択</h4>
+                    <p>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
+                    <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot" class="img-responsive"><br>    
+                    </div>
+            </div>
+
+            <h3>サンプルスケッチの書き込み</h3>
             <p>下記のサンプルスケッチをESP32に書き込みます。</p>
 
             <details class="code-explanation">
@@ -235,7 +259,7 @@ Servo servo3;</code></pre>
                 <button class="copy-btn" onclick="copyToClipboard(this)">
                     <i class="fas fa-copy"></i> Copy
                 </button>
-                <pre><code>#include &lt;UGOKU-Pad_Controller.h&gt;
+                <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
 #include &lt;ESP32Servo.h&gt;
 
 UGOKUPadController UGOKUPad;
@@ -289,7 +313,7 @@ void loop() {
 }</code></pre>
             </div>
 
-            <h4>アプリの操作</h4>
+            <h3>アプリの操作</h3>
 
             <ol>
                 <li>左上のメニューボタンをタップ</li>
@@ -358,10 +382,6 @@ void loop() {
         </section>
 
         </div>
-
-        <br>
-        <br>
-
     </div>
     
     <footer>
