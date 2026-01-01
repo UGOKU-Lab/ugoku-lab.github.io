@@ -170,89 +170,6 @@ void loop() {
             <h3>サンプルスケッチの書き込み</h3>
             <p>下記のサンプルスケッチをESP32に書き込みます。</p>
 
-            <details class="code-explanation">
-                <summary>サンプルスケッチの解説はこちら</summary>
-                <div class="explanation-content">
-                    <h3>ヘッダーとライブラリ読み込み</h3>
-                    <p>UGOKU Pad と通信するためのライブラリと、ESP32でサーボを使うためのライブラリを読み込みます。</p>
-                    <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
-#include &lt;ESP32Servo.h&gt;</code></pre>
-
-                    <h3>グローバル変数（プログラム全体で使うもの）</h3>
-                    <ul>
-                        <li><code>UGOKUPad</code> はUGOKU Padとやり取りするための箱（オブジェクト）です。</li>
-                        <li><code>isConnected</code> はスマホがつながっているかどうかを覚えておくフラグ（true/false）です。</li>
-                        <li><code>servo2</code> と <code>servo3</code> はサーボモーターを動かすための変数です。</li>
-                    </ul>
-                    <pre><code class="language-cpp">UGOKUPadController UGOKUPad;
-bool isConnected = false;
-
-Servo servo2;
-Servo servo3;</code></pre>
-
-                    <h3>接続されたときに呼ばれる関数</h3>
-                    <p>UGOKU PadがESP32に接続したときに実行されます。サーボを指定ピンに接続して（attach）、中央の90度に動かします。ローテーションサーボの場合は停止させます。</p>
-                    <pre><code class="language-cpp">void onConnect() {
-  isConnected = true;
-  servo2.attach(12);
-  servo3.attach(14);
-  servo2.write(90);
-  servo3.write(90);
-}</code></pre>
-
-                    <h3>切断されたときに呼ばれる関数</h3>
-                    <p>UGOKU Padが切断されたら呼ばれます。フラグを下ろして（false）、LEDなどの出力を消し、サーボの制御を止めて安全にします。</p>
-                    <pre><code class="language-cpp">void onDisconnect() {
-  isConnected = false;
-  digitalWrite(27, LOW);
-  servo2.detach();
-  servo3.detach();
-}</code></pre>
-
-                    <h3>初期化：<code>setup()</code></h3>
-                    <p>起動時に一度だけ動く部分です。</p>
-                    <ul>
-                        <li><code>UGOKUPad.begin("My ESP32")</code> でデバイス名を決めて通信を始めます。</li>
-                        <li>接続/切断のときに先ほどの関数を呼ぶよう登録します。</li>
-                        <li>ピンの役割を決めます。ピン26はセンサーなどの入力、ピン27はLEDなどの出力です。</li>
-                    </ul>
-                    <pre><code class="language-cpp">void setup() {
-  UGOKUPad.begin("My ESP32");
-  UGOKUPad.setConnectionHandlers(onConnect, onDisconnect);
-  pinMode(26, INPUT);
-  pinMode(27, OUTPUT);
-}</code></pre>
-
-                    <h3>繰り返し処理：<code>loop()</code></h3>
-                    <pre><code class="language-cpp">void loop() {
-  //Disconnected: stop outputs
-  //接続していないときにループに入らないようにしています。
-  if (!isConnected) return;
-
-  //Update UGOKU Pad data
-  //アプリから来た最新データを受け取ります。データに問題があれば中断します。
-  if (!UGOKUPad.update()) return;
-  
-  //Digital output from UGOKU Pad
-  //アプリの ch1（トグルスイッチ）を読み取りピン27をオン/オフします。
-  digitalWrite(27, UGOKUPad.read(1)); 
-  
-  //Servo control from UGOKU Pad
-  //アプリの ch2 と ch3 の値（0〜180）をサーボ角度(ローテーションサーボの場合は速度)にして動かします。
-  servo2.write(UGOKUPad.read(2)); 
-  servo3.write(UGOKUPad.read(3));
-  
-  //Analog read and send to UGOKU Pad
-  //アナログ入力ピンの値を読み、0〜4095の値を0〜100のパーセントに変換してからでアプリに送ります。
-  uint8_t percent = (analogRead(26) * 100U) / 4095U; // 0-100 from ADC.
-  UGOKUPad.write(5, percent); // Send 0-100 value.
-
-  //Small delay to avoid flooding
-  //
-  delay(50);
-}</code></pre>
-                </div>
-            </details>
 
             
             <div class="code-block">
@@ -268,6 +185,7 @@ bool isConnected = false;
 Servo servo2;
 Servo servo3;
 
+//UGOKU PadがESP32に接続したときに実行されます。サーボを指定ピンに接続して（attach）、中央の90度に動かします。ローテーションサーボの場合は停止させます。
 void onConnect() {
   isConnected = true;
   servo2.attach(12);
@@ -276,6 +194,7 @@ void onConnect() {
   servo3.write(90);
 }
 
+//UGOKU Padが切断されたら呼ばれる関数。フラグを下ろして（false）、LEDなどの出力を消し、サーボの制御を止めて安全にします。
 void onDisconnect() {
   isConnected = false;
   digitalWrite(27, LOW);
@@ -283,6 +202,7 @@ void onDisconnect() {
   servo3.detach();
 }
 
+//起動時に一度だけ動く部分です。
 void setup() {
   UGOKUPad.begin("My ESP32");
   UGOKUPad.setConnectionHandlers(onConnect, onDisconnect);
@@ -290,25 +210,25 @@ void setup() {
   pinMode(27, OUTPUT);
 }
 
+//繰り返しの処理
 void loop() {
-  //Disconnected: stop outputs
+  //接続していないときにループに入らないようにしています。
   if (!isConnected) return;
 
-  //Update UGOKU Pad data
+  //アプリから来た最新データを受け取ります。データに問題があれば中断します。
   if (!UGOKUPad.update()) return;
   
-  //Digital output from UGOKU Pad
+  //アプリの ch1（トグルスイッチ）を読み取りピン27をオン/オフします。
   digitalWrite(27, UGOKUPad.read(1)); 
   
-  //Servo control from UGOKU Pad
+  //アプリの ch2 と ch3 の値（0〜180）をサーボ角度(ローテーションサーボの場合は速度)にして動かします。
   servo2.write(UGOKUPad.read(2)); 
   servo3.write(UGOKUPad.read(3));
   
-  //Analog read and send to UGOKU Pad
+  //アナログ入力ピンの値を読み、0〜4095の値を0〜100のパーセントに変換してからでアプリに送ります。
   uint8_t percent = (analogRead(26) * 100U) / 4095U; // 0-100 from ADC.
   UGOKUPad.write(5, percent); // Send 0-100 value.
 
-  //Small delay to avoid flooding
   delay(50);
 }</code></pre>
             </div>
