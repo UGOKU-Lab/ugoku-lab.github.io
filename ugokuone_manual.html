@@ -28,9 +28,11 @@
         <h2>電源入力とアクチュエータ出力</h2>
             <h3>概要</h3>
                 <!-- 画像とテキストを横並びに配置：左に画像、右に説明文 -->
-                <div class="display-flex gap-large flex-start">
-                    <img src="images/UGOKU-One/UGOKU-One_power-and-actuator.png" width="40%" alt="電源入力とアクチュエータ出力">
-                    <div style="flex:1; min-width:240px;">  
+                <div class="display-flex cols-40-60 flex-start">
+                    <div class="col">
+                        <img src="images/UGOKU-One/UGOKU-One_power-and-actuator.png" alt="電源入力とアクチュエータ出力" class="img-responsive">
+                    </div>
+                    <div class="col" style="min-width:240px;">
                         <ul>
                             <li>UGOKU One への電源入力は主に<span class="orange-highlight">単4電池</span>、<span class="orange-highlight">USB接続</span>、<span class="orange-highlight">外部電源入力</span> の3系統があります</li>
                             <li><span class="orange-highlight">単4電池</span>と<span class="orange-highlight">USB接続</span>はダイオードを介して<span class="orange-highlight">5V系統</span>に接続されています</li>
@@ -38,11 +40,11 @@
                             <li><span class="orange-highlight">単4電池</span>の電源は<span class="orange-highlight">単4電池電源スイッチ</span>でオン/オフが可能です</li>
                         </ul>
                         <!-- 画像を親要素の幅いっぱいに広げる -->
-                        <img src="images/UGOKU-One/UGOKU-One_power-diagram.png" style="margin-top:15px;" class="width-full" alt="電源入力とアクチュエータ出力図">
+                        <img src="images/UGOKU-One/UGOKU-One_power-diagram.png" alt="電源入力とアクチュエータ出力図" class="img-responsive">
                     </div>
                 </div>
             <h3>単4電池</h3>
-                <div class="display-flex" gap-large flex-start style="margin-top:12px;">
+                <div class="display-flex flex-start" style="margin-top:12px;">
                 <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
                 </div>
             <h3>USB接続</h3>
@@ -53,9 +55,11 @@
             <h3>電源選択</h3>
 
                 <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
-                <div class="display-flex gap-large flex-start" style="margin-top:12px;">
-                <img src="images/UGOKU-One/UGOKU-One_power-selection.png" width="40%" class="img-left-gap" alt="DCモータドライバブロック図">
-                    <div style="flex:1; min-width:240px;">  
+                <div class="display-flex cols-40-60 flex-start" style="margin-top:12px;">
+                    <div class="col">
+                        <img src="images/UGOKU-One/UGOKU-One_power-selection.png" alt="DCモータドライバブロック図" class="img-responsive">
+                    </div>
+                    <div class="col" style="min-width:240px;">  
                         <p>ピンヘッダ上のジャンパの位置を変えることでアクチュエータを駆動する電力源を選択できます。</p>
                         <ul>
                             <li>アクチュエータに供給する電力は<span class="orange-highlight">5V系統</span>と<span class="orange-highlight">外部電源入力</span>の2つから選択できます</li>
@@ -66,16 +70,20 @@
                     </div>
                 </div>
             <h3>サーボモータ出力</h3>
-                <div class="display-flex gap-large flex-start">
-                    <img src="images/UGOKU-One/UGOKU-One_SERVO.png" width="40%" alt="サーボモータ出力端子図">
-                    <div style="flex:1; min-width:240px;">
+                <div class="display-flex cols-40-60 flex-start">
+                    <div class="col">
+                        <img src="images/UGOKU-One/UGOKU-One_with_SERVO.png" alt="サーボモータ出力端子図" class="img-responsive">
+                    </div>
+                    <div class="col" style="min-width:240px;">
                         <p>サーボモータ用の電源出力端子です。</p>   
                     </div> 
                 </div>
             <h3>DCモータ出力 </h3>
-                <div class="display-flex gap-large flex-start">
-                    <img src="images/UGOKU-One/UGOKU-One_DC-motor-output.png" width="40%" alt="DCモータ出力端子図">
-                    <div style="flex:1; min-width:240px;">
+                <div class="display-flex cols-40-60 flex-start">
+                    <div class="col">
+                        <img src="images/UGOKU-One/UGOKU-One_with_Motor.png" alt="DCモータ出力端子図" class="img-responsive">
+                    </div>
+                    <div class="col" style="min-width:240px;">
                         <p>モータドライブICTB67H303HGを2個搭載しています。<br>
                         260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
                         </p>
@@ -123,9 +131,11 @@
                 </div>
 
             <h3>FET出力</h3>
-                    <div class="display-flex gap-large flex-start">
-                        <img src="images/UGOKU-One/UGOKU-One_FET-output.png" width="40%" alt="FET出力端子図">
-                        <div style="flex:1; min-width:240px;">
+                    <div class="display-flex cols-40-60 flex-start">
+                        <div class="col">
+                            <img src="images/UGOKU-One/UGOKU-One_FET-output.png" alt="FET出力端子図" class="img-responsive">
+                        </div>
+                        <div class="col" style="min-width:240px;">
                             <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
                             <div class="table-scroll">
                                 <table class="excel-table" aria-label="FET出力スペック">
@@ -165,10 +175,12 @@
 
 
         <h2>IMU</h2>
-            <div class="display-flex gap-large flex-start" style="align-items: center;">
-                <img src="images/UGOKU-One/UGOKU-One_IMU.png" width="33%" alt="IMU">
-                <img src="images/UGOKU-One/UGOKU-One_IMU_LO.png" width="30%" alt="BMI270">
-                <div style="flex:1; min-width:240px; align-self: flex-start;">
+            <div class="display-flex cols-40-60 flex-start" style="align-items: center;">
+                <div class="col">
+                    <img src="images/UGOKU-One/UGOKU-One_IMU.png" alt="IMU" class="img-responsive">
+                    <img src="images/UGOKU-One/UGOKU-One_IMU_LO.png" alt="BMI270" class="img-responsive">
+                </div>
+                <div class="col" style="min-width:240px; align-self: flex-start;">
                     <p>
                     6軸IMUのBMI270を搭載しています。<br>
                     21, 22ピンからI2Cで接続します。<br>
