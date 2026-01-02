@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,48 +35,53 @@
             <h1>UGOKU Lab</h1>
         </a>
         <div class="social-icons">
-            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i>
-            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i
+                    class="fa-brands fa-x-twitter"></i>
+                <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
     </header>
 
     <div class="content-container">
-    
+
         <h1>UGOKU Pad</h1>
         <p>
-        UGOKU Padは、ESP32などのマイコンとBluetoothでスマートフォンを接続し、簡単に操作できるアプリです。<br>
-        ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。<br>
-        モーターの操作やセンサー値の表示など、様々な用途でつかえます。<br>
+            UGOKU Padは、ESP32などのマイコンとBluetoothでスマートフォンを接続し、簡単に操作できるアプリです。<br>
+            ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。<br>
+            モーターの操作やセンサー値の表示など、様々な用途でつかえます。<br>
         </p>
 
         <figure class="video">
             <video controls src="https://tomohiroaoki.com/wp-content/uploads/2025/07/UGOKU-Pad_PV_small.mp4"></video>
         </figure>
-        
+
         <div class="project">
             <div class="project-content">
                 <div class="buttons-row">
                     <!-- Google Playボタン -->
-                    <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja" target="_blank">
+                    <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja"
+                        target="_blank">
                         <img src="images/button/google-play-badge.png" alt="Get it on Google Play" class="store-badge">
                     </a>
-                    
+
                     <!-- App Storeボタン -->
                     <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098" target="_blank">
-                        <img src="images/button/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" class="store-badge">
+                        <img src="images/button/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                            alt="Download on the App Store" class="store-badge">
                     </a>
-                    
+
                     <!-- Repositoryボタン -->
-                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="orange-button"> App Repository</a>
-                    
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad" target="_blank" class="orange-button"> App
+                        Repository</a>
+
                     <!-- ESP32 Arduino sample Repositoryボタン -->
-                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad_Arduino" target="_blank" class="orange-button">Arduino library</a>
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-Pad_Arduino" target="_blank"
+                        class="orange-button">Arduino library</a>
                 </div>
             </div>
         </div>
 
-        
-        
+
+
         <h2>スタートガイド</h2>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
@@ -85,11 +91,11 @@
                 <p>UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU Padと通信できます。<br>
                     最小コード例：
                 </p>
-                    <div class="code-block">
-            <button class="copy-btn" onclick="copyToClipboard(this)">
-                <i class="fas fa-copy"></i> Copy
-            </button>
-                <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
 UGOKUPadController UGOKUPad;
 
 void setup() {
@@ -102,81 +108,83 @@ void loop() {
   UGOKUPad.write(2, 123); // ch2 に 123 の値を送信
   delay(50);
 }</code></pre>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-                
+
         <h2>サンプルスケッチ： UGOKU Pad で ESP32 に接続したサーボモーターを操作する / UGOKU PadでADC読取値を表示する </h2>
-            
-            <h3>ESP32の準備</h3>
-            <div class="display-flex cols-40-60 flex-start">
+
+        <h3>ESP32の準備</h3>
+        <div class="display-flex cols-40-60 flex-start">
             <div class="col">
-            <img src="images/UGOKU-Pad/ESP_sample_wire.png" alt="ESP32 配線サンプル" class="img-responsive">
+                <img src="images/UGOKU-Pad/ESP_sample_wire.png" alt="ESP32 配線サンプル" class="img-responsive">
             </div>
-                <div class="col" style="min-width:240px;">
+            <div class="col" style="min-width:240px;">
 
-                    <p>ESP32とUGOKU Padを接続するための配線例です。<br>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>機能</th>
-                                <th>ピン</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>デジタル出力</td>
-                                <td>27</td>
-                            </tr>
-                            <tr>
-                                <td>測距モジュール</td>
-                                <td>26</td>
-                            </tr>
-                            <tr>
-                                <td>RCサーボ</td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td>ローテーションサーボ</td>
-                                <td>12</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p>ESP32とUGOKU Padを接続するための配線例です。<br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>機能</th>
+                            <th>ピン</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>デジタル出力</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>測距モジュール</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>RCサーボ</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>ローテーションサーボ</td>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            <h3>Arduino IDE の準備</h3>
-            <div class="display-flex flex-wrap gap-medium">
-                <div class="project-content">
-                    <h4>ESP32ボードのインストール</h4>
-                    <p>BOARD MANAGER で <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストール</p>
-                    <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
-                </div>
-
-                <div class="project-content">
-                    <h4>ライブラリのインストール</h4>
-                    <p>LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
-                        <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library" class="img-responsive">
-                        <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
-                </div>
-
-                <div class="project-content">
-                    <h4>ボードの選択</h4>
-                    <p>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
-                    <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot" class="img-responsive"><br>    
-                    </div>
+        <h3>Arduino IDE の準備</h3>
+        <div class="display-flex flex-wrap gap-medium">
+            <div class="project-content">
+                <h4>ESP32ボードのインストール</h4>
+                <p>BOARD MANAGER で <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストール</p>
+                <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
             </div>
 
-            <h3>サンプルスケッチの書き込み</h3>
-            <p>下記のサンプルスケッチをESP32に書き込みます。</p>
+            <div class="project-content">
+                <h4>ライブラリのインストール</h4>
+                <p>LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
+                <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
+                    class="img-responsive">
+                <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
+            </div>
+
+            <div class="project-content">
+                <h4>ボードの選択</h4>
+                <p>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
+                <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot"
+                    class="img-responsive"><br>
+            </div>
+        </div>
+
+        <h3>サンプルスケッチの書き込み</h3>
+        <p>下記のサンプルスケッチをESP32に書き込みます。</p>
 
 
-            
-            <div class="code-block">
-                <button class="copy-btn" onclick="copyToClipboard(this)">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-                <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
+
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard(this)">
+                <i class="fas fa-copy"></i> Copy
+            </button>
+            <pre><code class="language-cpp">#include &lt;UGOKU-Pad_Controller.h&gt;
 #include &lt;ESP32Servo.h&gt;
 
 UGOKUPadController UGOKUPad;
@@ -231,28 +239,28 @@ void loop() {
 
   delay(50);
 }</code></pre>
-            </div>
+        </div>
 
-            <h3>アプリの操作</h3>
+        <h3>アプリの操作</h3>
 
-            <ol>
-                <li>左上のメニューボタンをタップ</li>
-                <li>Console をタップ</li>
-                <li>Sample: ESP32 Arduino Sampleを選択</li>
-                <li>Selectをタップした後Scan Deviceをタップ</li>
-                <li>My ESP32を選択する</li>
-                <li>接続のアイコンが表示されるのを確認する</li>
-                <li>戻るボタンから操作画面に戻る</li>
-            </ol>
+        <ol>
+            <li>左上のメニューボタンをタップ</li>
+            <li>Console をタップ</li>
+            <li>Sample: ESP32 Arduino Sampleを選択</li>
+            <li>Selectをタップした後Scan Deviceをタップ</li>
+            <li>My ESP32を選択する</li>
+            <li>接続のアイコンが表示されるのを確認する</li>
+            <li>戻るボタンから操作画面に戻る</li>
+        </ol>
 
-            <img src="images/UGOKU-Pad/sample-useage.png" alt="sample-useage" class="full-width">
+        <img src="images/UGOKU-Pad/sample-useage.png" alt="sample-useage" class="full-width">
 
         <section>
             <h2>BLE通信について</h2>
             <p>
                 <strong>Flutter</strong> の <strong>flutter_blue_plus</strong> ライブラリを用いて、Android/iOS の標準BLEに対応しています。<br>
-                チャンネル・バリュー・チェックサムの3バイトのデータを単位として送受信します。<br>
-                最大9チャンネル分のデータを1パケットに集約して送受信することでBLE通信を効率化し、低遅延を実現しています。
+                1回(1パケット)の通信は <strong>19バイト固定</strong> です。<br>
+                (チャンネル, バリュー) のペア9組と、全体のチェックサム1バイトで構成することでBLE通信を効率化し、低遅延を実現しています。
             </p>
 
             <table>
@@ -260,33 +268,24 @@ void loop() {
                     <tr>
                         <th>要素</th>
                         <th>役割</th>
-                        <th>単位サイズ</th>
-                        <th>9チャンネル時の合計</th>
+                        <th>サイズ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>チャンネル</td>
-                        <td>各ウィジェット・軸に割り当てる任意の番号 (0-255)</td>
-                        <td>1バイト</td>
-                        <td>9バイト</td>
-                    </tr>
-                    <tr>
-                        <td>バリュー</td>
-                        <td>各ウィジェットで送信または受信する値 (0-255)</td>
-                        <td>1バイト</td>
-                        <td>9バイト</td>
+                        <td>データペア (x9)</td>
+                        <td>(チャンネル, バリュー) のペア × 9組</td>
+                        <td>18バイト (2バイト×9)</td>
                     </tr>
                     <tr>
                         <td>チェックサム</td>
-                        <td>チャンネルとバリューの排他的論理和</td>
-                        <td>1バイト</td>
+                        <td>上記18バイトの排他的論理和 (XOR)</td>
                         <td>1バイト</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" style="text-align: right;">合計</td>
+                        <td colspan="2" style="text-align: right;">合計</td>
                         <td>19バイト</td>
                     </tr>
                 </tfoot>
@@ -295,18 +294,20 @@ void loop() {
             <p>50msごとに呼び出される <code>periodicSend()</code> により、以下を実行します。</p>
             <ul>
                 <li>最大9チャンネル分のデータを1パケットに集約</li>
-                <li>XORチェックサムの計算</li>
+                <li>9チャンネルに満たない場合は、残りをダミーデータ(0)で埋めて19バイトにします</li>
+                <li>先頭18バイトのXORチェックサムを計算して末尾に付与</li>
                 <li>Write Without Response で BLE 送信</li>
                 <li>9チャンネル超過分は自動的に複数パケットへ分割して送信</li>
             </ul>
         </section>
 
-        </div>
     </div>
-    
+    </div>
+
     <footer>
         <p>&copy; 2025 UGOKU Lab</p>
     </footer>
 
 </body>
+
 </html>
