@@ -20,6 +20,7 @@
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script src="scripts/i18n.js"></script>
     <script>
         function copyToClipboard(button) {
             const codeBlock = button.nextElementSibling.querySelector('code');
@@ -41,7 +42,7 @@
 <body>
     <header class="header">
         <a href="index.html">
-            <h1>UGOKU Lab</h1>
+            <h1 data-i18n="site-title">UGOKU Lab</h1>
         </a>
         <div class="social-icons">
             <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i
@@ -52,8 +53,8 @@
 
     <div class="content-container">
 
-        <h1>UGOKU Pad</h1>
-        <p>
+        <h1 data-i18n="site-title">UGOKU Pad</h1>
+        <p data-i18n="ugokupad-desc">
             UGOKU Padは、ESP32などのマイコンとBluetoothでスマートフォンを接続し、簡単に操作できるアプリです。<br>
             ジョイスティックやスライダー、ボタンなど、色々なウィジェットを組み合わせて、自分だけの操作パネルを作成できます。<br>
             モーターの操作やセンサー値の表示など、様々な用途でつかえます。<br>
@@ -91,22 +92,22 @@
 
 
 
-        <h2>特徴</h2>
-        <p>
+        <h2 data-i18n="features-title">特徴</h2>
+        <p data-i18n="features-desc">
             操作パネル(Console)上に、トグルスイッチやジョイスティックなどの入力ウィジェット、Value Monitor や Line Chart などのモニターウィジェットを任意の位置やサイズで配置できます。<br>
             各ウィジェットには任意のチャンネル番号を設定できます。
         </p>
         <img src="images/UGOKU-Pad/features.png" alt="UGOKU Pad Features" class="img-responsive"
             style="width: 80%; margin: 0 auto;">
 
-        <h2>スタートガイド</h2>
+        <h2 data-i18n="start-guide-title">スタートガイド</h2>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
                 <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad overview" class="img-responsive">
             </div>
             <div class="col" style="min-width:240px;">
-                <p>UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU Padと通信できます。<br>
-                    最小コード例：
+                <p data-i18n="start-guide-desc">UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU Padと通信できます。<br>
+                    <span data-i18n="min-code-example">最小コード例：</span>
                 </p>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyToClipboard(this)">
@@ -129,38 +130,38 @@ void loop() {
             </div>
         </div>
 
-        <h2>サンプルスケッチ： UGOKU Pad で ESP32 に接続したサーボモーターを操作する / UGOKU PadでADC読取値を表示する </h2>
+        <h2 data-i18n="sample-sketch-title">サンプルスケッチ： UGOKU Pad で ESP32 に接続したサーボモーターを操作する / UGOKU PadでADC読取値を表示する </h2>
 
-        <h3>ESP32の準備</h3>
+        <h3 data-i18n="esp32-prep">ESP32の準備</h3>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
                 <img src="images/UGOKU-Pad/ESP_sample_wire.png" alt="ESP32 配線サンプル" class="img-responsive">
             </div>
             <div class="col" style="min-width:240px;">
 
-                <p>ESP32とUGOKU Padを接続するための配線例です。<br>
+                <p data-i18n="esp32-wire-desc">ESP32とUGOKU Padを接続するための配線例です。<br>
                 <table>
                     <thead>
                         <tr>
-                            <th>機能</th>
-                            <th>ピン</th>
+                            <th data-i18n="table-feature">機能</th>
+                            <th data-i18n="table-pin">ピン</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>デジタル出力</td>
+                            <td data-i18n="table-digital-out">デジタル出力</td>
                             <td>27</td>
                         </tr>
                         <tr>
-                            <td>測距モジュール</td>
+                            <td data-i18n="table-distance-sensor">測距モジュール</td>
                             <td>26</td>
                         </tr>
                         <tr>
-                            <td>RCサーボ</td>
+                            <td data-i18n="table-rc-servo">RCサーボ</td>
                             <td>14</td>
                         </tr>
                         <tr>
-                            <td>ローテーションサーボ</td>
+                            <td data-i18n="table-rot-servo">ローテーションサーボ</td>
                             <td>12</td>
                         </tr>
                     </tbody>
@@ -168,32 +169,32 @@ void loop() {
             </div>
         </div>
 
-        <h3>Arduino IDE の準備</h3>
+        <h2 data-i18n="arduino-ide-prep">Arduino IDE の準備</h2>
         <div class="display-flex flex-wrap gap-medium">
             <div class="project-content">
-                <h4>ESP32ボードのインストール</h4>
-                <p>BOARD MANAGER で <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストール</p>
+                <h4 data-i18n="board-install">ESP32ボードのインストール</h4>
+                <p data-i18n="board-install-desc">BOARD MANAGER で <strong>Arduino ESP32 Boards</strong> と <strong>esp32</strong> をインストール</p>
                 <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
             </div>
 
             <div class="project-content">
-                <h4>ライブラリのインストール</h4>
-                <p>LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
+                <h4 data-i18n="lib-install">ライブラリのインストール</h4>
+                <p data-i18n="lib-install-desc">LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
                 <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
                     class="img-responsive">
                 <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
             </div>
 
             <div class="project-content">
-                <h4>ボードの選択</h4>
-                <p>Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
+                <h4 data-i18n="board-select">ボードの選択</h4>
+                <p data-i18n="board-select-desc">Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
                 <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot"
                     class="img-responsive"><br>
             </div>
         </div>
 
-        <h3>サンプルスケッチの書き込み</h3>
-        <p>下記のサンプルスケッチをESP32に書き込みます。</p>
+        <h3 data-i18n="sketch-upload">サンプルスケッチの書き込み</h3>
+        <p data-i18n="sketch-upload-desc">下記のサンプルスケッチをESP32に書き込みます。</p>
 
 
 
@@ -258,63 +259,63 @@ void loop() {
 }</code></pre>
         </div>
 
-        <h3>アプリの操作</h3>
+        <h3 data-i18n="app-operation">アプリの操作</h3>
 
         <ol>
-            <li>左上のメニューボタンをタップ</li>
-            <li>Console をタップ</li>
-            <li>Sample: ESP32 Arduino Sampleを選択</li>
-            <li>Selectをタップした後Scan Deviceをタップ</li>
-            <li>My ESP32を選択する</li>
-            <li>接続のアイコンが表示されるのを確認する</li>
-            <li>戻るボタンから操作画面に戻る</li>
+            <li data-i18n="app-step-1">左上のメニューボタンをタップ</li>
+            <li data-i18n="app-step-2">Console をタップ</li>
+            <li data-i18n="app-step-3">Sample: ESP32 Arduino Sampleを選択</li>
+            <li data-i18n="app-step-4">Selectをタップした後Scan Deviceをタップ</li>
+            <li data-i18n="app-step-5">My ESP32を選択する</li>
+            <li data-i18n="app-step-6">接続のアイコンが表示されるのを確認する</li>
+            <li data-i18n="app-step-7">戻るボタンから操作画面に戻る</li>
         </ol>
 
         <img src="images/UGOKU-Pad/sample-useage.png" alt="sample-useage" class="full-width">
 
         <section>
-            <h2>BLE通信について</h2>
-            <p>
+            <h2 data-i18n="ble-comm-title">BLE通信について</h2>
+            <p data-i18n="ble-comm-desc">
                 <strong>Flutter</strong> の <strong>flutter_blue_plus</strong> ライブラリを用いて、Android/iOS の標準BLEに対応しています。<br>
                 1回(1パケット)の通信は <strong>19バイト固定</strong> です。<br>
                 (チャンネル, バリュー) のペア9組と、全体のチェックサム1バイトで構成することでBLE通信を効率化し、低遅延を実現しています。
             </p>
-
+ 
             <table>
                 <thead>
                     <tr>
-                        <th>要素</th>
-                        <th>役割</th>
-                        <th>サイズ</th>
+                        <th data-i18n="table-element">要素</th>
+                        <th data-i18n="table-role">役割</th>
+                        <th data-i18n="table-size">サイズ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>データペア (x9)</td>
-                        <td>(チャンネル, バリュー) のペア × 9組</td>
+                        <td data-i18n="table-data-pair">データペア (x9)</td>
+                        <td data-i18n="table-data-pair-role">(チャンネル, バリュー) のペア × 9組</td>
                         <td>18バイト (2バイト×9)</td>
                     </tr>
                     <tr>
-                        <td>チェックサム</td>
-                        <td>上記18バイトの排他的論理和 (XOR)</td>
+                        <td data-i18n="table-checksum">チェックサム</td>
+                        <td data-i18n="table-checksum-role">上記18バイトの排他的論理和 (XOR)</td>
                         <td>1バイト</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2" style="text-align: right;">合計</td>
+                        <td colspan="2" style="text-align: right;" data-i18n="table-total">合計</td>
                         <td>19バイト</td>
                     </tr>
                 </tfoot>
             </table>
-
-            <p>50msごとに呼び出される <code>periodicSend()</code> により、以下を実行します。</p>
+ 
+            <p data-i18n="periodic-send-desc">50msごとに呼び出される <code>periodicSend()</code> により、以下を実行します。</p>
             <ul>
-                <li>最大9チャンネル分のデータを1パケットに集約</li>
-                <li>9チャンネルに満たない場合は、残りをダミーデータ(0)で埋めて19バイトにします</li>
-                <li>先頭18バイトのXORチェックサムを計算して末尾に付与</li>
-                <li>Write Without Response で BLE 送信</li>
-                <li>9チャンネル超過分は自動的に複数パケットへ分割して送信</li>
+                <li data-i18n="periodic-step-1">最大9チャンネル分のデータを1パケットに集約</li>
+                <li data-i18n="periodic-step-2">9チャンネルに満たない場合は、残りをダミーデータ(0)で埋めて19バイトにします</li>
+                <li data-i18n="periodic-step-3">先頭18バイトのXORチェックサムを計算して末尾に付与</li>
+                <li data-i18n="periodic-step-4">Write Without Response で BLE 送信</li>
+                <li data-i18n="periodic-step-5">9チャンネル超過分は自動的に複数パケットへ分割して送信</li>
             </ul>
         </section>
 
@@ -322,7 +323,7 @@ void loop() {
     </div>
 
     <footer>
-        <p>&copy; 2025 UGOKU Lab</p>
+        <p data-i18n="footer-copy">&copy; 2025 UGOKU Lab</p>
     </footer>
 
 </body>
