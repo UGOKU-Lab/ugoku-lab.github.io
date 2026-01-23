@@ -69,10 +69,24 @@
             <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
         </div>
         <h3>USB接続</h3>
-        <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
+        <div class="display-flex cols-40-60 flex-start" style="margin-top:12px;">
+            <div class="col">
+                <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続" class="img-responsive">
+            </div>
+            <div class="col" style="min-width:240px;">
+                <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
+            </div>
+        </div>
         <h3>外部電源入力</h3>
-        <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。
-            逆接しないように注意してください。</p>
+        <div class="display-flex cols-40-60 flex-start" style="margin-top:12px;">
+            <div class="col">
+                <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力" class="img-responsive">
+            </div>
+            <div class="col" style="min-width:240px;">
+                <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。
+                    逆接しないように注意してください。</p>
+            </div>
+        </div>
         <h3>電源選択</h3>
 
         <!-- 画像とテキストを横並びに配置：上方向に12pxの余白を追加 -->
@@ -162,6 +176,9 @@
             </div>
             <div class="col" style="min-width:240px;">
                 <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
+                比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
+                極性があります。 
+                <strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）
                 <div class="table-scroll">
                     <table class="excel-table" aria-label="FET出力スペック">
                         <thead>
