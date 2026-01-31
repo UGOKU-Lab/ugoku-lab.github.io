@@ -46,8 +46,10 @@
         </a>
         <div class="social-icons">
             <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i
-                    class="fa-brands fa-x-twitter"></i>
-                <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@UGOKU_Lab" target="_blank" title="YouTube"><i
+                    class="fab fa-youtube"></i></a>
+            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
     </header>
 
@@ -106,7 +108,8 @@
                 <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad overview" class="img-responsive">
             </div>
             <div class="col" style="min-width:240px;">
-                <p data-i18n="start-guide-desc">UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU Padと通信できます。<br>
+                <p data-i18n="start-guide-desc">UGOKU PadのArduinoライブラリをインストールすることで、ESP32搭載ボードを使って簡単にUGOKU
+                    Padと通信できます。<br>
                     <span data-i18n="min-code-example">最小コード例：</span>
                 </p>
                 <div class="code-block">
@@ -179,7 +182,8 @@ void loop() {
 
             <div class="project-content">
                 <h4 data-i18n="lib-install">ライブラリのインストール</h4>
-                <p data-i18n="lib-install-desc">LIBRARY MANAGER で <strong>UGOKU-Pad</strong>, <strong>ESP32Servo</strong> をインストール</p>
+                <p data-i18n="lib-install-desc">LIBRARY MANAGER で <strong>UGOKU-Pad</strong>,
+                    <strong>ESP32Servo</strong> をインストール</p>
                 <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
                     class="img-responsive">
                 <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
@@ -187,7 +191,8 @@ void loop() {
 
             <div class="project-content">
                 <h4 data-i18n="board-select">ボードの選択</h4>
-                <p data-i18n="board-select-desc">Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択</p>
+                <p data-i18n="board-select-desc">Select Other Board and Port で <strong>ESP32 Dev Module</strong> を検索して選択
+                </p>
                 <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot"
                     class="img-responsive"><br>
             </div>
@@ -280,7 +285,7 @@ void loop() {
                 1回(1パケット)の通信は <strong>19バイト固定</strong> です。<br>
                 (チャンネル, バリュー) のペア9組と、全体のチェックサム1バイトで構成することでBLE通信を効率化し、低遅延を実現しています。
             </p>
- 
+
             <table>
                 <thead>
                     <tr>
@@ -308,7 +313,7 @@ void loop() {
                     </tr>
                 </tfoot>
             </table>
- 
+
             <p data-i18n="periodic-send-desc">50msごとに呼び出される <code>periodicSend()</code> により、以下を実行します。</p>
             <ul>
                 <li data-i18n="periodic-step-1">最大9チャンネル分のデータを1パケットに集約</li>
