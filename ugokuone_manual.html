@@ -38,6 +38,43 @@
     <div class="content-container">
         <h1>UGOKU One ユーザーガイド</h1>
         <h2>スタートガイド</h2>
+        <h3>準備</h3>
+        <p>
+            お手元に以下をご用意ください。
+        <ul>
+            <li>UGOKU-One</li>
+            <li>Arduino IDEをインストールしたPC</li>
+            <li>UGOKU Pad をインストールした端末</li>
+            <li>USB Type-Cケーブル（UGOKU-Oneとお使いのPCを接続できるもの）</li>
+        </ul>
+        </p>
+        <h3>サンプルプログラムのダウンロード</h3>
+        <p><a
+                href="https://github.com/UGOKU-Lab/UGOKU-One_Arduino_sample_for_UGOKU-Pad">こちら</a>からサンプルプログラムをダウンロードしてください。
+        </p>
+        <h3>Arduinoの準備</h3>
+        <p>
+            サンプルプログラムのREADMEを参考に、Arduino IDEにボードとライブラリをインストールしてください。
+        </p>
+        <h3>サンプルプログラムのアップロード</h3>
+        <p>
+            USBケーブルを使用してUGOKU-OneとPCを接続し、Arduino IDEからサンプルプログラムをアップロードしてください。
+            コンパイルに失敗した場合、以下をご確認ください。
+        <ul>
+            <li>ライブラリがインストールされているか</li>
+            <li>ファイルの配置がサンプルプログラムと同様か</li>
+        </ul>
+        </p>
+        <h3>UGOKU-Padの接続</h3>
+        <p>
+            お使いの端末でUGOKU Padを起動してください。
+            コンソール一覧画面に "Sample: UGOKU-One" が存在すれば、これを起動してください。
+            存在しない場合、サンプルプログラムのREADMEを参考にコンソールを作成してください。
+        </p>
+        <p>
+            コンソールの起動後、UGOKU Padのデバイス検索画面からUGOKU-Oneを選択してください。
+            UGOKU PadからUGOKU-OneのLEDを操作できれば、接続は正常に完了しています。
+        </p>
 
         <h2>電源入力とアクチュエータ出力</h2>
         <h3>概要</h3>
@@ -179,7 +216,7 @@
             <div class="col" style="min-width:240px;">
                 <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
                 比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
-                極性があります。 
+                極性があります。
                 <strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）
                 <div class="table-scroll">
                     <table class="excel-table" aria-label="FET出力スペック">
