@@ -260,6 +260,11 @@
                 height: auto;
                 max-height: 400px;
             }
+
+            .annotation-mark {
+                font-size: 0.75em;
+                vertical-align: super;
+            }
         </style>
 
         <!-- Prerequisites Box -->
@@ -421,10 +426,10 @@
                 <div class="step-header">
                     <h4 class="step-title">単4電池</h4>
                 </div>
-                <div class="step-content" style="text-align: center;">
-                    <p style="text-align: left;">単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
+                <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_bottom-side.png" alt="単4電池" class="img-responsive"
-                        style="max-height: 200px; margin: 10px auto; border: 1px solid #eee; border-radius: 4px;">
+                        style="max-height: 200px; margin: 0 auto 10px; display: block; border: 1px solid #eee; border-radius: 4px;">
+                    <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
                 </div>
             </div>
 
@@ -433,10 +438,10 @@
                 <div class="step-header">
                     <h4 class="step-title">USB接続</h4>
                 </div>
-                <div class="step-content" style="text-align: center;">
-                    <p style="text-align: left;">USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
+                <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続" class="img-responsive"
-                        style="max-height: 200px; margin: 10px auto; border: 1px solid #eee; border-radius: 4px;">
+                        style="max-height: 200px; margin: 0 auto 10px; display: block; border: 1px solid #eee; border-radius: 4px;">
+                    <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
                 </div>
             </div>
 
@@ -445,117 +450,127 @@
                 <div class="step-header">
                     <h4 class="step-title">外部電源入力</h4>
                 </div>
-                <div class="step-content" style="text-align: center;">
-                    <p style="text-align: left;">外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。<br>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力" class="img-responsive"
+                        style="max-height: 200px; margin: 0 auto 10px; display: block; border: 1px solid #eee; border-radius: 4px;">
+                    <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。<br>
                         <strong>逆接しないように注意してください。</strong>
                     </p>
-                    <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力" class="img-responsive"
-                        style="max-height: 200px; margin: 10px auto; border: 1px solid #eee; border-radius: 4px;">
                 </div>
             </div>
         </div>
 
-        <h3 id="servo-output">サーボモータ出力</h3>
-        <div class="display-flex cols-40-60 flex-start">
-            <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_with_Servo.png" alt="サーボモータ出力端子図" class="img-responsive">
-            </div>
-            <div class="col" style="min-width:240px;">
-                <p>サーボモータ用の電源出力端子です。</p>
-                最大4つのサーバモーターを接続できます。<br>
-                15ピンと26ピンは汎用I/Oポートと共有になっているので、一緒に使わないでください。
-            </div>
-        </div>
-        <h3 id="dc-motor-output">DCモータ出力 </h3>
-        <div class="display-flex cols-40-60 flex-start">
-            <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_with_Motor.png" alt="DCモータ出力端子図" class="img-responsive">
-            </div>
-            <div class="col" style="min-width:240px;">
-                <p>モータドライブICTB67H303HGを2個搭載しています。<br>
-                    260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
-                </p>
-                <strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）
-                <div class="table-scroll">
-                    <table class="excel-table" aria-label="DCモータ出力スペック">
-                        <thead>
-                            <tr>
-                                <th>項目</th>
-                                <th>2個同時使用時</th>
-                                <th>1個のみ使用時</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>電圧</td>
-                                <td colspan="2">4.5 ~ 26V</td>
-                            </tr>
-                            <tr>
-                                <td>連続電流</td>
-                                <td>1.3 A </td>
-                                <td>1.5 A </td>
-                            </tr>
-                            <tr>
-                                <td>短時間電流 (90s<sup class="annotation-mark">*1</sup>)</td>
-                                <td>1.5 A </td>
-                                <td>—</td>
-                            </tr>
-                            <tr>
-                                <td>短時間電流 (5s<sup class="annotation-mark">*1</sup>)</td>
-                                <td>2.0 A </td>
-                                <td>2.0 A </td>
-                            </tr>
-                            <tr>
-                                <td>瞬時最大電流</td>
-                                <td colspan="2">3.5 A (モータードライバIC最大絶対定格)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <h3>アクチュエータ出力</h3>
+        <div class="steps-container">
+            <!-- Servo Motor Output Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title" id="servo-output">サーボモータ出力</h4>
                 </div>
-                <p>
-                    <sup class="annotation-mark">*1</sup> 時間はテスト結果より安全マージンを取った値です<br>
-                </p>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_with_Servo.png" alt="サーボモータ出力端子図" class="img-responsive"
+                        style="max-height: 200px; margin: 0 auto 10px; display: block;">
+                    <p>サーボモータ用の電源出力端子です。</p>
+                    <p>最大4つのサーバモーターを接続できます。<br>
+                        15ピンと26ピンは汎用I/Oポートと共有になっているので、一緒に使わないでください。</p>
+                </div>
             </div>
-        </div>
 
-        <h3 id="fet-output">FET出力</h3>
-        <div class="display-flex cols-40-60 flex-start">
-            <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="FET出力端子図" class="img-responsive">
-            </div>
-            <div class="col" style="min-width:240px;">
-                <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
-                <p>比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
-                    極性があります。
-                </p>
-                <strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）
-                <div class="table-scroll">
-                    <table class="excel-table" aria-label="FET出力スペック">
-                        <thead>
-                            <tr>
-                                <th>項目</th>
-                                <th>仕様</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>電圧</td>
-                                <td>4.5 ~ 26V</td>
-                            </tr>
-                            <tr>
-                                <td>連続電流</td>
-                                <td>3.0 A</td>
-                            </tr>
-                            <tr>
-                                <td>短時間電流 (90s<sup class="annotation-mark">*1</sup>) </td>
-                                <td>5.0 A</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- DC Motor Output Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title" id="dc-motor-output">DCモータ出力</h4>
                 </div>
-                <p>
-                    <sup class="annotation-mark">*1</sup> 時間はテスト結果より安全マージンを取った値です<br>
-                </p>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_with_Motor.png" alt="DCモータ出力端子図" class="img-responsive"
+                        style="max-height: 200px; margin: 0 auto 10px; display: block;">
+                    <p>モータドライブICTB67H303HGを2個搭載しています。<br>
+                        260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
+                    </p>
+                    <p><strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）</p>
+                    <div class="table-scroll">
+                        <table class="excel-table" aria-label="DCモータ出力スペック" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>2個同時使用時</th>
+                                    <th>1個のみ使用時</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>電圧</td>
+                                    <td colspan="2">4.5 ~ 26V</td>
+                                </tr>
+                                <tr>
+                                    <td>連続電流</td>
+                                    <td>1.3 A </td>
+                                    <td>1.5 A </td>
+                                </tr>
+                                <tr>
+                                    <td>短時間電流 <small>(90s<sup class="annotation-mark">*1</sup>)</small></td>
+                                    <td>1.5 A </td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>短時間電流 <small>(5s<sup class="annotation-mark">*1</sup>)</small></td>
+                                    <td>2.0 A </td>
+                                    <td>2.0 A </td>
+                                </tr>
+                                <tr>
+                                    <td>瞬時最大電流</td>
+                                    <td colspan="2">3.5 A <small>(モータードライバIC最大絶対定格)</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: smaller;">
+                        <sup class="annotation-mark">*1</sup> 時間はテスト結果より安全マージンを取った値です<br>
+                    </p>
+                </div>
+            </div>
+
+            <!-- FET Output Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title" id="fet-output">FET出力</h4>
+                </div>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="FET出力端子図" class="img-responsive"
+                        style="max-height: 200px; margin: 0 auto 10px; display: block;">
+                    <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
+                    <p>比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
+                        極性があります。
+                    </p>
+                    <p><strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）</p>
+                    <div class="table-scroll">
+                        <table class="excel-table" aria-label="FET出力スペック" style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>仕様</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>電圧</td>
+                                    <td>4.5 ~ 26V</td>
+                                </tr>
+                                <tr>
+                                    <td>連続電流</td>
+                                    <td>3.0 A</td>
+                                </tr>
+                                <tr>
+                                    <td>短時間電流 <small>(90s<sup class="annotation-mark">*1</sup>)</small> </td>
+                                    <td>5.0 A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: smaller;">
+                        <sup class="annotation-mark">*1</sup> 時間はテスト結果より安全マージンを取った値です<br>
+                    </p>
+                </div>
             </div>
         </div>
 
