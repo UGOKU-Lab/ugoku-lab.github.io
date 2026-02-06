@@ -38,57 +38,119 @@
     <div class="content-container">
         <h1>UGOKU One ユーザーガイド</h1>
         <h2>スタートガイド</h2>
-        <h3>準備</h3>
+        <h3>サンプルプログラムの書き込み</h3>
+        <p><strong>必要なもの:</strong> UGOKU One, Arduino IDEをインストールしたPC, USB Type-C ケーブル<br>
+            (Arduino IDE をインストールしていない場合は、<a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE
+                公式サイト</a>からインストールしてください。)<br>
+            <a
+                href="https://github.com/UGOKU-Lab/UGOKU-One_Arduino_sample_for_UGOKU-Pad/archive/refs/heads/main.zip">サンプルプログラムをDL</a><br>
+        </p>
+
+        <div class="display-flex flex-wrap gap-medium">
+            <div class="project-content">
+                <h4>ESP32ボードのインストール</h4>
+                <p>BOARD MANAGER で <strong>esp32</strong> をインストール</p>
+                <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
+            </div>
+
+            <div class="project-content">
+                <h4>ライブラリのインストール</h4>
+                <p>LIBRARY MANAGER で <strong>UGOKU-Pad</strong>,
+                    <strong>ESP32Servo</strong> をインストール
+                </p>
+                <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
+                    class="img-responsive">
+                <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
+            </div>
+
+            <div class="project-content">
+                <h4>COMポートの特定</h4>
+                <p>UGOKU OneをUSBケーブルでPCに接続した後、Device ManagerからUGOKU OneのCOMポート番号を確認 (<strong>Silicon Labs...</strong>
+                    と表示されているのがUGOKU One)</p>
+                <img src="images/UGOKU-Pad/Device-Manager.png" alt="Device Manager" class="img-responsive">
+                <p>UGOKU Oneのポート番号を選択</p>
+                <img src="images/UGOKU-Pad/Device-Selection.png" alt="Device Selection" class="img-responsive">
+                <p><strong>ESP32 Dev Module</strong> を検索して選択</p>
+                <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot"
+                    class="img-responsive"><br>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 40px;"><i class="fas fa-mobile-alt"></i> UGOKU Padの準備と操作</h3>
+        <p>スマートフォンから UGOKU One を操作します。</p>
+
+        <h4>1. アプリ入手</h4>
+        <p><strong>UGOKU Pad</strong> をインストールしてください。</p>
+        <div class="app-badges-center">
+            <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja" target="_blank">
+                <img src="images/button/google-play-badge.png" alt="Google Play" style="height: 48px;">
+            </a>
+            <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098" target="_blank">
+                <img src="images/button/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="App Store"
+                    style="height: 48px;">
+            </a>
+        </div>
+
+        <h4>2. 接続</h4>
+        <div class="step-image-container-single">
+            <img src="images/UGOKU-Pad/sample-useage.png" alt="アプリ操作" class="img-responsive">
+        </div>
         <p>
-            お手元に以下をご用意ください。
-        <ul>
-            <li>UGOKU-One</li>
-            <li>Arduino IDEをインストールしたPC</li>
-            <li>UGOKU Pad をインストールした端末</li>
-            <li>USB Type-Cケーブル（UGOKU-Oneとお使いのPCを接続できるもの）</li>
-        </ul>
+            1. アプリを起動し <strong>Console > Sample: UGOKU One</strong> を選択<br>
+            2. <strong>Scan</strong> ボタンを押し、リストから <strong>UGOKU One</strong> を選択<br>
+            3. 操作画面が表示されたら接続成功です！
         </p>
-        <h3>サンプルプログラムのダウンロード</h3>
-        <p><a
-                href="https://github.com/UGOKU-Lab/UGOKU-One_Arduino_sample_for_UGOKU-Pad">こちら</a>からサンプルプログラムをダウンロードしてください。
-        </p>
-        <p>
-            GitHubからのダウンロードについては、以下のサイトをご参照ください。
-        <ul>
-            <li><a
-                    href="https://docs.github.com/ja/get-started/start-your-journey/downloading-files-from-github">GitHubからファイルをダウンロードする</a>
-            </li>
-            <li><a
-                    href="https://docs.github.com/ja/repositories/creating-and-managing-repositories/cloning-a-repository">リポジトリをクローンする</a>
-            </li>
-        </ul>
-        </p>
-        <h3>Arduinoの準備</h3>
-        <p>
-            サンプルプログラムのREADMEを参考に、Arduino IDEにボードとライブラリをインストールしてください。
-        </p>
-        <h3>サンプルプログラムのアップロード</h3>
-        <p>
-            USBケーブルを使用してUGOKU-OneとPCを接続し、Arduino IDEからサンプルプログラムをアップロードしてください。
-            コンパイルに失敗した場合、以下をご確認ください。
-        <ul>
-            <li>ライブラリがインストールされているか</li>
-            <li>ファイルの配置がサンプルプログラムと同様か</li>
-        </ul>
-        </p>
-        <h3>UGOKU Padの接続</h3>
-        <p>
-            お使いの端末でUGOKU Padを起動してください。
-            コンソール一覧画面に "Sample: UGOKU-One" が存在すれば、これを起動してください。
-            存在しない場合、サンプルプログラムのREADMEを参考にコンソールを作成してください。
-        </p>
-        <p>
-            コンソールの起動後、UGOKU Padのデバイス検索画面からUGOKU-Oneを選択してください。
-            UGOKU PadからUGOKU-OneのLEDを操作できれば、接続は正常に完了しています。
-        </p>
-        <p>
-            UGOKU Pad の詳しい利用方法は、<a href="https://ugoku-lab.github.io/ugokupad.html">こちら</a>をご確認ください。
-        </p>
+
+        <style>
+            /* Local styles for compact guide */
+            .action-link {
+                display: inline-block;
+                background: #00979D;
+                color: white;
+                padding: 6px 15px;
+                border-radius: 20px;
+                text-decoration: none;
+                margin-bottom: 10px;
+                font-weight: bold;
+                font-size: 0.9em;
+                transition: background 0.3s;
+            }
+
+            .action-link:hover {
+                background: #007b80;
+            }
+
+            .text-link {
+                color: #00979D;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .text-link:hover {
+                text-decoration: underline;
+            }
+
+            .app-badges-center {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .step-image-container-single {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .step-image-container-single img {
+                max-width: 100%;
+                height: auto;
+                max-height: 400px;
+                /* Limit height for better mixed layout */
+            }
+        </style>
 
         <h2>電源入力とアクチュエータ出力</h2>
         <h3>概要</h3>
