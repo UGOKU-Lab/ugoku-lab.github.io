@@ -62,23 +62,49 @@
             </ul>
         </nav>
 
-        <h2 id="start-guide">スタートガイド</h2>
-        <h3 id="hardware-overview">ハードウェア概要</h3>
+        <h2 id="start-guide">スタートガイド (UGOKU Pad でDCモーターとサーボモーターを操作する)</h2>
+        <h3 id="hardware-overview">電源と配線の接続</h3>
         <div class="display-flex cols-40-60 flex-start align-center">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_top.png" alt="UGOKU One ハードウェア概要" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_Sample_wire.png" alt="UGOKU One 電源と配線の接続" class="img-responsive">
             </div>
             <div class="col min-w-240">
-                <p><strong>UGOKU One</strong> は、ESP32をベースにした「うごくものづくり」のための汎用基板です。</p>
-                <ul>
-                    <li><span class="orange-highlight">ESP32-WROOM-32E</span> 搭載でWi-Fi/Bluetooth通信が可能</li>
-                    <li>単4電池4本、USB、または外部電源（7-24V）で駆動</li>
-                    <li><span class="orange-highlight">DCモータドライバ</span>を2ch内蔵し、最大4つのサーボモータを接続可能</li>
-                    <li><span class="orange-highlight">6軸IMU (BMI270)</span> を標準搭載し、姿勢検知が可能</li>
-                    <li>大電力制御用のFET出力も備え、多彩なロボット製作に対応</li>
-                </ul>
+                <div class="display-flex flex-direction-column gap-medium p-0"
+                    style="flex-direction: column; padding: 0;">
+                    <!-- 電源のカード -->
+                    <div class="step-card">
+                        <div class="step-header">
+                            <h4 class="step-title">電源について</h4>
+                        </div>
+                        <div class="step-content">
+                            <p class="mb-0">電源は裏面に搭載可能な<span class="orange-highlight">単4電池</span>または<span
+                                    class="orange-highlight">USB接続</span>が利用可能です。<br>外部の電源を利用したい場合は、<a
+                                    href="#power-and-actuators">電源入力とアクチュエータ出力</a>をご確認ください。</p>
+                        </div>
+                    </div>
+                    <!-- 接続方法のカード -->
+                    <div class="step-card">
+                        <div class="step-header">
+                            <h4 class="step-title">プッシュイン端子台の接続方法</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>DCモータや外部電源を接続する際は、以下の手順でプッシュイン端子台に配線してください。</p>
+                            <ol>
+                                <li>電線の被膜を<strong>8mm程度</strong>剥きます</li>
+                                <li>端子台の押しボタンを爪で<strong>押し下げます</strong></li>
+                                <li>ボタンを押したまま、剥いた電線を<strong>奥まで差し込みます</strong></li>
+                                <li>ボタンを離すと、電線が固定されます</li>
+                            </ol>
+                            <div class="text-center mt-10">
+                                <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続"
+                                    class="img-responsive m-auto" style="width: 50%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
         <h3 id="sample-program-flash">サンプルプログラムの書き込み</h3>
 
 
