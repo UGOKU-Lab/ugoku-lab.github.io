@@ -40,18 +40,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <a href="index.html">
-            <h1 data-i18n="site-title">UGOKU Lab</h1>
-        </a>
-        <div class="social-icons">
-            <a href="https://twitter.com/UGOKU_Lab" target="_blank" title="Twitter"><i
-                    class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/@UGOKU_Lab" target="_blank" title="YouTube"><i
-                    class="fab fa-youtube"></i></a>
-            <a href="https://github.com/UGOKU-Lab" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <div class="content-container">
 
@@ -183,7 +172,8 @@ void loop() {
             <div class="project-content">
                 <h4 data-i18n="lib-install">ライブラリのインストール</h4>
                 <p data-i18n="lib-install-desc">LIBRARY MANAGER で <strong>UGOKU-Pad</strong>,
-                    <strong>ESP32Servo</strong> をインストール</p>
+                    <strong>ESP32Servo</strong> をインストール
+                </p>
                 <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
                     class="img-responsive">
                 <img src="images/UGOKU-Pad/ESP32Servo.png" alt="Library Manager screenshot" class="img-responsive">
@@ -327,9 +317,9 @@ void loop() {
     </div>
     </div>
 
-    <footer>
-        <p data-i18n="footer-copy">&copy; 2025 UGOKU Lab</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts/common.js"></script>
 
 </body>
 

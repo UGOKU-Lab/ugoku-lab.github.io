@@ -413,6 +413,45 @@ footer {
     color: var(--black);
 }
 
+/* --- Breadcrumb (パンクズリスト) --- */
+.breadcrumb {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    background-color: var(--white);
+    margin-bottom: 4px;
+}
+
+.breadcrumb ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    padding: 4px 0;
+}
+
+.breadcrumb li a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb li:last-child {
+    color: var(--text-main);
+    font-weight: bold;
+}
+
 .project {
     padding: var(--spacing);
     display: flex;
@@ -484,6 +523,29 @@ h4 {
 .license-content {
     display: flex;
     align-items: center;
+}
+
+.license-section h2 {
+    border-bottom: 2px solid #f0641e;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+/* Headings use Quicksand; body stays on JP/system fonts */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* 見出しの余白をコンパクトにする */
+h1 {
+    margin: 0 0 2px 0;
+    padding-bottom: 0;
+    line-height: 1.0;
 }
 
 .license-content .license-image {
@@ -975,7 +1037,7 @@ h6 {
 
 /* 見出しの余白をコンパクトにする */
 h1 {
-    margin: 20px 0 2px 0;
+    margin: 0 0 2px 0;
     padding-bottom: 0;
     line-height: 1.0;
 }

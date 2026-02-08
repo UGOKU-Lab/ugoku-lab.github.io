@@ -55,6 +55,9 @@
         });
     }
 
+    // Expose initI18n globally so common.js can call it after loading components
+    window.initI18n = initI18n;
+
     // Run on DOMContentLoaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initI18n);
