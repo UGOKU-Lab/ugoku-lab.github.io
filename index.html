@@ -13,7 +13,25 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UGOKU Lab</title>
+    <meta name="description" content="UGOKU Labでは「動くものづくりをもっと手軽に」を実現するオープンソースのツールや体験型デバイスを開発しています。UGOKU Pad、UGOKU Oneなどのプロジェクトを公開中。">
+    <meta name="keywords" content="UGOKU Lab, UGOKU Pad, UGOKU One, ESP32, Arduino, オープンソース, ロボット, DIY, マイコン">
+    
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="UGOKU Lab - 動くものづくりをもっと手軽に">
+    <meta property="og:description" content="UGOKU Labでは「動くものづくりをもっと手軽に」を実現するオープンソースのツールや体験型デバイスを開発しています。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ugoku-lab.github.io/">
+    <meta property="og:image" content="https://ugoku-lab.github.io/images/UGOKU-Pad/UGOKU-Pad.png">
+    <meta property="og:site_name" content="UGOKU Lab">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@UGOKU_Lab">
+    <meta name="twitter:title" content="UGOKU Lab - 動くものづくりをもっと手軽に">
+    <meta name="twitter:description" content="UGOKU Labでは「動くものづくりをもっと手軽に」を実現するオープンソースのツールや体験型デバイスを開発しています。">
+    <meta name="twitter:image" content="https://ugoku-lab.github.io/images/UGOKU-Pad/UGOKU-Pad.png">
+    
+    <title>UGOKU Lab - 動くものづくりをもっと手軽に</title>
     <link href="styles/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cbd15fcef1.js" crossorigin="anonymous"></script>
@@ -22,52 +40,44 @@
 <body>
     <div id="header-placeholder"></div>
 
-    <div class="content-container">
+    <main class="content-container">
         <div class="intro">
             <p>UGOKU Lab では「動くものづくりをもっと手軽に」を実現するオープンソースのツールや体験型デバイスを開発しています<br>
         </div>
 
         <section id="events">
-            <h3>イベント出展情報</h3>
-            <ul class="events-list">
-                <!--
-                <li class="event upcoming">
-                    <a class="event-link" href="https://nt-tokyo.org/" target="_blank" rel="noopener">
-                        <span class="event-title">NT東京 2025</span>
-                        <span class="event-date">9/6(土), 7(日)</span>
-                        <span class="event-badge">Upcoming</span>
-                    </a>
-                </li>
-                -->
-                <li class="event past">
-                    <a class="event-link" href="https://nt-tokyo.org/" target="_blank" rel="noopener">
-                        <span class="event-title">NT東京 2025</span>
-                        <span class="event-date">9/6(土), 7(日)</span>
-                        <span class="event-status">（終了）</span>
-                    </a>
-                </li>
-                <li class="event past">
-                    <a class="event-link" href="https://play-dg.connpass.com/event/347286/" target="_blank"
-                        rel="noopener">
-                        <span class="event-title">DIYデジタルガジェットで遊ぼ3 in 那須</span>
-                        <span class="event-date">7/19(土)</span>
-                        <span class="event-status">（終了）</span>
-                    </a>
-                </li>
-                <li class="event past">
-                    <a class="event-link" href="https://wiki.nicotech.jp/nico_tech/?NT%E9%87%91%E6%B2%A22025"
-                        target="_blank" rel="noopener">
-                        <span class="event-title">NT金沢 2025</span>
-                        <span class="event-date">6/21(土), 22(日)</span>
-                        <span class="event-status">（終了）</span>
-                    </a>
-                </li>
-            </ul>
+            <h3>最近の活動</h3>
+            <p class="events-intro">過去のイベント出展情報です。最新情報は<a href="https://twitter.com/UGOKU_Lab" target="_blank" rel="noopener">Twitter</a>でお知らせしています。</p>
+            <details>
+                <summary>過去のイベントを見る</summary>
+                <ul class="events-list">
+                    <li class="event past">
+                        <a class="event-link" href="https://nt-tokyo.org/" target="_blank" rel="noopener">
+                            <span class="event-title">NT東京 2025</span>
+                            <span class="event-date">2025年9/6(土), 7(日)</span>
+                        </a>
+                    </li>
+                    <li class="event past">
+                        <a class="event-link" href="https://play-dg.connpass.com/event/347286/" target="_blank"
+                            rel="noopener">
+                            <span class="event-title">DIYデジタルガジェットで遊ぼ3 in 那須</span>
+                            <span class="event-date">2025年7/19(土)</span>
+                        </a>
+                    </li>
+                    <li class="event past">
+                        <a class="event-link" href="https://wiki.nicotech.jp/nico_tech/?NT%E9%87%91%E6%B2%A22025"
+                            target="_blank" rel="noopener">
+                            <span class="event-title">NT金沢 2025</span>
+                            <span class="event-date">2025年6/21(土), 22(日)</span>
+                        </a>
+                    </li>
+                </ul>
+            </details>
         </section>
 
         <div class="project" data-href="ugokupad.html">
             <a href="ugokupad.html" class="project-image-link"><img src="images/UGOKU-Pad/UGOKU-Pad.png"
-                    alt="UGOKU-Pad"></a>
+                    alt="UGOKU Pad - ESP32とスマートフォンを接続して操作するアプリ" loading="lazy"></a>
             <!-- <video controls src="https://tomohiroaoki.com/wp-content/uploads/2024/09/PCPV0.mpeg4_.aac-2.mp4"></video> -->
             <div class="project-content">
                 <div class="project-title">
@@ -95,7 +105,7 @@
 
         <div class="project" data-href="ugokuone.html">
             <a href="ugokuone.html" class="project-image-link"><img src="images/UGOKU-One/UGOKU-Pad_and_UGOKU-One.png"
-                    alt="UGOKU One"></a>
+                    alt="UGOKU One - ESP32搭載のオープンソース汎用基板" loading="lazy"></a>
             <div class="project-content">
                 <div class="project-title">
                     <h2><a href="ugokuone.html">UGOKU One</a></h2>
@@ -120,7 +130,7 @@
         <div class="project" data-href="feelgyro.html">
             <!-- <img src="images/UGOKU-Pro/UGOKU-One.JPG" alt="UGOKU Ono"> -->
             <a href="feelgyro.html" class="project-image-link"><img src="images/GYRO/GYRO_OMIYA.png"
-                    alt="GYRO OMIYA"></a>
+                    alt="ジャイロ効果を感じるやつ - 高速回転する円盤を収めた体験型デバイス" loading="lazy"></a>
             <div class="project-content">
                 <div class="project-title">
                     <h2><a href="feelgyro.html">ジャイロ効果を感じるやつ</a></h2>
@@ -129,7 +139,7 @@
                 <!-- リポジトリへのリンクボタン -->
             </div>
         </div>
-    </div>
+    </main>
 
     <div id="footer-placeholder"></div>
 

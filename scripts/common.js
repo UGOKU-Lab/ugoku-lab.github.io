@@ -114,3 +114,48 @@
         loadComponents();
     }
 })();
+
+
+// Mobile menu toggle functionality
+(function () {
+    function initMobileMenu() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const headerNav = document.querySelector('.header-nav');
+
+        if (menuToggle && headerNav) {
+            menuToggle.addEventListener('click', function () {
+                headerNav.classList.toggle('active');
+                const isExpanded = headerNav.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', isExpanded);
+                menuToggle.querySelector('i').className = isExpanded ? 'fas fa-times' : 'fas fa-bars';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.header')) {
+                    headerNav.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+
+            // Close menu when window is resized to desktop size
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    headerNav.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+        }
+    }
+
+    // Initialize mobile menu after components are loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(initMobileMenu, 100);
+        });
+    } else {
+        setTimeout(initMobileMenu, 100);
+    }
+})();
