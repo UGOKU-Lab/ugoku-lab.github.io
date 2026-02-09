@@ -31,6 +31,7 @@
         <nav class="toc" aria-label="目次">
             <h3 class="m-0 border-none">目次</h3>
             <ul>
+                <li><a href="#overview">概要</a></li>
                 <li><a href="#start-guide">スタートガイド</a>
                     <ul>
                         <li><a href="#hardware-overview">ハードウェア概要</a></li>
@@ -52,6 +53,32 @@
                 <li><a href="#imu-section">IMU</a></li>
             </ul>
         </nav>
+
+        <h2 id="overview">概要</h2>
+        <div class="display-flex cols-40-60 flex-start">
+            <div class="col">
+                <img src="images/UGOKU-One/UGOKU-One_top.png" alt="UGOKU One 概要" class="img-responsive">
+            </div>
+            <div class="col min-w-240">
+                <p>UGOKU One はモータやセンサを使ったロボットなどのDIY製作物を少しでも手軽に操作することを目的に開発しているオープンソースハードウェアの汎用基板です。</p>
+                <ul>
+                    <li>単四電池ボックス搭載で単四電池4本でDCモーターやRCサーボをの駆動が可能</li>
+                    <li>Arduinoで開発可能なESP32マイコン搭載(無線通信対応)</li>
+                    <li>DCモータドライバ（TB67H450FNG）を2個搭載</li>
+                    <li>豊富な汎用IOポートでいろんな拡張が可能</li>
+                    <li>圧着工具を使用せずにモーターやセンサーの配線が可能</li>
+                </ul>
+                <div class="alert-box">
+                    <p><strong>ピン番号の表記について</strong><br>
+                        基板上の各ポートやスイッチ、LED、汎用IOコネクタに記載されている数字は、<strong>ESP32のピン番号（GPIO番号）</strong>を表しています。プログラムを作成する際はこの番号を参照してください。
+                    </p>
+                </div>
+                <p>
+                    基板の左上にある <strong>IoConnector</strong> は、標準の状態ではコネクタが実装されていません。
+                    仕様に合わせて、XAコネクタやピンヘッダなど、お好みのコネクタを自由にはんだ付けして実装できるようになっています。
+                </p>
+            </div>
+        </div>
 
         <h2 id="start-guide">スタートガイド (UGOKU Pad でDCモーターとサーボモーターを操作する)</h2>
         <h3 id="hardware-overview" class="mb-0">電源と配線の接続</h3>
@@ -134,7 +161,7 @@
                     <h4 class="step-title">ESP32ボードのインストール</h4>
                 </div>
                 <div class="step-content">
-                    <p>Arduino IDEの <strong>BOARD MANAGER</strong> で<br><strong>ESP32</strong>をインストール</p>
+                    <p>Arduino IDEの <strong>BOARD MANAGER</strong> で <strong>ESP32</strong> をインストールします。</p>
                     <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
                 </div>
             </div>
@@ -146,15 +173,15 @@
                     <h4 class="step-title">ライブラリのインストール</h4>
                 </div>
                 <div class="step-content">
-                    <p><strong>LIBRARY MANAGER</strong> で以下の2つをインストール</p>
+                    <p><strong>LIBRARY MANAGER</strong> で以下の2つをインストールします。</p>
                     <div class="step-grid-2">
                         <div class="step-image-group">
-                            <span class="step-image-caption">1. UGOKU-Pad(ESP32Servoも一緒にインストールされる)</span>
+                            <span class="step-image-caption">1. UGOKU-Pad (ESP32Servoも一緒にインストールされます)</span>
                             <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
                                 class="img-responsive">
                         </div>
                         <div class="step-image-group">
-                            <span class="step-image-caption">2. BMI270(IMU)</span>
+                            <span class="step-image-caption">2. BMI270 (IMU)</span>
                             <img src="images/UGOKU-Pad/BMI_lib.png" alt="Library Manager screenshot"
                                 class="img-responsive">
                         </div>
@@ -166,20 +193,19 @@
             <div class="step-card">
                 <div class="step-header">
                     <span class="step-number">3</span>
-                    <h4 class="step-title">書込ボードの設定</h4>
+                    <h4 class="step-title">書き込み設定</h4>
                 </div>
                 <div class="step-content">
-                    <p><strong>UGOKU OneをUSBケーブルでPCに接続</strong>してから下記の手順で設定</p>
+                    <p><strong>UGOKU OneをPCに接続</strong>し、以下の設定を行います。</p>
 
                     <div class="mb-25 text-center">
-                        <span class="step-image-caption">1. WindowsのデバイスマネージャーでCOM番号を確認 (Silicon Labs... がUGOKU
-                            Oneのポート)</span>
+                        <span class="step-image-caption">1. デバイスマネージャーでCOMポート番号を確認 (Silicon Labs... など)</span>
                         <img src="images/UGOKU-Pad/Device-Manager.png" alt="Device Manager" class="img-responsive">
                     </div>
 
                     <div class="step-grid-2">
                         <div class="step-image-group">
-                            <span class="step-image-caption">2. Arduino IDEでUGOKU Oneのポートを選択</span>
+                            <span class="step-image-caption">2. IDEでポートを選択</span>
                             <img src="images/UGOKU-Pad/Device-Selection.png" alt="Device Selection"
                                 class="img-responsive">
                         </div>
@@ -190,6 +216,19 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card mt-20">
+            <div class="step-header">
+                <span class="step-number">4</span>
+                <h4 class="step-title">書き込み実行</h4>
+            </div>
+            <div class="step-content">
+                <p><strong>サンプルプログラムを開いた上で</strong>、IDE左上の「→」ボタンをクリックし、書き込みを開始します。<br>
+                    下部のメッセージエリアに「ボードへの書き込みが完了しました」と表示されれば成功です。</p>
             </div>
         </div>
 
@@ -416,19 +455,44 @@
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="汎用IO"
                         class="img-responsive card-img-compact">
-                    <p>ESP32のピンに直接アクセスできるピンヘッダです。センサーの追加などに利用できます。</p>
+                    <p>センサー等の追加に便利な端子類です。</p>
+                    <ul>
+                        <li><strong>端子台(上)</strong>: はんだ不要で接続可能</li>
+                        <li><strong>ソケット(左)</strong>: ブレッドボードに便利</li>
+                        <li><strong>拡張(左上)</strong>: 任意のコネクタを実装可能</li>
+                    </ul>
+                    <p style="font-size: 0.9em; color: #d14d0b;">
+                        <strong>※注意</strong>: ピン15, 25, 26は各コネクタとサーボで信号を共有しているため、同時使用はできません。
+                    </p>
                 </div>
             </div>
 
-            <!-- Switch Card -->
+            <!-- Push Button Card -->
             <div class="step-card">
                 <div class="step-header">
-                    <h4 class="step-title" id="switch-header">ユーザー操作スイッチ</h4>
+                    <h4 class="step-title">押しボタン</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="ユーザースイッチ"
+                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="押しボタン"
                         class="img-responsive card-img-compact">
-                    <p>プログラムから自由に読み取れるスイッチを2個搭載しています。</p>
+                    <p>ESP32 Dev Moduleと互換の回路・ピン構成です。</p>
+                    <ul>
+                        <li><strong>EN (上)</strong>: リセットボタン</li>
+                        <li><strong>IO0 (下)</strong>: ユーザースイッチ / 書き込みモード移行</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DIP Switch Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title">DIPスイッチ</h4>
+                </div>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="DIPスイッチ"
+                        class="img-responsive card-img-compact">
+                    <p><strong>ピン34, 35</strong> に接続されています。</p>
+                    <p>サンプルプログラムでは、モータの回転方向（正転/逆転）の切り替えに使用しています。</p>
                 </div>
             </div>
         </div>

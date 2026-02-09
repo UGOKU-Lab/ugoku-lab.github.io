@@ -1602,6 +1602,10 @@ details.code-explanation summary::-webkit-details-marker {
     margin-bottom: 25px;
 }
 
+.mt-20 {
+    margin-top: 20px;
+}
+
 .font-size-sm {
     font-size: 0.85rem;
 }
