@@ -48,15 +48,25 @@
                         <li><a href="#fet-output">FET出力</a></li>
                     </ul>
                 </li>
+                <li><a href="#io-and-switches">汎用IOとスイッチ</a></li>
                 <li><a href="#imu-section">IMU</a></li>
             </ul>
         </nav>
 
         <h2 id="start-guide">スタートガイド (UGOKU Pad でDCモーターとサーボモーターを操作する)</h2>
-        <h3 id="hardware-overview">電源と配線の接続</h3>
-        <div class="display-flex cols-40-60 flex-start align-center">
+        <h3 id="hardware-overview" class="mb-0">電源と配線の接続</h3>
+        <div class="display-flex cols-40-60 flex-start">
             <div class="col">
                 <img src="images/UGOKU-One/UGOKU-One_Sample_wire.png" alt="UGOKU One 電源と配線の接続" class="img-responsive">
+                <!-- アクチュエータ接続のタイル -->
+                <div class="step-card mt-12">
+                    <div class="step-header">
+                        <h4 class="step-title">アクチュエータの接続</h4>
+                    </div>
+                    <div class="step-content">
+                        <p class="mb-0">サーボモータは基板上のピンヘッダへ（サンプルプログラムでは27と14ピンのサーボを駆動します）、DCモータはプッシュイン端子台へ接続します。<br>
+                    </div>
+                </div>
             </div>
             <div class="col min-w-240">
                 <div class="display-flex flex-direction-column gap-medium p-0"
@@ -87,7 +97,7 @@
                             </ol>
                             <div class="text-center mt-10">
                                 <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続"
-                                    class="img-responsive m-auto" style="width: 50%;">
+                                    class="img-responsive m-auto" style="width: 66%;">
                             </div>
                         </div>
                     </div>
@@ -159,7 +169,7 @@
                     <h4 class="step-title">書込ボードの設定</h4>
                 </div>
                 <div class="step-content">
-                    <p>UGOKU OneをUSBケーブルでPCに接続してから下記の手順で設定</p>
+                    <p><strong>UGOKU OneをUSBケーブルでPCに接続</strong>してから下記の手順で設定</p>
 
                     <div class="mb-25 text-center">
                         <span class="step-image-caption">1. WindowsのデバイスマネージャーでCOM番号を確認 (Silicon Labs... がUGOKU
@@ -396,6 +406,33 @@
             </div>
         </div>
 
+        <h2 id="io-and-switches">汎用IOとスイッチ</h2>
+        <div class="steps-container">
+            <!-- GPIO Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title" id="gpio-header">汎用IO</h4>
+                </div>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="汎用IO"
+                        class="img-responsive card-img-compact">
+                    <p>ESP32のピンに直接アクセスできるピンヘッダです。センサーの追加などに利用できます。</p>
+                </div>
+            </div>
+
+            <!-- Switch Card -->
+            <div class="step-card">
+                <div class="step-header">
+                    <h4 class="step-title" id="switch-header">ユーザー操作スイッチ</h4>
+                </div>
+                <div class="step-content">
+                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="ユーザースイッチ"
+                        class="img-responsive card-img-compact">
+                    <p>プログラムから自由に読み取れるスイッチを2個搭載しています。</p>
+                </div>
+            </div>
+        </div>
+
         <h2 id="imu-section">IMU</h2>
         <div class="display-flex cols-40-60 flex-start align-center">
             <div class="col">
@@ -410,7 +447,6 @@
                 </p>
             </div>
         </div>
-        <p></p>
 
     </div>
 
