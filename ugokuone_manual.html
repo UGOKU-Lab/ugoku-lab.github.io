@@ -51,9 +51,9 @@
                 </li>
                 <li><a href="#io-and-switches">汎用IOとスイッチ</a></li>
                 <li><a href="#imu-section">IMU</a></li>
+                <li><a href="#troubleshooting">トラブルシューティング</a></li>
             </ul>
         </nav>
-
         <h2 id="overview">概要</h2>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
@@ -68,8 +68,8 @@
                     <li>豊富な汎用IOポートでいろんな拡張が可能</li>
                     <li>圧着工具を使用せずにモーターやセンサーの配線が可能</li>
                 </ul>
-                <div class="alert-box">
-                    <p><strong>ピン番号の表記について</strong><br>
+                <div class="alert-box alert-info">
+                    <p><span class="alert-title">ピン番号の表記について</span>
                         基板上の各ポートやスイッチ、LED、汎用IOコネクタに記載されている数字は、<strong>ESP32のピン番号（GPIO番号）</strong>を表しています。プログラムを作成する際はこの番号を参照してください。
                     </p>
                 </div>
@@ -91,7 +91,8 @@
                         <h4 class="step-title">アクチュエータの接続</h4>
                     </div>
                     <div class="step-content">
-                        <p class="mb-0">サーボモータは基板上のピンヘッダへ（サンプルプログラムでは27と14ピンのサーボを駆動します）、DCモータはプッシュイン端子台へ接続します。<br>
+                        <p class="mb-0">
+                            サーボモータは基板上のピンヘッダへ（サンプルプログラムでは27と14ピンのサーボを駆動します）、DCモータはプッシュイン端子台へ接続します。<br>
                     </div>
                 </div>
             </div>
@@ -259,7 +260,8 @@
             <div class="col min-w-240">
                 <ul>
                     <li>UGOKU One への電源入力は主に<span class="orange-highlight">単4電池</span>、<span
-                            class="orange-highlight">USB接続</span>、<span class="orange-highlight">外部電源入力</span> の3系統があります
+                            class="orange-highlight">USB接続</span>、<span class="orange-highlight">外部電源入力</span>
+                        の3系統があります
                     </li>
                     <li><span class="orange-highlight">単4電池</span>と<span
                             class="orange-highlight">USB接続</span>はダイオードを介して<span
@@ -324,9 +326,10 @@
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力"
                         class="img-responsive card-img-compact">
-                    <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。<br>
+                    <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。</p>
+                    <div class="alert-box alert-danger mt-10">
                         <strong>逆接しないように注意してください。</strong>
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -461,9 +464,9 @@
                         <li><strong>ソケット(左)</strong>: ブレッドボードに便利</li>
                         <li><strong>拡張(左上)</strong>: 任意のコネクタを実装可能</li>
                     </ul>
-                    <p style="font-size: 0.9em; color: #d14d0b;">
+                    <div class="alert-box alert-warning mt-10">
                         <strong>※注意</strong>: ピン15, 25, 26は各コネクタとサーボで信号を共有しているため、同時使用はできません。
-                    </p>
+                    </div>
                 </div>
             </div>
 
