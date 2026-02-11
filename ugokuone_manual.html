@@ -510,15 +510,10 @@
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
                 <img src="images/UGOKU-One/UGOKU-One_IMU.png" alt="IMUの座標軸" class="img-responsive">
-                <div class="alert-box alert-info mt-12">
-                    <p><span class="alert-title">座標軸の向き</span>
-                        基板に印字された座標軸は、加速度や角速度の正の方向を示します。例えば、Z軸周りの角速度が正の場合、基板を上から見て反時計回りの回転を意味します。
-                    </p>
-                </div>
             </div>
             <div class="col min-w-240">
                 <p>
-                    Bosch Sensortec社の高性能な6軸IMU (3軸加速度計 + 3軸ジャイロスコープ) <strong>BMI270</strong> を搭載しています。基板のほぼ中央に配置されているため、機体の回転中心と一致しやすく、姿勢制御などの計算が直感的に行えます。
+                    Bosch Sensortec社の6軸IMU (3軸加速度計 + 3軸ジャイロスコープ) <strong>BMI270</strong> を搭載しています。基板のほぼ中央に配置されているため、機体の回転中心と一致しやすく、姿勢制御などの計算が直感的に行えます。
                 </p>
                 <h4>接続仕様</h4>
                 <table class="spec-table">
@@ -545,24 +540,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="alert-box alert-warning mt-10">
-                    <strong>※注意</strong>: 割り込みピン (INT1, INT2) は、ESP32のADC1 (アナログ入力) のピンとしても利用されます。アナログセンサー等との同時使用にはご注意ください。
-                </div>
-            </div>
-        </div>
-
-        <h3 class="mt-25">回路構成</h3>
-        <div class="display-flex cols-40-60 flex-start">
-            <div class="col">
-                <img src="images/UGOKU-One/BMI270_circuit.png" alt="BMI270 回路図" class="img-responsive">
-            </div>
-            <div class="col min-w-240">
-                <p>
-                    I2C通信ライン (SCL, SDA) は、基板上で10kΩの抵抗により3.3Vにプルアップされています。これにより、外部でプルアップ抵抗を追加することなく安定した通信が可能です。
-                </p>
-                <p>
-                    BMI270は、タップ検出、ステップカウンター、ジェスチャー認識など、高度な機能を内蔵しており、割り込みピン (INT1, INT2) を使用して特定のイベントが発生したことをESP32に通知できます。これにより、常にI2C通信で状態を監視（ポーリング）する必要がなく、効率的なプログラムを作成できます。
-                </p>
             </div>
         </div>
 
