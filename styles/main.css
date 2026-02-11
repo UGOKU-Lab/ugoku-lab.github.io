@@ -838,6 +838,34 @@ footer a.footer-link:hover {
     cursor: pointer;
 }
 
+/* Simple TOC style */
+.toc-simple {
+    margin: 16px 0 24px;
+}
+
+.toc-simple h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #f0641e;
+    padding-bottom: 4px;
+}
+
+.toc-simple ul {
+    margin: 8px 0;
+    padding-left: 18px;
+    list-style-type: disc;
+}
+
+.toc-simple a {
+    color: #333;
+    text-decoration: none;
+}
+
+.toc-simple a:hover {
+    color: #f0641e;
+    text-decoration: underline;
+}
+
 .toc-btn:hover {
     background: #f2f2f2;
 }
