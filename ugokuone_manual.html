@@ -458,55 +458,70 @@
         </div>
 
         <h2 id="io-and-switches">汎用IOとスイッチ</h2>
-        <div class="steps-container">
-            <!-- GPIO Card -->
-            <div class="step-card">
+        <div class="display-flex" style="gap: 20px; align-items: flex-start;">
+            <!-- GPIO Card (2/3 width) -->
+            <div class="step-card" style="flex: 2;">
                 <div class="step-header">
                     <h4 class="step-title" id="gpio-header">汎用IO</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="汎用IO"
-                        class="img-responsive card-img-compact">
-                    <p>センサー等の追加に便利な端子類です。</p>
-                    <ul>
-                        <li><strong>端子台(上)</strong>: はんだ不要で接続可能</li>
-                        <li><strong>ソケット(左)</strong>: ブレッドボードに便利</li>
-                        <li><strong>拡張(左上)</strong>: 任意のコネクタを実装可能</li>
-                    </ul>
-                    <div class="text-center mt-10">
-                        <img src="images/UGOKU-One/UGOKU-One_IO-CONN-MOUNT.gif" alt="コネクターへの配線接続方法"
-                            class="img-responsive m-auto" style="width: 66%;">
-                    </div>
-                    <div class="alert-box alert-warning mt-10">
-                        <strong>※注意</strong>: ピン15, 25, 26は各コネクタとサーボで信号を共有しているため、同時使用はできません。
+                    <div class="display-flex" style="gap: 20px; align-items: flex-start;">
+                        <!-- 左列: 汎用IO全般の説明 -->
+                        <div style="flex: 1;">
+                            <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="汎用IO"
+                                class="img-responsive card-img-compact">
+                            <p>センサー等の追加に便利な端子類です。</p>
+                            <ul>
+                                <li><strong>端子台(上)</strong>: はんだ不要で接続可能</li>
+                                <li><strong>ソケット(左)</strong>: ブレッドボードに便利</li>
+                                <li><strong>拡張(左上)</strong>: 任意のコネクタを実装可能</li>
+                            </ul>
+                            <div class="alert-box alert-warning mt-10">
+                                <strong>※注意</strong>: ピン15, 25, 26は各コネクタとサーボで信号を共有しているため、同時使用はできません。
+                            </div>
+                        </div>
+                        <!-- 右列: HARTINGコネクタの使い方 -->
+                        <div style="flex: 1;">
+                            <div class="text-center">
+                                <img src="images/UGOKU-One/UGOKU-One_IO-CONN-MOUNT.gif" alt="コネクターへの配線接続方法"
+                                    class="img-responsive m-auto" style="width: 80%;">
+                            </div>
+                            <div class="alert-box alert-info mt-10">
+                                <h5 class="m-0 mb-5">コネクタの仕様と使い方</h5>
+                                <p>UGOKU Oneの汎用IOには、はんだ付け不要で簡単に配線できる <strong>HARTING社製 har-flexicon® コネクタ</strong> を採用しています。(<a href="https://www.mouser.jp/ProductDetail/617-14310513101000" target="_blank">こちらから購入可能</a>)</p>
+                                <p class="mb-5"><strong>仕様</strong></p>
+                                <ul class="mb-5">
+                                    <li>対応ワイヤサイズ: AWG 26〜20</li>
+                                    <li>被膜剥き長さ: 6mm</li>
+                                </ul>
+                                <p class="mb-5"><strong>使い方</strong></p>
+                                <ol class="mb-5">
+                                    <li>電線の被膜を6mm剥きます。</li>
+                                    <li>上の動画のように、コネクタの四角い穴に電線を奥までしっかりと差し込みます。</li>
+                                    <li>電線を外す際は、コネクタ上部のスリットに精密ドライバーなどの細い工具を差し込み、内部のバネを押し込むと簡単に抜くことができます。</li>
+                                </ol>
+                                <p class="m-0"><strong>注意:</strong> より線（複数の細い銅線を束ねた電線）など、柔らかい電線は挿入しにくい場合があります。その場合は、AWG 20に近い太めの電線を使用してください。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Push Button Card -->
-            <div class="step-card">
+            <!-- Buttons and Switches Card (1/3 width) -->
+            <div class="step-card" style="flex: 1;">
                 <div class="step-header">
-                    <h4 class="step-title">押しボタン</h4>
+                    <h4 class="step-title">押しボタンとDIPスイッチ</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="押しボタン"
+                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="押しボタンとDIPスイッチ"
                         class="img-responsive card-img-compact">
+                    <h5 class="mt-10 mb-5">押しボタン</h5>
                     <p>ESP32 Dev Moduleと互換の回路・ピン構成です。</p>
                     <ul>
                         <li><strong>EN (上)</strong>: リセットボタン</li>
                         <li><strong>IO0 (下)</strong>: ユーザースイッチ / 書き込みモード移行</li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- DIP Switch Card -->
-            <div class="step-card">
-                <div class="step-header">
-                    <h4 class="step-title">DIPスイッチ</h4>
-                </div>
-                <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="DIPスイッチ"
-                        class="img-responsive card-img-compact">
+                    <h5 class="mt-10 mb-5">DIPスイッチ</h5>
                     <p><strong>ピン34, 35</strong> に接続されています。</p>
                     <p>サンプルプログラムでは、モータの回転方向（正転/逆転）の切り替えに使用しています。</p>
                 </div>
