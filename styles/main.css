@@ -1458,7 +1458,6 @@ details.code-explanation summary::-webkit-details-marker {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 10px;
-    align-items: start;
 }
 
 /* 各ステップのカード */
