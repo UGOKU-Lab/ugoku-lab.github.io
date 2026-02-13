@@ -49,7 +49,8 @@
     "periodic-step-3": "Calculate XOR checksum of the first 18 bytes and append it",
     "periodic-step-4": "BLE transmission via Write Without Response",
     "periodic-step-5": "Data exceeding 9 channels is automatically split into multiple packets",
-    "footer-copy": "&copy; 2025 UGOKU Lab",
-    "site-policy": "Site Policy"
+    "footer-copy": "&copy; 2026 UGOKU Lab",
+    "site-policy": "Site Policy",
+    "footer-contact": "Contact:"
   }
 }
