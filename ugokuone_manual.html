@@ -249,19 +249,48 @@
         </div>
 
         <h3 class="mt-50" id="ugoku-pad-setup"> UGOKU Padの準備と操作</h3>
-        <p>AndroidまたはiOS端末に<strong>UGOKU Pad</strong> をインストールしてください。</p>
-        <div class="app-badges-left">
-            <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja" target="_blank">
-                <img src="images/button/google-play-badge.png" alt="Google Play" class="app-store-badge">
-            </a>
-            <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098" target="_blank">
-                <img src="images/button/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="App Store"
-                    class="app-store-badge">
-            </a>
-        </div>
-        <p>下記の手順で接続を行ってください。</p>
-        <div class="step-image-container-single">
-            <img src="images/UGOKU-Pad/sample-useage.png" alt="アプリ操作" class="img-responsive" width="100%">
+        <div class="steps-container" style="grid-template-columns: 1fr 2fr;">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h4 class="step-title">アプリのインストール</h4>
+                </div>
+                <div class="step-content">
+                    <p>AndroidまたはiOS端末に<strong>UGOKU Pad</strong><br>をインストールしてください。</p>
+                    <div class="app-badges-left">
+                        <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja"
+                            target="_blank">
+                            <img src="images/button/google-play-badge.png" alt="Google Play" class="app-store-badge">
+                        </a>
+                        <a href="https://apps.apple.com/jp/app/ugoku-pad/id6739496098" target="_blank">
+                            <img src="images/button/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                                alt="App Store" class="app-store-badge">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h4 class="step-title">アプリの操作と接続</h4>
+                </div>
+                <div class="step-content">
+                    <div class="display-flex align-center p-0" style="gap: 15px;">
+                        <div style="flex: 1;">
+                            <p class="m-0">下記の手順で接続を行ってください。</p>
+                        </div>
+                        <div style="flex: 1.5;">
+                            <div class="text-center">
+                                <img src="images/UGOKU-Pad/UGOKU-Pad_demo.gif" alt="アプリ操作" class="img-responsive"
+                                    width="65%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <h2 id="power-and-actuators">電源入力とアクチュエータ出力</h2>
@@ -330,8 +359,7 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続" class="img-responsive" width="100%">
-                    <p>USB接続は5V電源を供給します。PC(USB 3.x)からの給電は <strong>0.9A</strong>
-                        までとなります。大電力が必要な場合はセルフパワーのUSBハブやUSB充電器を使用してください。</p>
+                    <p>USB接続は5V電源を供給します。PC(USB 3.x)からの給電は <strong>0.9A</strong> までとなります。</p>
                 </div>
             </div>
 
@@ -546,7 +574,7 @@
             <div class="col min-w-240">
                 <p>
                     基板の中央に、Bosch Sensortec社の6軸IMU (3軸加速度計 + 3軸ジャイロスコープ) <strong>BMI270</strong>
-                    を搭載しています。
+                    を搭載しています。サンプルプログラムでは、UGOKU PadでXYZ軸の加速度の値を確認できます。
                 </p>
                 <h4>接続仕様</h4>
                 <table class="spec-table">

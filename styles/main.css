@@ -258,19 +258,49 @@ p {
     flex: 0 0 60%;
 }
 
+/* Fixed-percentage column utilities (50/50) */
+.cols-50-50 {
+    display: flex;
+}
+
+.cols-50-50>.col:first-child {
+    flex: 0 0 50%;
+}
+
+.cols-50-50>.col:last-child {
+    flex: 0 0 50%;
+}
+
+/* Fixed-percentage column utilities (60/40) */
+.cols-60-40 {
+    display: flex;
+}
+
+.cols-60-40>.col:first-child {
+    flex: 0 0 60%;
+}
+
+.cols-60-40>.col:last-child {
+    flex: 0 0 40%;
+}
+
 /* Additional fixed ratios can be added similarly:
-   .cols-60-40, .cols-66-33 等 */
+   .cols-66-33 等 */
 
 /* Responsive: stack columns on narrow viewports */
 @media (max-width: 768px) {
 
     .cols-70-30,
-    .cols-30-70 {
+    .cols-30-70,
+    .cols-50-50,
+    .cols-60-40 {
         flex-direction: column;
     }
 
     .cols-70-30>.col,
-    .cols-30-70>.col {
+    .cols-30-70>.col,
+    .cols-50-50>.col,
+    .cols-60-40>.col {
         flex: 0 0 auto;
         width: 100%;
     }
