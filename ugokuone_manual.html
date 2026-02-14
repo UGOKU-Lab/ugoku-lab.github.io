@@ -59,13 +59,13 @@
                 <img src="images/UGOKU-One/UGOKU-One_top.png" alt="UGOKU One 概要" class="img-responsive" width="100%">
             </div>
             <div class="col min-w-240">
-                <p>UGOKU One はモータやセンサを使ったロボットなどのDIY製作物を少しでも手軽に操作することを目的に開発しているオープンソースハードウェアの汎用基板です。</p>
+                <p>UGOKU One は、モータやセンサを使ったロボットなどのDIY作品を、より手軽に製作・操作できるように開発された、オープンソースハードウェアの汎用基板です。</p>
                 <ul>
-                    <li>単四電池ボックス搭載で単四電池4本でDCモーターやRCサーボをの駆動が可能</li>
+                    <li>単四電池ボックス搭載で単四電池4本でDCモータやRCサーボの駆動が可能</li>
                     <li>Arduinoで開発可能なESP32マイコン搭載(無線通信対応)</li>
                     <li>DCモータドライバ（TB67H450FNG）を2個搭載</li>
                     <li>豊富な汎用IOポートでいろんな拡張が可能</li>
-                    <li>圧着工具を使用せずにモーターやセンサーの配線が可能</li>
+                    <li>圧着工具を使用せずにモータやセンサの配線が可能</li>
                 </ul>
                 <p>
                     <a href="https://github.com/UGOKU-Lab/UGOKU-One/releases/download/V2.1.2/UGOKU-One_sch.pdf"
@@ -79,7 +79,7 @@
                 </p>
                 <div class="alert-box alert-info">
                     <p><span class="alert-title">ピン番号の表記について</span>
-                        基板上の各ポートやスイッチ、LED、汎用IOコネクタに記載されている数字は、<strong>ESP32のピン番号（GPIO番号）</strong>を表しています。プログラムを作成する際はこの番号を参照してください。
+                        基板上の各ポート、スイッチ、LED、汎用IOコネクタに記載の数字は、<strong>ESP32のGPIO番号</strong>に対応しています。プログラム作成時はこの番号を指定してください。
                     </p>
                 </div>
                 <p>
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <h2 id="start-guide">スタートガイド (UGOKU Pad でDCモーターとサーボモーターを操作する)</h2>
+        <h2 id="start-guide">スタートガイド (UGOKU Pad でDCモータとサーボモータを操作する)</h2>
         <h3 id="hardware-overview" class="mb-0">電源と配線の接続</h3>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
@@ -102,7 +102,7 @@
                     </div>
                     <div class="step-content">
                         <p class="mb-0">
-                            サーボモータは基板上のピンヘッダへ（サンプルプログラムでは27と14ピンのサーボを駆動します）、DCモータはプッシュイン端子台へ接続します。<br>
+                            サーボモータはピンヘッダへ、DCモータはプッシュイン端子台へ接続します。（サンプルプログラムでは、GPIO 27と14のサーボを制御します）<br>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                             <h4 class="step-title">電源について</h4>
                         </div>
                         <div class="step-content">
-                            <p class="mb-0">電源は裏面に搭載可能な<span class="orange-highlight">単4電池</span>または<span
+                            <p class="mb-0">電源は、裏面の<span class="orange-highlight">単4電池ボックス</span>または<span
                                     class="orange-highlight">USB接続</span>が利用可能です。<br>外部の電源を利用したい場合は、<a
                                     href="#power-and-actuators">電源入力とアクチュエータ出力</a>をご確認ください。</p>
                         </div>
@@ -214,7 +214,8 @@
                     <p><strong>UGOKU OneをPCに接続</strong>し、以下の設定を行います。</p>
 
                     <div class="mb-25 text-center">
-                        <span class="step-image-caption">1. デバイスマネージャーでCOMポート番号を確認 (Silicon Labs... など)</span>
+                        <span class="step-image-caption">1. デバイスマネージャーでCOMポート番号を確認 (Silicon Labs...
+                            がUGOKU Oneのポートです)</span>
                         <img src="images/UGOKU-Pad/Device-Manager.png" alt="Device Manager" class="img-responsive"
                             width="100%">
                     </div>
@@ -257,7 +258,7 @@
                     <h4 class="step-title">アプリのインストール</h4>
                 </div>
                 <div class="step-content">
-                    <p>AndroidまたはiOS端末に<strong>UGOKU Pad</strong><br>をインストールしてください。</p>
+                    <p>スマートフォン (Android / iOS) にアプリ <strong>UGOKU Pad</strong> をインストールしてください。</p>
                     <div class="app-badges-left">
                         <a href="https://play.google.com/store/apps/details?id=com.ugoku_lab.ugoku_console&hl=ja"
                             target="_blank">
@@ -280,7 +281,7 @@
                 <div class="step-content">
                     <div class="display-flex align-center p-0" style="gap: 15px;">
                         <div style="flex: 1;">
-                            <p class="m-0">下記の手順で接続を行ってください。</p>
+                            <p class="m-0">アプリを起動し、UGOKU One と接続してください（右図/下図参照）。</p>
                         </div>
                         <div style="flex: 1.5;">
                             <div class="text-center">
@@ -303,16 +304,16 @@
             </div>
             <div class="col min-w-240">
                 <ul>
-                    <li>UGOKU One への電源入力は主に<span class="orange-highlight">単4電池</span>、<span
+                    <li>電源入力は、<span class="orange-highlight">単4電池</span>、<span
                             class="orange-highlight">USB接続</span>、<span class="orange-highlight">外部電源入力</span>
-                        の3系統があります
+                        の3系統に対応しています
                     </li>
                     <li><span class="orange-highlight">単4電池</span>と<span
-                            class="orange-highlight">USB接続</span>はダイオードを介して<span
-                            class="orange-highlight">5V系統</span>に接続されています</li>
+                            class="orange-highlight">USB給電</span>は、それぞれダイオードを介して<span
+                            class="orange-highlight">5V系統</span>に接続されます</li>
                     <li><span class="orange-highlight">外部電源入力</span>はDC-DCコンバータとダイオードを介して<span
                             class="orange-highlight">5V系統</span>に接続されています</li>
-                    <li><span class="orange-highlight">単4電池</span>の電源は<span
+                    <li><span class="orange-highlight">単4電池</span>は、<span
                             class="orange-highlight">単4電池電源スイッチ</span>でオン/オフが可能です</li>
                 </ul>
                 <!-- 画像を親要素の幅いっぱいに広げる -->
@@ -327,7 +328,7 @@
                     width="100%">
             </div>
             <div class="col min-w-240">
-                <p>ピンヘッダ上のジャンパの位置を変えることでアクチュエータを駆動する電力源を選択できます。</p>
+                <p>ジャンパピンの設定により、アクチュエータ（モータ等）の駆動電源を選択できます。</p>
                 <ul>
                     <li>アクチュエータに供給する電力は<span class="orange-highlight">5V系統</span>と<span
                             class="orange-highlight">外部電源入力</span>の2つから選択できます</li>
@@ -390,7 +391,7 @@
                     <img src="images/UGOKU-One/UGOKU-One_with_Servo.png" alt="サーボモータ出力端子図"
                         class="img-responsive border-none" width="100%">
                     <p>サーボモータ用の電源出力端子です。</p>
-                    <p>最大4つのサーバモーターを接続できます。<br>
+                    <p>最大4つのサーボモータを接続できます。<br>
                         15ピンと26ピンは汎用I/Oポートと共有になっているので、一緒に使わないでください。</p>
                 </div>
             </div>
@@ -403,10 +404,10 @@
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_with_Motor.png" alt="DCモータ出力端子図"
                         class="img-responsive border-none" width="100%">
-                    <p>モータドライブICTB67H303HGを2個搭載しています。<br>
-                        260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
+                    <p>モータドライブIC TB67H450FNG を2個搭載しています。<br>
+                        260クラス程度のモータを使ったロボットなどを動作させるのに必要な性能を備えています。
                     </p>
-                    <p><strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）</p>
+                    <p><strong>定格出力</strong>（実際の出力は使用する電源の能力に依存します）</p>
                     <div class="table-scroll">
                         <table class="excel-table font-size-sm" aria-label="DCモータ出力スペック">
                             <thead>
@@ -438,7 +439,7 @@
                                 </tr>
                                 <tr>
                                     <td>瞬時最大電流</td>
-                                    <td colspan="2">3.5 A <small>(モータードライバIC最大絶対定格)</small></td>
+                                    <td colspan="2">3.5 A <small>(モータドライバIC最大絶対定格)</small></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -457,11 +458,11 @@
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="PWR OUT(FET出力)端子図"
                         class="img-responsive border-none" width="100%">
-                    <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
+                    <p>Nch MOSFET (SSM3K333R) によるローサイド出力（マイナス側のスイッチング）です。</p>
                     <p>比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
-                        極性があります。
+                        出力には極性（＋/－）がありますので注意してください。
                     </p>
-                    <p><strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）</p>
+                    <p><strong>定格出力</strong>（実際の出力は使用する電源の能力に依存します）</p>
                     <div class="table-scroll">
                         <table class="excel-table font-size-sm" aria-label="PWR OUT(FET出力)スペック">
                             <thead>
@@ -506,7 +507,7 @@
                         <div style="flex: 1; padding: 0;">
                             <img src="images/UGOKU-One/UGOKU-One_IO-CONN.png" alt="汎用IO" class="img-responsive"
                                 width="100%">
-                            <p>センサーやモジュールの追加に便利な端子類です。</p>
+                            <p>センサやモジュールの追加に利用できる拡張端子です。</p>
                             <ul>
                                 <li><strong>オプション端子</strong>: ピンヘッダやXHコネクタなどのコネクタを実装できます。I2Cが利用可能です。</li>
                                 <li><strong>ピンソケット(左)</strong>: ジャンパ線での拡張に便利</li>
@@ -514,7 +515,7 @@
                             </ul>
                             <div class="alert-box alert-warning mt-10" style="margin-left: 0; margin-right: 0;">
                                 <p style="font-size: 0.85em;"><strong>※注意</strong>:
-                                    ピン15、26は「ピンソケット」「har-flexicon®」「サーボ出力」で信号を共有しています。また、ピン25は「ピンソケット」と「har-flexicon®」で共有されているため、それぞれを独立して使用することはできません。
+                                    ピン15、26は「ピンソケット」「har-flexicon®」「サーボ出力」で信号を共有しているため、同時に使用できません。また、ピン25は「ピンソケット」と「har-flexicon®」で共有されています。
                                 </p>
                             </div>
                         </div>
@@ -526,9 +527,9 @@
                                     class="img-responsive" width="90%">
                             </div>
                             <p style="font-size: 0.9em;" class="mt-10">はんだ不要で配線できる <strong>HARTING社製 har-flexicon®
-                                    コネクタ</strong>
-                                を採用しています。(<a href="https://www.mouser.jp/ProductDetail/617-14310513101000"
-                                    target="_blank">購入はこちら</a>)</p>
+                                    コネクタ</strong> を採用しています。ケーブル側のコネクタは 1つ UGOKU One に付属しています。追加で使用したい場合は、<a
+                                    href="https://www.mouser.jp/ProductDetail/617-14310513101000"
+                                    target="_blank">こちら</a> などからご購入いただけます。</p>
 
                             <p class="mb-5"><strong>仕様:</strong> AWG 26〜20 / 剥き長さ 6mm</p>
 
@@ -550,9 +551,8 @@
                     <h4 class="step-title">リセットスイッチとユーザースイッチ</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/Pairs/UGOKU-One_top-side.png" alt="リセットスイッチとユーザースイッチ"
-                        class="img-responsive" width="100%"
-                        onerror="this.src='images/UGOKU-One/UGOKU-One_top-side.png'">
+                    <img src="images/UGOKU-One/UGOKU-One_switch.png" alt="リセットスイッチとユーザースイッチ" class="img-responsive"
+                        width="100%">
                     <h4 class="mt-15 mb-5">押しボタン</h4>
                     <p>ESP32 Dev Module互換の配置です。</p>
                     <ul>
@@ -561,7 +561,11 @@
                     </ul>
                     <h4 class="mt-15 mb-10">DIPスイッチ</h4>
                     <p><strong>ピン34, 35</strong> に接続されています。これらも汎用のユーザースイッチとして利用可能です。</p>
-                    <p class="mb-0">サンプルプログラムでは、モータの回転方向の切り替え（ユーザースイッチ機能）に使用しています。</p>
+                    <p>サンプルプログラムでは、モータの回転方向の切り替え（ユーザースイッチ機能）に使用しています。</p>
+                    <div class="alert-box alert-info mt-10">
+                        <p><strong>スイッチの仕様:</strong> 各スイッチはプルアップされています。そのため、スイッチ<strong>ONで LOW
+                                (0)</strong>、<strong>OFFで HIGH (1)</strong> となります（負論理）。</p>
+                    </div>
                 </div>
             </div>
         </div>
