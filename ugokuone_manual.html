@@ -56,7 +56,7 @@
         <h2 id="overview">概要</h2>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_top.png" alt="UGOKU One 概要" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_top.png" alt="UGOKU One 概要" class="img-responsive" width="100%">
             </div>
             <div class="col min-w-240">
                 <p>UGOKU One はモータやセンサを使ったロボットなどのDIY製作物を少しでも手軽に操作することを目的に開発しているオープンソースハードウェアの汎用基板です。</p>
@@ -71,6 +71,10 @@
                     <a href="https://github.com/UGOKU-Lab/UGOKU-One/releases/download/V2.1.2/UGOKU-One_sch.pdf"
                         target="_blank" class="download-link">
                         <i class="fas fa-file-pdf"></i> 回路図 (PDF)
+                    </a>
+                    |
+                    <a href="https://github.com/UGOKU-Lab/UGOKU-One" target="_blank" class="download-link">
+                        <i class="fab fa-github"></i> ハードウェアリポジトリ (KiCadファイル)
                     </a>
                 </p>
                 <div class="alert-box alert-info">
@@ -89,7 +93,8 @@
         <h3 id="hardware-overview" class="mb-0">電源と配線の接続</h3>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_Sample_wire.png" alt="UGOKU One 電源と配線の接続" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_Sample_wire.png" alt="UGOKU One 電源と配線の接続"
+                    class="img-responsive w-100">
                 <!-- アクチュエータ接続のタイル -->
                 <div class="step-card mt-12">
                     <div class="step-header">
@@ -129,8 +134,7 @@
                                 <li>ボタンを離すと、電線が固定されます</li>
                             </ol>
                             <div class="text-center mt-10">
-                                <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続"
-                                    class="img-responsive m-auto card-img-compact" style="width: 66%;">
+                                <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続" width="64%">
                             </div>
                         </div>
                     </div>
@@ -172,7 +176,8 @@
                 </div>
                 <div class="step-content">
                     <p>Arduino IDEの <strong>BOARD MANAGER</strong> で <strong>ESP32</strong> をインストールします。</p>
-                    <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot" class="img-responsive">
+                    <img src="images/UGOKU-Pad/Board-Manager.png" alt="Board Manager screenshot"
+                        class="img-responsive w-100">
                 </div>
             </div>
 
@@ -188,12 +193,12 @@
                         <div class="step-image-group">
                             <span class="step-image-caption">1. UGOKU-Pad (ESP32Servoも一緒にインストールされます)</span>
                             <img src="images/UGOKU-Pad/UGOKU-Pad_Arduino-lib.png" alt="UGOKU Pad Arduino Library"
-                                class="img-responsive">
+                                class="img-responsive" width="100%">
                         </div>
                         <div class="step-image-group">
                             <span class="step-image-caption">2. BMI270 (IMU)</span>
                             <img src="images/UGOKU-Pad/BMI_lib.png" alt="Library Manager screenshot"
-                                class="img-responsive">
+                                class="img-responsive" width="100%">
                         </div>
                     </div>
                 </div>
@@ -210,19 +215,20 @@
 
                     <div class="mb-25 text-center">
                         <span class="step-image-caption">1. デバイスマネージャーでCOMポート番号を確認 (Silicon Labs... など)</span>
-                        <img src="images/UGOKU-Pad/Device-Manager.png" alt="Device Manager" class="img-responsive">
+                        <img src="images/UGOKU-Pad/Device-Manager.png" alt="Device Manager" class="img-responsive"
+                            width="100%">
                     </div>
 
                     <div class="step-grid-2">
                         <div class="step-image-group">
                             <span class="step-image-caption">2. IDEでポートを選択</span>
                             <img src="images/UGOKU-Pad/Device-Selection.png" alt="Device Selection"
-                                class="img-responsive">
+                                class="img-responsive" width="100%">
                         </div>
                         <div class="step-image-group">
                             <span class="step-image-caption">3. ボード「ESP32 Dev Module」を選択</span>
                             <img src="images/UGOKU-Pad/board-selection.jpg" alt="Board Selection screenshot"
-                                class="img-responsive">
+                                class="img-responsive" width="100%">
                         </div>
                     </div>
                 </div>
@@ -255,7 +261,7 @@
         </div>
         <p>下記の手順で接続を行ってください。</p>
         <div class="step-image-container-single">
-            <img src="images/UGOKU-Pad/sample-useage.png" alt="アプリ操作" class="img-responsive">
+            <img src="images/UGOKU-Pad/sample-useage.png" alt="アプリ操作" class="img-responsive" width="100%">
         </div>
 
         <h2 id="power-and-actuators">電源入力とアクチュエータ出力</h2>
@@ -263,8 +269,8 @@
         <!-- 画像とテキストを横並びに配置：左に画像、右に説明文 -->
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_power-and-actuator.png" alt="電源入力とアクチュエータ出力"
-                    class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_power-and-actuator.png" alt="電源入力とアクチュエータ出力" class="img-responsive"
+                    width="100%">
             </div>
             <div class="col min-w-240">
                 <ul>
@@ -281,13 +287,15 @@
                             class="orange-highlight">単4電池電源スイッチ</span>でオン/オフが可能です</li>
                 </ul>
                 <!-- 画像を親要素の幅いっぱいに広げる -->
-                <img src="images/UGOKU-One/UGOKU-One_power-diagram.png" alt="電源入力とアクチュエータ出力図" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_power-diagram.png" alt="電源入力とアクチュエータ出力図" class="img-responsive"
+                    width="100%">
             </div>
         </div>
         <h3 id="power-selection">電源選択</h3>
         <div class="display-flex cols-40-60 flex-start mt-12">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_power-selection.png" alt="DCモータドライバブロック図" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_power-selection.png" alt="DCモータドライバブロック図" class="img-responsive"
+                    width="100%">
             </div>
             <div class="col min-w-240">
                 <p>ピンヘッダ上のジャンパの位置を変えることでアクチュエータを駆動する電力源を選択できます。</p>
@@ -309,8 +317,8 @@
                     <h4 class="step-title">単4電池</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_bottom-side.png" alt="単4電池"
-                        class="img-responsive card-img-compact">
+                    <img src="images/UGOKU-One/UGOKU-One_bottom-side.png" alt="単4電池" class="img-responsive"
+                        width="100%">
                     <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
                 </div>
             </div>
@@ -321,8 +329,7 @@
                     <h4 class="step-title">USB接続</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続"
-                        class="img-responsive card-img-compact">
+                    <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続" class="img-responsive" width="100%">
                     <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
                 </div>
             </div>
@@ -333,8 +340,8 @@
                     <h4 class="step-title">外部電源入力</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力"
-                        class="img-responsive card-img-compact">
+                    <img src="images/UGOKU-One/UGOKU-One_External-Power_INPUT.png" alt="外部電源入力" class="img-responsive"
+                        width="100%">
                     <p>外部電源入力は7〜24Vの直流電源を接続できます。2ピン端子台に接続します。</p>
                     <div class="alert-box alert-danger mt-10">
                         <strong>逆接しないように注意してください。</strong>
@@ -352,7 +359,7 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_with_Servo.png" alt="サーボモータ出力端子図"
-                        class="img-responsive card-img-compact border-none">
+                        class="img-responsive border-none" width="100%">
                     <p>サーボモータ用の電源出力端子です。</p>
                     <p>最大4つのサーバモーターを接続できます。<br>
                         15ピンと26ピンは汎用I/Oポートと共有になっているので、一緒に使わないでください。</p>
@@ -366,7 +373,7 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_with_Motor.png" alt="DCモータ出力端子図"
-                        class="img-responsive card-img-compact border-none">
+                        class="img-responsive border-none" width="100%">
                     <p>モータドライブICTB67H303HGを2個搭載しています。<br>
                         260クラス程度のモーターをを使ったロボットなどを動作させるのに必要な性能を備えています。
                     </p>
@@ -420,7 +427,7 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="FET出力端子図"
-                        class="img-responsive card-img-compact border-none">
+                        class="img-responsive border-none" width="100%">
                     <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
                     <p>比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
                         極性があります。
@@ -468,17 +475,18 @@
                     <div class="display-flex p-0" style="gap: 20px; align-items: flex-start; padding: 0;">
                         <!-- Left: Overview -->
                         <div style="flex: 1; padding: 0;">
-                            <img src="images/UGOKU-One/UGOKU-One_top-side.png" alt="汎用IO"
-                                class="img-responsive card-img-compact">
+                            <img src="images/UGOKU-One/UGOKU-One_IO-CONN.png" alt="汎用IO" class="img-responsive"
+                                width="100%">
                             <p>センサーやモジュールの追加に便利な端子類です。</p>
                             <ul>
-                                <li><strong>拡張(上)</strong>: 任意のコネクタを実装可能</li>
+                                <li><strong>オプション端子</strong>: ピンヘッダやXHコネクタなどのコネクタを実装できます。I2Cが利用可能です。</li>
                                 <li><strong>ピンソケット(左)</strong>: ジャンパ線での拡張に便利</li>
                                 <li><strong>har-flexicon®(右)</strong>: はんだ付け不要で接続可能</li>
                             </ul>
                             <div class="alert-box alert-warning mt-10" style="margin-left: 0; margin-right: 0;">
-                                <p style="font-size: 0.85em;"><strong>※注意</strong>: ピン15, 25,
-                                    26は各コネクタとサーボで信号を共有しているため、同時使用はできません。</p>
+                                <p style="font-size: 0.85em;"><strong>※注意</strong>:
+                                    ピン15、26は「ピンソケット」「har-flexicon®」「サーボ出力」で信号を共有しています。また、ピン25は「ピンソケット」と「har-flexicon®」で共有されているため、それぞれを独立して使用することはできません。
+                                </p>
                             </div>
                         </div>
                         <!-- Right: Connection Method -->
@@ -486,7 +494,7 @@
                             <h4 class="mt-0 mb-10">har-flexicon®の配線方法</h4>
                             <div class="text-center">
                                 <img src="images/UGOKU-One/UGOKU-One_IO-CONN-MOUNT.gif" alt="コネクターへの配線接続方法"
-                                    class="img-responsive m-auto card-img-compact" style="width: 80%;">
+                                    class="img-responsive" width="90%">
                             </div>
                             <p style="font-size: 0.9em;" class="mt-10">はんだ不要で配線できる <strong>HARTING社製 har-flexicon®
                                     コネクタ</strong>
@@ -514,7 +522,7 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/Pairs/UGOKU-One_top-side.png" alt="リセットスイッチとユーザースイッチ"
-                        class="img-responsive card-img-compact"
+                        class="img-responsive" width="100%"
                         onerror="this.src='images/UGOKU-One/UGOKU-One_top-side.png'">
                     <h4 class="mt-15 mb-5">押しボタン</h4>
                     <p>ESP32 Dev Module互換の配置です。</p>
@@ -532,12 +540,12 @@
         <h2 id="imu-section">IMU (慣性計測ユニット)</h2>
         <div class="display-flex cols-40-60 flex-start">
             <div class="col">
-                <img src="images/UGOKU-One/UGOKU-One_IMU.png" alt="IMUの座標軸" class="img-responsive">
+                <img src="images/UGOKU-One/UGOKU-One_IMU.png" alt="IMUの座標軸" class="img-responsive" width="100%">
             </div>
             <div class="col min-w-240">
                 <p>
-                    Bosch Sensortec社の6軸IMU (3軸加速度計 + 3軸ジャイロスコープ) <strong>BMI270</strong>
-                    を搭載しています。基板のほぼ中央に配置されているため、機体の回転中心と一致しやすく、姿勢制御などの計算が直感的に行えます。
+                    基板の中央に、Bosch Sensortec社の6軸IMU (3軸加速度計 + 3軸ジャイロスコープ) <strong>BMI270</strong>
+                    を搭載しています。
                 </p>
                 <h4>接続仕様</h4>
                 <table class="spec-table">
