@@ -46,7 +46,7 @@
                         <li><a href="#power-input">電源入力</a></li>
                         <li><a href="#servo-output">サーボモータ出力</a></li>
                         <li><a href="#dc-motor-output">DCモータ出力</a></li>
-                        <li><a href="#fet-output">FET出力</a></li>
+                        <li><a href="#fet-output">PWR OUT(FET出力)</a></li>
                     </ul>
                 </li>
                 <li><a href="#io-and-switches">汎用IOとスイッチ</a></li>
@@ -134,7 +134,7 @@
                                 <li>ボタンを離すと、電線が固定されます</li>
                             </ol>
                             <div class="text-center mt-10">
-                                <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続" width="64%">
+                                <img src="images/UGOKU-One/UGOKU-One_Push-in.gif" alt="Push-in端子台の接続" width="65%">
                             </div>
                         </div>
                     </div>
@@ -319,7 +319,7 @@
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_bottom-side.png" alt="単4電池" class="img-responsive"
                         width="100%">
-                    <p>単4電池は4本直列で使用します。電池ホルダは基板に実装済みです。</p>
+                    <p>単4電池は4本直列で使用します。ニッケル水素電池（eneloopなど）を使用した場合、<strong>約2A</strong>程度の出力が可能です。</p>
                 </div>
             </div>
 
@@ -330,7 +330,8 @@
                 </div>
                 <div class="step-content">
                     <img src="images/UGOKU-One/UGOKU-One_USB_INPUT.png" alt="USB接続" class="img-responsive" width="100%">
-                    <p>USB接続は5V電源を供給します。PCやUSB充電器から給電可能です。</p>
+                    <p>USB接続は5V電源を供給します。PC(USB 3.x)からの給電は <strong>0.9A</strong>
+                        までとなります。大電力が必要な場合はセルフパワーのUSBハブやUSB充電器を使用してください。</p>
                 </div>
             </div>
 
@@ -423,10 +424,10 @@
             <!-- FET Output Card -->
             <div class="step-card">
                 <div class="step-header">
-                    <h4 class="step-title" id="fet-output">FET出力</h4>
+                    <h4 class="step-title" id="fet-output">PWR OUT(FET出力)</h4>
                 </div>
                 <div class="step-content">
-                    <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="FET出力端子図"
+                    <img src="images/UGOKU-One/UGOKU-One_with_Solenoid.png" alt="PWR OUT(FET出力)端子図"
                         class="img-responsive border-none" width="100%">
                     <p>Nch MOSFET (SSM3K333R) によるローサイド出力です。</p>
                     <p>比較的大電力を必要とする電源のオンオフ制御に使用できます。<br>
@@ -434,7 +435,7 @@
                     </p>
                     <p><strong>定格出力</strong>（実際に出力可能な電力は電源に依存します）</p>
                     <div class="table-scroll">
-                        <table class="excel-table font-size-sm" aria-label="FET出力スペック">
+                        <table class="excel-table font-size-sm" aria-label="PWR OUT(FET出力)スペック">
                             <thead>
                                 <tr>
                                     <th>項目</th>
